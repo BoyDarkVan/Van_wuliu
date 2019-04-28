@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+    <!-- 自动扫描 -->
+    <context:component-scan base-package="com.van"/>
+
+    <!-- 引入属性文件,config.properties位于src/main/resources目录下 -->
+    <context:property-placeholder location="classpath:config.properties"/>
+
+    <!-- 配置数据源 -->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+        <!-- 数据库连接相关信息 -->
+        <property name="url" value="${jdbc_url}"/>
+        <property name="driverClassName" value="${driverClassName}"/>
+        <property name="username" value="${jdbc_username}"/>
+        <property name="password" value="${jdbc_password}"/>
+        <property name="initialSize" value="5"/>
+    </bean>
+
+
+    <!-- 配置 MyBatis SqlSessionFactory -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!-- 指定 MyBatis 数据源 -->
+        <property name="dataSource" ref="dataSource"/>
+        <!-- 指定 MyBatis mapper 映射文件位置 -->
+        <property name="mapperLocations" value="classpath:/mapper/*.xml"/>
+        <!-- 指定 MyBatis 全局配置文件的位置 -->
+        <property name="configLocation" value="classpath:spring/mybatis-config.xml"/>
+    </bean>
+
+    <!-- 扫描 MyBatis 的 mapper 接口 -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!--扫描所有 mapper 接口，加入到 IOC 容器中 -->
+        <property name="basePackage" value="com.van.mapper"/>
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+    </bean>
+
+
+    <!-- 配置事务管理器 -->
+    <!--<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">-->
+        <!--&lt;!&ndash; 指定数据源 &ndash;&gt;-->
+        <!--<property name="dataSource" ref="dataSource"/>-->
+    <!--</bean>-->
+
+    <!--&lt;!&ndash; 配置事务增强  &ndash;&gt;-->
+    <!--<tx:advice id="txAdvice" transaction-manager="transactionManager">-->
+        <!--<tx:attributes>-->
+            <!--&lt;!&ndash; 配置所有方法都是事务方法 &ndash;&gt;-->
+            <!--<tx:method name="*"/>-->
+            <!--<tx:method name="get*" read-only="true"/>-->
+        <!--</tx:attributes>-->
+    <!--</tx:advice>-->
+
+    <!--<aop:config>-->
+        <!--&lt;!&ndash; 切入点表达式 &ndash;&gt;-->
+        <!--<aop:pointcut expression="execution(*  com.van.service.serviceimp.*.*(..))" id="txPoint"/>-->
+        <!--&lt;!&ndash; 配置事务增强 &ndash;&gt;-->
+        <!--<aop:advisor advice-ref="txAdvice" pointcut-ref="txPoint"/>-->
+    <!--</aop:config>-->
+
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <!--支持事务注解的（@Transactional）-->
+    <tx:annotation-driven />
+</beans>
+
+
+
