@@ -1,8 +1,6 @@
 package com.van.controller;
 
-import com.van.moudle.Admin;
 import com.van.moudle.Testpojo;
-import com.van.service.StudentService;
 import com.van.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
