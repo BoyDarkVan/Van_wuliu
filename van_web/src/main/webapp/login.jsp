@@ -9,7 +9,7 @@
 <form action="${ctx}/admin/login" method="post">
     <input type="text" name="admId" >
     <input type="text" name="admPwd" >
-    <input type="submit" value="登陆"><span>${failMessage}</span>
+    <input type="submit" value="登陆">
 </form>
 
 </body>
