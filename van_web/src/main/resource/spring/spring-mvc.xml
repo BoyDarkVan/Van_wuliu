@@ -10,9 +10,6 @@
     <!--加载静态资源（静态资源放在Web-inf文件夹外）-->
     <mvc:default-servlet-handler/>
 
-    <!--静态资源文件如果要放在WEB-info下面就要使用下面的方法-->
-    <!--<mvc:resources location="/js/" mapping="/js/**"/>-->
-
     <!-- 启用 SpringMVC 注解驱动 -->
     <mvc:annotation-driven/>
 
