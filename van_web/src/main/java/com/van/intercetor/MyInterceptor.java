@@ -15,11 +15,13 @@ public class MyInterceptor implements HandlerInterceptor {
         if (httpServletRequest.getRequestURI().endsWith("login")) {
                      return  true;
         }
+
+        if (httpServletRequest.getRequestURI().endsWith(".js")) {
+            return  true;
+        }
         if (httpServletRequest.getSession().getAttribute("user")!=null){
             return  true;
         }
-//        httpServletResponse.sendRedirect("/WEB-INF/views/login.jsp");
-        httpServletRequest.getRequestDispatcher("/WEB-INF/views/login.html").forward(httpServletRequest, httpServletResponse);
         return false;
     }
 
