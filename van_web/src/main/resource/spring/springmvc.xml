@@ -62,7 +62,7 @@
     <!--<mvc:interceptors>-->
         <!--<mvc:interceptor>-->
             <!--<mvc:mapping path="/**" />-->
-            <!--<bean class="com.van.intercetor.Myinterceptor"/>-->
+            <!--<bean class="com.van.intercetor.MyInterceptor"/>-->
         <!--</mvc:interceptor>-->
     <!--</mvc:interceptors>-->
 </beans>
