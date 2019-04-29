@@ -6,8 +6,8 @@ import java.sql.Timestamp;
 public class Store {
 
   private String sId;
-  private java.sql.Timestamp sTime;
-  private java.sql.Timestamp sOutime;
+  private Timestamp sTime;
+  private Timestamp sOutime;
   private String sCount;
   private String sOutcount;
   private String stId;
@@ -24,20 +24,20 @@ public class Store {
   }
 
 
-  public java.sql.Timestamp getSTime() {
+  public Timestamp getSTime() {
     return sTime;
   }
 
-  public void setSTime(java.sql.Timestamp sTime) {
+  public void setSTime(Timestamp sTime) {
     this.sTime = sTime;
   }
 
 
-  public java.sql.Timestamp getSOutime() {
+  public Timestamp getSOutime() {
     return sOutime;
   }
 
-  public void setSOutime(java.sql.Timestamp sOutime) {
+  public void setSOutime(Timestamp sOutime) {
     this.sOutime = sOutime;
   }
 

@@ -1,7 +1,7 @@
 package com.van.pojo;
 
 
-import java.sql.Timestamp;
+import java.sql.Date;
 
 public class Delivery {
 
@@ -9,8 +9,8 @@ public class Delivery {
   private String aptId;
   private String stId;
   private String ckId;
-  private java.sql.Timestamp psPicktime;
-  private java.sql.Timestamp psDelitime;
+  private Date psPicktime;
+  private Date psDelitime;
   private String psType;
   private String psName;
 
@@ -51,20 +51,20 @@ public class Delivery {
   }
 
 
-  public java.sql.Timestamp getPsPicktime() {
+  public Date getPsPicktime() {
     return psPicktime;
   }
 
-  public void setPsPicktime(java.sql.Timestamp psPicktime) {
+  public void setPsPicktime(Date psPicktime) {
     this.psPicktime = psPicktime;
   }
 
 
-  public java.sql.Timestamp getPsDelitime() {
+  public Date getPsDelitime() {
     return psDelitime;
   }
 
-  public void setPsDelitime(java.sql.Timestamp psDelitime) {
+  public void setPsDelitime(Date psDelitime) {
     this.psDelitime = psDelitime;
   }
 
@@ -86,7 +86,7 @@ public class Delivery {
     this.psName = psName;
   }
 
-    public Delivery(String psId, String aptId, String stId, String ckId, Timestamp psPicktime, Timestamp psDelitime, String psType, String psName) {
+    public Delivery(String psId, String aptId, String stId, String ckId, Date psPicktime, Date psDelitime, String psType, String psName) {
         this.psId = psId;
         this.aptId = aptId;
         this.stId = stId;

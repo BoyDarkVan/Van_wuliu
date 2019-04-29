@@ -6,7 +6,7 @@ public class Staff {
   private String stId;
   private String stName;
   private String stSex;
-  private long stAge;
+  private Integer stAge;
   private String stPhone;
 
 
@@ -41,7 +41,7 @@ public class Staff {
     return stAge;
   }
 
-  public void setStAge(long stAge) {
+  public void setStAge(Integer stAge) {
     this.stAge = stAge;
   }
 
@@ -54,7 +54,7 @@ public class Staff {
     this.stPhone = stPhone;
   }
 
-    public Staff(String stId, String stName, String stSex, long stAge, String stPhone) {
+    public Staff(String stId, String stName, String stSex, Integer stAge, String stPhone) {
         this.stId = stId;
         this.stName = stName;
         this.stSex = stSex;
