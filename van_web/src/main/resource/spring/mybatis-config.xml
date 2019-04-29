@@ -6,6 +6,14 @@
         <setting name="logImpl" value="STDOUT_LOGGING" />
     </settings>
 
+
+    <typeAliases>
+        <!-- 指定一个包名，MyBatis会在包名下搜索需要的JavaBean-->
+        <package name="com.van.mapper"/>
+    </typeAliases>
+
+
+
     <!-- 配置分页插件 -->
     <plugins>
         <plugin interceptor="com.github.pagehelper.PageHelper">
@@ -13,13 +21,5 @@
             <property name="dialect" value="mysql" />
         </plugin>
     </plugins>
-
-
-    <typeAliases>
-        <!-- 指定一个包名，MyBatis会在包名下搜索需要的JavaBean-->
-        <package name="com.van.moudle"/>
-    </typeAliases>
-
-
 
 </configuration>
