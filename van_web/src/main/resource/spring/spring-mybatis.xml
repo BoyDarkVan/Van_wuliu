@@ -41,28 +41,6 @@
     </bean>
 
 
-    <!-- 配置事务管理器 -->
-    <!--<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">-->
-        <!--&lt;!&ndash; 指定数据源 &ndash;&gt;-->
-        <!--<property name="dataSource" ref="dataSource"/>-->
-    <!--</bean>-->
-
-    <!--&lt;!&ndash; 配置事务增强  &ndash;&gt;-->
-    <!--<tx:advice id="txAdvice" transaction-manager="transactionManager">-->
-        <!--<tx:attributes>-->
-            <!--&lt;!&ndash; 配置所有方法都是事务方法 &ndash;&gt;-->
-            <!--<tx:method name="*"/>-->
-            <!--<tx:method name="get*" read-only="true"/>-->
-        <!--</tx:attributes>-->
-    <!--</tx:advice>-->
-
-    <!--<aop:config>-->
-        <!--&lt;!&ndash; 切入点表达式 &ndash;&gt;-->
-        <!--<aop:pointcut expression="execution(*  com.van.service.serviceimp.*.*(..))" id="txPoint"/>-->
-        <!--&lt;!&ndash; 配置事务增强 &ndash;&gt;-->
-        <!--<aop:advisor advice-ref="txAdvice" pointcut-ref="txPoint"/>-->
-    <!--</aop:config>-->
-
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource"/>
     </bean>
