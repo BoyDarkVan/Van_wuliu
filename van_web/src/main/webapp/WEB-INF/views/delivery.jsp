@@ -15,7 +15,7 @@
 
     <div class="layui-body">
         <!-- 内容主体区域 -->
-        <div style="padding: 15px;">内容主体区域</div>
+        <div style="padding: 15px;">配送管理</div>
     </div>
 
     <jsp:include page="${ctx}/model/footer.jsp"/>
