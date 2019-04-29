@@ -3,7 +3,7 @@ package com.van.pojo;
 
 public class Admin {
 
-  private long admId;
+  private Integer admId;
   private String admName;
   private String admPwd;
 
@@ -12,7 +12,7 @@ public class Admin {
     return admId;
   }
 
-  public void setAdmId(long admId) {
+  public void setAdmId(Integer admId) {
     this.admId = admId;
   }
 
@@ -34,12 +34,17 @@ public class Admin {
     this.admPwd = admPwd;
   }
 
-    public Admin(long admId, String admName, String admPwd) {
+    public Admin(Integer admId, String admName, String admPwd) {
         this.admId = admId;
         this.admName = admName;
         this.admPwd = admPwd;
     }
 
     public Admin() {
+    }
+
+    public Admin(Integer admId,String admPwd){
+      this.admId = admId;
+      this.admPwd = admPwd;
     }
 }

@@ -6,7 +6,7 @@
     <title>My JSP 'index.jsp' starting page</title>
 </head>
 <body>
-<form action="${pageContext.request.contextPath}/stu/update" method="post">
+<form action="${ctx}/stu/update" method="post">
     <input type="text" name="stuId" value="${stu.stuId}" readonly="readonly">
     <input type="text" name="stuName" value="${stu.stuName}">
     <input type="text" name="stuPwd" value="${stu.stuPwd}">

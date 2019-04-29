@@ -6,9 +6,9 @@
 </head>
 <body>
 <p>jsp</p>
-<form action="${pageContext.request.contextPath}/admin/login" method="post">
-    <input type="text" name="admin_id" >
-    <input type="text" name="admin_pwd" >
+<form action="${ctx}/admin/login" method="post">
+    <input type="text" name="admId" >
+    <input type="text" name="admPwd" >
     <input type="submit" value="登陆"><span>${failMessage}</span>
 </form>
 
