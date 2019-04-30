@@ -8,58 +8,5 @@
     <result column="user_phone" jdbcType="VARCHAR" property="userPhone" />
     <result column="user_addr" jdbcType="VARCHAR" property="userAddr" />
   </resultMap>
-  <sql id="Base_Column_List">
-    user_id, user_name, user_sex, user_phone, user_addr
-  </sql>
-  <select id="selectByExample"  resultMap="BaseResultMap">
-    select
-  </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from users
-    where user_id = #{userId,jdbcType=VARCHAR}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
-    delete from users
-    where user_id = #{userId,jdbcType=VARCHAR}
-  </delete>
-  <delete id="deleteByExample" >
-    delete from users
-  </delete>
-  <insert id="insert" parameterType="com.van.pojo.Users">
-    insert into users (user_id, user_name, user_sex, 
-      user_phone, user_addr)
-    values (#{userId,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{userSex,jdbcType=BIT}, 
-      #{userPhone,jdbcType=VARCHAR}, #{userAddr,jdbcType=VARCHAR})
-  </insert>
-  <insert id="insertSelective" parameterType="com.van.pojo.Users">
-    insert into users
-  </insert>
-  <select id="countByExample"  resultType="java.lang.Long">
-    select count(*) from users
-  </select>
-  <update id="updateByExampleSelective" parameterType="map">
-    update users
-  </update>
-  <update id="updateByExample" parameterType="map">
-    update users
-    set user_id = #{record.userId,jdbcType=VARCHAR},
-      user_name = #{record.userName,jdbcType=VARCHAR},
-      user_sex = #{record.userSex,jdbcType=BIT},
-      user_phone = #{record.userPhone,jdbcType=VARCHAR},
-      user_addr = #{record.userAddr,jdbcType=VARCHAR}
-  </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.van.pojo.Users">
-    update users
-    where user_id = #{userId,jdbcType=VARCHAR}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.van.pojo.Users">
-    update users
-    set user_name = #{userName,jdbcType=VARCHAR},
-      user_sex = #{userSex,jdbcType=BIT},
-      user_phone = #{userPhone,jdbcType=VARCHAR},
-      user_addr = #{userAddr,jdbcType=VARCHAR}
-    where user_id = #{userId,jdbcType=VARCHAR}
-  </update>
+
 </mapper>
