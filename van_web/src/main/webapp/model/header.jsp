@@ -10,7 +10,7 @@
     <ul class="layui-nav layui-layout-right">
         <li class="layui-nav-item">
             <a href="javascript:;">
-                <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+                <img src="http://t.cn/RCzsdCq" class="layui-nav-img" alt="">
                 贤心
             </a>
             <dl class="layui-nav-child">
@@ -36,7 +36,7 @@
             <li class="layui-nav-item">
                 <a>货单管理</a>
                 <dl class="layui-nav-child">
-                    <dd><a href="${ctx}/orders/find">货单查询</a></dd>
+                    <dd><a href="${ctx}/find/findAllOrder">货单查询</a></dd>
                     <dd><a href="${ctx}/add/addorders.jsp">货单添加</a></dd>
                 </dl>
             </li>

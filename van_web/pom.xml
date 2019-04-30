@@ -22,6 +22,7 @@
         <commons-io.version>2.4</commons-io.version>
         <commons-codec.version>1.9</commons-codec.version>
         <jackson.version>2.9.5</jackson.version>
+        <github.version>5.1.2</github.version>
         <!--编译级别-->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -122,7 +123,11 @@
             <version>${jackson.version}</version>
         </dependency>
 
-
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper</artifactId>
+            <version>${github.version}</version>
+        </dependency>
 
     </dependencies>
 

@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,6 +17,28 @@
     <div class="layui-body">
         <!-- 内容主体区域 -->
         <div style="padding: 15px;">货单查询</div>
+
+        <table>
+            <c:forEach items="${orderlist}" var="ooo">
+                <tr>
+                    <td>${ooo.orderId}</td>
+                    <td>${ooo.orderName}</td>
+                    <td>${ooo.orderPrice}</td>
+                    <td>${ooo.userId}</td>
+                    <td>${ooo.aptId}</td>
+                    <td>${ooo.stId}</td>
+                    <%--<td>${ooo.gId}</td>--%>
+                </tr>
+            </c:forEach>
+            <a href="${pageContext.request.contextPath}/find/findAllOrder?param=${currentPage-1}">上一页</a>
+            <span>${currentPage}</span>
+            <span>/</span>
+            <span>${totalpage}</span>
+            <a href="${pageContext.request.contextPath}/find/findAllOrder?param=${currentPage+1}">下一页</a>
+        </table>
+
+
+
     </div>
 
     <jsp:include page="${ctx}/model/footer.jsp"/>

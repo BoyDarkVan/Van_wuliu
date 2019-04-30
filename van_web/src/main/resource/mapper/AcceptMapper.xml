@@ -47,7 +47,6 @@
   </select>
 
   <update id="updateByExampleSelective" parameterType="map">
-    update accept
 
   </update>
   <update id="updateByExample" parameterType="map">
