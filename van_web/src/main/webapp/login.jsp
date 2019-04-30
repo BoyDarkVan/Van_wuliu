@@ -1,16 +1,59 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: war
+  Date: 2019/4/30
+  Time: 16:43
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<!DOCTYPE html>
 <html>
-<head>
-    <title>Title</title>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Login Page | Amaze UI Example</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="stylesheet" href="static/common/layui/css/amazeui.min.css"/>
+    <style>
+        .header {text-align: center;}
+        .header h1 {font-size: 200%;color: #333;margin-top: 30px;}
+        .header p {font-size: 14px;}
+    </style>
 </head>
 <body>
-<p>jsp</p>
-<form action="${ctx}/admin/login" method="post">
-    <input type="text" name="admId" >
-    <input type="text" name="admPwd" >
-    <input type="submit" value="登陆">
-</form>
-
+<div class="header">
+    <div class="am-g">
+        <h1>仓储管理系统</h1>
+        <p>Parts Inventory System</p>
+    </div>
+    <hr />
+</div>
+<div class="am-g">
+    <div class="am-u-lg-6 am-u-md-8 am-u-sm-centered">
+        <br>
+        <form method="post" class="am-form" action="${ctx}/admin/login">
+            <label>账号或邮箱:</label>
+            <input type="text" name="admId">
+            <br>
+            <label>密码:</label>
+            <input type="password" name="admPwd">
+            <br>
+            <label for="remember-me">
+                <input id="remember-me" type="checkbox">
+                记住密码
+            </label>
+            <br />
+            <div class="am-cf">
+                <input type="submit" name="" value="登 录" class="am-btn am-btn-primary am-btn-sm am-fl" style="align-content: center">
+                <input type="submit" name="" value="忘记密码 ^_^? " class="am-btn am-btn-default am-btn-sm am-fr">
+            </div>
+        </form>
+        <hr>
+        <p>© 2014 AllMobilize, Inc. Licensed under MIT license.</p>
+    </div>
+</div>
 </body>
 </html>
