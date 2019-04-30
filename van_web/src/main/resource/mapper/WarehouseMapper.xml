@@ -6,172 +6,62 @@
     <result column="ck_name" jdbcType="VARCHAR" property="ckName" />
     <result column="ck_size" jdbcType="VARCHAR" property="ckSize" />
   </resultMap>
-  <sql id="Example_Where_Clause">
-    <where>
-      <foreach collection="oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Update_By_Example_Where_Clause">
-    <where>
-      <foreach collection="example.oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
+
   <sql id="Base_Column_List">
     ck_id, ck_name, ck_size
   </sql>
+
   <select id="selectByExample"  resultMap="BaseResultMap">
     select
-    <if test="distinct">
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    from warehouse
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
   </select>
+
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from warehouse
     where ck_id = #{ckId,jdbcType=VARCHAR}
   </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from warehouse
     where ck_id = #{ckId,jdbcType=VARCHAR}
   </delete>
+
   <delete id="deleteByExample" >
     delete from warehouse
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
   </delete>
+
   <insert id="insert" parameterType="com.van.pojo.Warehouse">
     insert into warehouse (ck_id, ck_name, ck_size
       )
     values (#{ckId,jdbcType=VARCHAR}, #{ckName,jdbcType=VARCHAR}, #{ckSize,jdbcType=VARCHAR}
       )
   </insert>
+
   <insert id="insertSelective" parameterType="com.van.pojo.Warehouse">
     insert into warehouse
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="ckId != null">
-        ck_id,
-      </if>
-      <if test="ckName != null">
-        ck_name,
-      </if>
-      <if test="ckSize != null">
-        ck_size,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="ckId != null">
-        #{ckId,jdbcType=VARCHAR},
-      </if>
-      <if test="ckName != null">
-        #{ckName,jdbcType=VARCHAR},
-      </if>
-      <if test="ckSize != null">
-        #{ckSize,jdbcType=VARCHAR},
-      </if>
-    </trim>
   </insert>
+
   <select id="countByExample"  resultType="java.lang.Long">
     select count(*) from warehouse
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
   </select>
+
   <update id="updateByExampleSelective" parameterType="map">
     update warehouse
-    <set>
-      <if test="record.ckId != null">
-        ck_id = #{record.ckId,jdbcType=VARCHAR},
-      </if>
-      <if test="record.ckName != null">
-        ck_name = #{record.ckName,jdbcType=VARCHAR},
-      </if>
-      <if test="record.ckSize != null">
-        ck_size = #{record.ckSize,jdbcType=VARCHAR},
-      </if>
-    </set>
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
   </update>
+
   <update id="updateByExample" parameterType="map">
     update warehouse
     set ck_id = #{record.ckId,jdbcType=VARCHAR},
       ck_name = #{record.ckName,jdbcType=VARCHAR},
       ck_size = #{record.ckSize,jdbcType=VARCHAR}
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
   </update>
+
   <update id="updateByPrimaryKeySelective" parameterType="com.van.pojo.Warehouse">
     update warehouse
-    <set>
-      <if test="ckName != null">
-        ck_name = #{ckName,jdbcType=VARCHAR},
-      </if>
-      <if test="ckSize != null">
-        ck_size = #{ckSize,jdbcType=VARCHAR},
-      </if>
-    </set>
     where ck_id = #{ckId,jdbcType=VARCHAR}
   </update>
+
   <update id="updateByPrimaryKey" parameterType="com.van.pojo.Warehouse">
     update warehouse
     set ck_name = #{ckName,jdbcType=VARCHAR},

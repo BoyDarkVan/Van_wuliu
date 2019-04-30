@@ -11,67 +11,11 @@
     <result column="ps_type" jdbcType="VARCHAR" property="psType" />
     <result column="ps_name" jdbcType="VARCHAR" property="psName" />
   </resultMap>
-  <sql id="Example_Where_Clause">
-    <where>
-      <foreach collection="oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Update_By_Example_Where_Clause">
-    <where>
-      <foreach collection="example.oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
+
   <sql id="Base_Column_List">
     ps_id, apt_id, st_id, ck_id, ps_picktime, ps_delitime, ps_type, ps_name
   </sql>
+
   <select id="selectByExample"  resultMap="BaseResultMap">
     select
     <if test="distinct">
@@ -79,130 +23,43 @@
     </if>
     <include refid="Base_Column_List" />
     from delivery
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
   </select>
+
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from delivery
     where ps_id = #{psId,jdbcType=VARCHAR}
   </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from delivery
     where ps_id = #{psId,jdbcType=VARCHAR}
   </delete>
+
   <delete id="deleteByExample" >
     delete from delivery
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
   </delete>
+
   <insert id="insert" parameterType="com.van.pojo.Delivery">
-    insert into delivery (ps_id, apt_id, st_id, 
-      ck_id, ps_picktime, ps_delitime, 
-      ps_type, ps_name)
+    insert into delivery (ps_id, apt_id, st_id, ck_id, ps_picktime, ps_delitime, ps_type, ps_name)
     values (#{psId,jdbcType=VARCHAR}, #{aptId,jdbcType=VARCHAR}, #{stId,jdbcType=VARCHAR}, 
       #{ckId,jdbcType=VARCHAR}, #{psPicktime,jdbcType=TIMESTAMP}, #{psDelitime,jdbcType=TIMESTAMP}, 
       #{psType,jdbcType=VARCHAR}, #{psName,jdbcType=VARCHAR})
   </insert>
+
   <insert id="insertSelective" parameterType="com.van.pojo.Delivery">
     insert into delivery
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="psId != null">
-        ps_id,
-      </if>
-      <if test="aptId != null">
-        apt_id,
-      </if>
-      <if test="stId != null">
-        st_id,
-      </if>
-      <if test="ckId != null">
-        ck_id,
-      </if>
-      <if test="psPicktime != null">
-        ps_picktime,
-      </if>
-      <if test="psDelitime != null">
-        ps_delitime,
-      </if>
-      <if test="psType != null">
-        ps_type,
-      </if>
-      <if test="psName != null">
-        ps_name,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="psId != null">
-        #{psId,jdbcType=VARCHAR},
-      </if>
-      <if test="aptId != null">
-        #{aptId,jdbcType=VARCHAR},
-      </if>
-      <if test="stId != null">
-        #{stId,jdbcType=VARCHAR},
-      </if>
-      <if test="ckId != null">
-        #{ckId,jdbcType=VARCHAR},
-      </if>
-      <if test="psPicktime != null">
-        #{psPicktime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="psDelitime != null">
-        #{psDelitime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="psType != null">
-        #{psType,jdbcType=VARCHAR},
-      </if>
-      <if test="psName != null">
-        #{psName,jdbcType=VARCHAR},
-      </if>
-    </trim>
   </insert>
+
   <select id="countByExample"  resultType="java.lang.Long">
     select count(*) from delivery
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
   </select>
+
   <update id="updateByExampleSelective" parameterType="map">
     update delivery
-    <set>
-      <if test="record.psId != null">
-        ps_id = #{record.psId,jdbcType=VARCHAR},
-      </if>
-      <if test="record.aptId != null">
-        apt_id = #{record.aptId,jdbcType=VARCHAR},
-      </if>
-      <if test="record.stId != null">
-        st_id = #{record.stId,jdbcType=VARCHAR},
-      </if>
-      <if test="record.ckId != null">
-        ck_id = #{record.ckId,jdbcType=VARCHAR},
-      </if>
-      <if test="record.psPicktime != null">
-        ps_picktime = #{record.psPicktime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.psDelitime != null">
-        ps_delitime = #{record.psDelitime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.psType != null">
-        ps_type = #{record.psType,jdbcType=VARCHAR},
-      </if>
-      <if test="record.psName != null">
-        ps_name = #{record.psName,jdbcType=VARCHAR},
-      </if>
-    </set>
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
   </update>
+
   <update id="updateByExample" parameterType="map">
     update delivery
     set ps_id = #{record.psId,jdbcType=VARCHAR},
@@ -213,37 +70,13 @@
       ps_delitime = #{record.psDelitime,jdbcType=TIMESTAMP},
       ps_type = #{record.psType,jdbcType=VARCHAR},
       ps_name = #{record.psName,jdbcType=VARCHAR}
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
   </update>
+
   <update id="updateByPrimaryKeySelective" parameterType="com.van.pojo.Delivery">
     update delivery
-    <set>
-      <if test="aptId != null">
-        apt_id = #{aptId,jdbcType=VARCHAR},
-      </if>
-      <if test="stId != null">
-        st_id = #{stId,jdbcType=VARCHAR},
-      </if>
-      <if test="ckId != null">
-        ck_id = #{ckId,jdbcType=VARCHAR},
-      </if>
-      <if test="psPicktime != null">
-        ps_picktime = #{psPicktime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="psDelitime != null">
-        ps_delitime = #{psDelitime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="psType != null">
-        ps_type = #{psType,jdbcType=VARCHAR},
-      </if>
-      <if test="psName != null">
-        ps_name = #{psName,jdbcType=VARCHAR},
-      </if>
-    </set>
     where ps_id = #{psId,jdbcType=VARCHAR}
   </update>
+
   <update id="updateByPrimaryKey" parameterType="com.van.pojo.Delivery">
     update delivery
     set apt_id = #{aptId,jdbcType=VARCHAR},
