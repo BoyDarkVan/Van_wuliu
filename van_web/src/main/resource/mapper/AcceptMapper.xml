@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.van.mapper.AcceptMapper">
+  <resultMap id="BaseResultMap" type="com.van.pojo.Accept">
+    <id column="apt_id" jdbcType="VARCHAR" property="cptId" />
+    <result column="apt_name" jdbcType="VARCHAR" property="cptName" />
+    <result column="apt_sex" jdbcType="BIT" property="cptSex" />
+    <result column="apt_addr" jdbcType="VARCHAR" property="cptAddr" />
+    <result column="apt_phone" jdbcType="VARCHAR" property="cptPhone" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    apt_id, apt_name, apt_sex, apt_addr, apt_phone
+  </sql>
+  <select id="selectByExample"  resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from accept
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from accept
+    where apt_id = #{aptId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from accept
+    where apt_id = #{aptId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" >
+    delete from accept
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.van.pojo.Accept">
+    insert into accept (apt_id, apt_name, apt_sex, 
+      apt_addr, apt_phone)
+    values (#{aptId,jdbcType=VARCHAR}, #{aptName,jdbcType=VARCHAR}, #{aptSex,jdbcType=BIT}, 
+      #{aptAddr,jdbcType=VARCHAR}, #{aptPhone,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.van.pojo.Accept">
+    insert into accept
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="aptId != null">
+        apt_id,
+      </if>
+      <if test="aptName != null">
+        apt_name,
+      </if>
+      <if test="aptSex != null">
+        apt_sex,
+      </if>
+      <if test="aptAddr != null">
+        apt_addr,
+      </if>
+      <if test="aptPhone != null">
+        apt_phone,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="aptId != null">
+        #{aptId,jdbcType=VARCHAR},
+      </if>
+      <if test="aptName != null">
+        #{aptName,jdbcType=VARCHAR},
+      </if>
+      <if test="aptSex != null">
+        #{aptSex,jdbcType=BIT},
+      </if>
+      <if test="aptAddr != null">
+        #{aptAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="aptPhone != null">
+        #{aptPhone,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample"  resultType="java.lang.Long">
+    select count(*) from accept
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update accept
+    <set>
+      <if test="record.aptId != null">
+        apt_id = #{record.aptId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.aptName != null">
+        apt_name = #{record.aptName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.aptSex != null">
+        apt_sex = #{record.aptSex,jdbcType=BIT},
+      </if>
+      <if test="record.aptAddr != null">
+        apt_addr = #{record.aptAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.aptPhone != null">
+        apt_phone = #{record.aptPhone,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update accept
+    set apt_id = #{record.aptId,jdbcType=VARCHAR},
+      apt_name = #{record.aptName,jdbcType=VARCHAR},
+      apt_sex = #{record.aptSex,jdbcType=BIT},
+      apt_addr = #{record.aptAddr,jdbcType=VARCHAR},
+      apt_phone = #{record.aptPhone,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.van.pojo.Accept">
+    update accept
+    <set>
+      <if test="aptName != null">
+        apt_name = #{aptName,jdbcType=VARCHAR},
+      </if>
+      <if test="aptSex != null">
+        apt_sex = #{aptSex,jdbcType=BIT},
+      </if>
+      <if test="aptAddr != null">
+        apt_addr = #{aptAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="aptPhone != null">
+        apt_phone = #{aptPhone,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where apt_id = #{aptId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.van.pojo.Accept">
+    update accept
+    set apt_name = #{aptName,jdbcType=VARCHAR},
+      apt_sex = #{aptSex,jdbcType=BIT},
+      apt_addr = #{aptAddr,jdbcType=VARCHAR},
+      apt_phone = #{aptPhone,jdbcType=VARCHAR}
+    where apt_id = #{aptId,jdbcType=VARCHAR}
+  </update>
+</mapper>

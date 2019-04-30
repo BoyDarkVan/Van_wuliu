@@ -9,7 +9,6 @@ public class Accept {
   private String cptAddr;
   private String cptPhone;
 
-
   public String getCptId() {
     return cptId;
   }

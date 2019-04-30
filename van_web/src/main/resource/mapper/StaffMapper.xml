@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.van.mapper.StaffMapper">
+  <resultMap id="BaseResultMap" type="com.van.pojo.Staff">
+    <id column="st_id" jdbcType="VARCHAR" property="stId" />
+    <result column="st_name" jdbcType="VARCHAR" property="stName" />
+    <result column="st_sex" jdbcType="BIT" property="stSex" />
+    <result column="st_age" jdbcType="TINYINT" property="stAge" />
+    <result column="st_phone" jdbcType="VARCHAR" property="stPhone" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    st_id, st_name, st_sex, st_age, st_phone
+  </sql>
+  <select id="selectByExample"  resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from staff
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from staff
+    where st_id = #{stId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from staff
+    where st_id = #{stId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" >
+    delete from staff
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.van.pojo.Staff">
+    insert into staff (st_id, st_name, st_sex, 
+      st_age, st_phone)
+    values (#{stId,jdbcType=VARCHAR}, #{stName,jdbcType=VARCHAR}, #{stSex,jdbcType=BIT}, 
+      #{stAge,jdbcType=TINYINT}, #{stPhone,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.van.pojo.Staff">
+    insert into staff
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="stId != null">
+        st_id,
+      </if>
+      <if test="stName != null">
+        st_name,
+      </if>
+      <if test="stSex != null">
+        st_sex,
+      </if>
+      <if test="stAge != null">
+        st_age,
+      </if>
+      <if test="stPhone != null">
+        st_phone,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="stId != null">
+        #{stId,jdbcType=VARCHAR},
+      </if>
+      <if test="stName != null">
+        #{stName,jdbcType=VARCHAR},
+      </if>
+      <if test="stSex != null">
+        #{stSex,jdbcType=BIT},
+      </if>
+      <if test="stAge != null">
+        #{stAge,jdbcType=TINYINT},
+      </if>
+      <if test="stPhone != null">
+        #{stPhone,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample"  resultType="java.lang.Long">
+    select count(*) from staff
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update staff
+    <set>
+      <if test="record.stId != null">
+        st_id = #{record.stId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.stName != null">
+        st_name = #{record.stName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.stSex != null">
+        st_sex = #{record.stSex,jdbcType=BIT},
+      </if>
+      <if test="record.stAge != null">
+        st_age = #{record.stAge,jdbcType=TINYINT},
+      </if>
+      <if test="record.stPhone != null">
+        st_phone = #{record.stPhone,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update staff
+    set st_id = #{record.stId,jdbcType=VARCHAR},
+      st_name = #{record.stName,jdbcType=VARCHAR},
+      st_sex = #{record.stSex,jdbcType=BIT},
+      st_age = #{record.stAge,jdbcType=TINYINT},
+      st_phone = #{record.stPhone,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.van.pojo.Staff">
+    update staff
+    <set>
+      <if test="stName != null">
+        st_name = #{stName,jdbcType=VARCHAR},
+      </if>
+      <if test="stSex != null">
+        st_sex = #{stSex,jdbcType=BIT},
+      </if>
+      <if test="stAge != null">
+        st_age = #{stAge,jdbcType=TINYINT},
+      </if>
+      <if test="stPhone != null">
+        st_phone = #{stPhone,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where st_id = #{stId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.van.pojo.Staff">
+    update staff
+    set st_name = #{stName,jdbcType=VARCHAR},
+      st_sex = #{stSex,jdbcType=BIT},
+      st_age = #{stAge,jdbcType=TINYINT},
+      st_phone = #{stPhone,jdbcType=VARCHAR}
+    where st_id = #{stId,jdbcType=VARCHAR}
+  </update>
+</mapper>

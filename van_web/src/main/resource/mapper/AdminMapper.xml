@@ -15,4 +15,5 @@
       insert into admin(adm_id, adm_name, adm_pwd) value(#{id},#{name},#{pwd})
     </insert>
 
+
 </mapper>
