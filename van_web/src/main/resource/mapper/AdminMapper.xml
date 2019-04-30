@@ -6,4 +6,13 @@
     <select id="loginAdmin" resultType="com.van.pojo.Admin" parameterType="com.van.pojo.Admin">
       select * from admin where adm_id =#{admId} and adm_pwd = #{admPwd}
     </select>
+
+    <update id="updAdm" parameterType="string">
+      update from admin set adm_pwd=#{pwd} where adm_id=#{id}
+    </update>
+
+    <insert id="addAdm" parameterType="string">
+      insert into admin(adm_id, adm_name, adm_pwd) value(#{id},#{name},#{pwd})
+    </insert>
+
 </mapper>
