@@ -13,15 +13,12 @@ public class MyInterceptor implements HandlerInterceptor {
        //拦截
        //排除不需要拦截的url
         if (httpServletRequest.getRequestURI().endsWith("login")) {
-                     return  true;
-        }
-
-        if (httpServletRequest.getRequestURI().endsWith(".js")) {
             return  true;
         }
         if (httpServletRequest.getSession().getAttribute("user")!=null){
             return  true;
         }
+        httpServletRequest.getRequestDispatcher("/WEB-INF/views/login.html").forward(httpServletRequest, httpServletResponse);
         return false;
     }
 
