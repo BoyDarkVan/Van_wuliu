@@ -8,25 +8,27 @@
     <link rel="stylesheet" href="${ctx}/static/common/layui/css/layui.css">
 </head>
 <body class="layui-layout-body">
-<div class="layui-layout layui-layout-admin">
+    <div class="layui-layout layui-layout-admin">
 
-    <jsp:include page="${ctx}/model/header.jsp"/>
+        <jsp:include page="${ctx}/model/header.jsp"/>
 
 
-    <div class="layui-body">
-        <!-- 内容主体区域 -->
-        <div style="padding: 15px;">用户添加</div>
+        <div class="layui-body">
+            <!-- 内容主体区域 -->
+            <div style="padding: 15px;">用户添加</div>
+
+
+        </div>
+
+        <jsp:include page="${ctx}/model/footer.jsp"/>
     </div>
-
-    <jsp:include page="${ctx}/model/footer.jsp"/>
-</div>
 <script src="${ctx}/static/common/layui/layui.js"></script>
-<script>
-    //JavaScript代码区域
-    layui.use('element', function(){
-        var element = layui.element;
+    <script>
+        //JavaScript代码区域
+        layui.use('element', function(){
+            var element = layui.element;
 
-    });
-</script>
+        });
+    </script>
 </body>
 </html>

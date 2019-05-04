@@ -2,6 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
+<!-- admin管理员 -->
 <mapper namespace="com.van.mapper.AdminMapper">
     <select id="loginAdmin" resultType="com.van.pojo.Admin" parameterType="com.van.pojo.Admin">
       select * from admin where adm_id =#{admId} and adm_pwd = #{admPwd}
@@ -10,7 +11,7 @@
     <update id="updAdm" parameterType="string">
       update from admin set adm_pwd=#{pwd} where adm_id=#{id}
     </update>
-
+    <!--添加用户-->
     <insert id="addAdm" parameterType="string">
       insert into admin(adm_id, adm_name, adm_pwd) value(#{id},#{name},#{pwd})
     </insert>

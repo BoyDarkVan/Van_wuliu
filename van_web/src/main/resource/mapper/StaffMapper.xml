@@ -8,6 +8,9 @@
     <result column="st_age" jdbcType="TINYINT" property="stAge" />
     <result column="st_phone" jdbcType="VARCHAR" property="stPhone" />
   </resultMap>
+  <select id="findAllStaff" resultType="com.van.pojo.Staff">
+    select * from staff
+  </select>
 
 
 </mapper>
