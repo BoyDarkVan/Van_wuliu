@@ -11,6 +11,9 @@
     <result column="ck_id" jdbcType="VARCHAR" property="ckId" />
     <result column="g_id" jdbcType="VARCHAR" property="gId" />
   </resultMap>
+  <select id="findAllstore" resultType="com.van.pojo.Store">
+    select * from store
+  </select>
 
 
 </mapper>

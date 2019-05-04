@@ -7,7 +7,7 @@
     <result column="ck_size" jdbcType="VARCHAR" property="ckSize" />
   </resultMap>
     <select id="findAllWarehouse" resultType="com.van.pojo.Warehouse">
-
+      select * from warehouse
     </select>
 
 

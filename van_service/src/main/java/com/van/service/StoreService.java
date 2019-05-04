@@ -14,7 +14,7 @@ public interface StoreService {
      * 查询所有存储信息（分页查询）
      * @return
      */
-    List<Warehouse> findAllStore();
+    List<Store> findAllStore();
 
     /**
      * 添加仓库传一个存储对象过来

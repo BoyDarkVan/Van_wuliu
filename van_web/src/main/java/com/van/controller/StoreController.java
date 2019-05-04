@@ -2,9 +2,9 @@ package com.van.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.van.pojo.Staff;
 import com.van.pojo.Store;
-import com.van.pojo.Warehouse;
-import com.van.service.WarehouseService;
+import com.van.service.StoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,23 +14,20 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.List;
 
 @Controller
-@RequestMapping("/warehouse")
-public class WarehouseController {
-
+@RequestMapping("store")
+public class StoreController {
     @Autowired
-    private WarehouseService warehouseService;
-    /**
-     * 分页查询所有仓库
-     */
-    @RequestMapping("/findAllWarehouse")
-    public String findAllWarehouse(Model model, @RequestParam(value = "param", required = true, defaultValue = "1") int currentPage){
+    private StoreService storeService;
+
+    @RequestMapping("findAllStore")
+    public String findAllStore(Model model, @RequestParam(value = "param", required = true, defaultValue = "1") int currentPage){
         PageHelper.startPage(currentPage, 2);
 
-        List<Warehouse> list = warehouseService.findAllWarehouse();
+        List<Store> list = storeService.findAllStore();
 
-        PageInfo<Warehouse> pageInfo = new PageInfo<>(list);
+        PageInfo<Store> pageInfo = new PageInfo<>(list);
 
-        model.addAttribute("warelist", pageInfo.getList());
+        model.addAttribute("storelist", pageInfo.getList());
 
         if (currentPage < 1) {
             currentPage = 1;
@@ -40,13 +37,10 @@ public class WarehouseController {
         }
         model.addAttribute("currentPage", currentPage);
         model.addAttribute("totalpage", pageInfo.getPages());
-            return "warehouse";
+
+
+        return "store";
     }
 
-    @RequestMapping("/addWarehouse")
-    public String addWarehouse(Model model) {
-
-        return "";
-    }
 
 }

@@ -15,7 +15,7 @@ public class WarehouseServiceImp implements WarehouseService {
 
     @Override
     public List<Warehouse> findAllWarehouse() {
-        return null;
+        return warehouseMapper.findAllWarehouse();
     }
 
     @Override
