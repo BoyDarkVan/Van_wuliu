@@ -8,12 +8,48 @@
     <result column="user_phone" jdbcType="VARCHAR" property="userPhone" />
     <result column="user_addr" jdbcType="VARCHAR" property="userAddr" />
   </resultMap>
+
+  <!--用户 的所有字段-->
   <sql id="Base_Column_List">
     user_id, user_name, user_sex, user_phone, user_addr
   </sql>
-  <select id="selectByExample"  resultMap="BaseResultMap">
+
+  <!--查询全部用户-->
+  <select id="selectByExample" parameterType="com.van.page.Page" resultMap="BaseResultMap">
     select
+    <include refid="Base_Column_List"/>
+    from users
   </select>
+
+  <!--分页查询内容-->
+  <select id="queryPageUser" resultMap="BaseResultMap" parameterType="com.van.page.Page">
+    select
+           user_id, user_name,
+           case user_sex when '1' then '男' when '0' then '女' end as user_sex,
+           user_phone, user_addr
+
+
+    from users
+
+    order by user_id
+
+    limit #{start},#{rows}
+
+
+  </select>
+
+  <!-- 通过条件分页查询，返回总记录数 -->
+  <select id="queryPageCount" resultType="integer" parameterType="com.van.page.Page">
+    select count(user_id) from users
+
+    <where>
+      <if test="userId!=null and userId!=''">
+        and user_id = #{userId}
+      </if>
+    </where>
+  </select>
+
+
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
@@ -25,8 +61,20 @@
     where user_id = #{userId,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" >
-    delete from users
+
   </delete>
+
+
+  <!--根据用户id删除用户-->
+  <delete id="delUsersById" parameterType="string">
+      delete from users
+      <where>
+        <if test="userId != null and userId != ''">
+          and user_id = #{userId}
+        </if>
+      </where>
+  </delete>
+
   <insert id="insert" parameterType="com.van.pojo.Users">
     insert into users (user_id, user_name, user_sex, 
       user_phone, user_addr)
@@ -34,13 +82,13 @@
       #{userPhone,jdbcType=VARCHAR}, #{userAddr,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.van.pojo.Users">
-    insert into users
+
   </insert>
   <select id="countByExample"  resultType="java.lang.Long">
     select count(*) from users
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update users
+
   </update>
   <update id="updateByExample" parameterType="map">
     update users
@@ -51,8 +99,7 @@
       user_addr = #{record.userAddr,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKeySelective" parameterType="com.van.pojo.Users">
-    update users
-    where user_id = #{userId,jdbcType=VARCHAR}
+
   </update>
   <update id="updateByPrimaryKey" parameterType="com.van.pojo.Users">
     update users
