@@ -1,5 +1,6 @@
 package com.van.mapper;
 
+import com.van.page.Page;
 import com.van.pojo.Users;
 import org.apache.ibatis.annotations.Param;
 
@@ -27,4 +28,13 @@ public interface UsersMapper {
     int updateByPrimaryKeySelective(Users record);
 
     int updateByPrimaryKey(Users record);
+
+
+    //分页查询用户表
+    List<Users> queryPageUser(Page page);
+
+    //查询总记录数
+    Integer queryPageCount(Page page);
+
+    void delUsersById(@Param("userId") String userId);
 }
