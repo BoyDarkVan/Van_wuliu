@@ -18,7 +18,7 @@ import java.util.List;
 public class WarehouseController {
 
     @Autowired
-    private WarehouseService warehouseMapper;
+    private WarehouseService warehouseService;
     /**
      * 分页查询所有仓库
      */
