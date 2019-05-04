@@ -1,6 +1,5 @@
 package com.van.pojo;
 
-
 import java.sql.Timestamp;
 
 public class Store {
@@ -13,7 +12,6 @@ public class Store {
   private String stId;
   private String ckId;
   private String gId;
-
 
   public String getSId() {
     return sId;

@@ -6,66 +6,9 @@
     <result column="ck_name" jdbcType="VARCHAR" property="ckName" />
     <result column="ck_size" jdbcType="VARCHAR" property="ckSize" />
   </resultMap>
+    <select id="findAllWarehouse" resultType="com.van.pojo.Warehouse">
+      select * from warehouse
+    </select>
 
-  <sql id="Base_Column_List">
-    ck_id, ck_name, ck_size
-  </sql>
 
-  <select id="selectByExample"  resultMap="BaseResultMap">
-    select
-  </select>
-
-  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from warehouse
-    where ck_id = #{ckId,jdbcType=VARCHAR}
-  </select>
-
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
-    delete from warehouse
-    where ck_id = #{ckId,jdbcType=VARCHAR}
-  </delete>
-
-  <delete id="deleteByExample" >
-    delete from warehouse
-  </delete>
-
-  <insert id="insert" parameterType="com.van.pojo.Warehouse">
-    insert into warehouse (ck_id, ck_name, ck_size
-      )
-    values (#{ckId,jdbcType=VARCHAR}, #{ckName,jdbcType=VARCHAR}, #{ckSize,jdbcType=VARCHAR}
-      )
-  </insert>
-
-  <insert id="insertSelective" parameterType="com.van.pojo.Warehouse">
-    insert into warehouse
-  </insert>
-
-  <select id="countByExample"  resultType="java.lang.Long">
-    select count(*) from warehouse
-  </select>
-
-  <update id="updateByExampleSelective" parameterType="map">
-    update warehouse
-  </update>
-
-  <update id="updateByExample" parameterType="map">
-    update warehouse
-    set ck_id = #{record.ckId,jdbcType=VARCHAR},
-      ck_name = #{record.ckName,jdbcType=VARCHAR},
-      ck_size = #{record.ckSize,jdbcType=VARCHAR}
-  </update>
-
-  <update id="updateByPrimaryKeySelective" parameterType="com.van.pojo.Warehouse">
-    update warehouse
-    where ck_id = #{ckId,jdbcType=VARCHAR}
-  </update>
-
-  <update id="updateByPrimaryKey" parameterType="com.van.pojo.Warehouse">
-    update warehouse
-    set ck_name = #{ckName,jdbcType=VARCHAR},
-      ck_size = #{ckSize,jdbcType=VARCHAR}
-    where ck_id = #{ckId,jdbcType=VARCHAR}
-  </update>
 </mapper>

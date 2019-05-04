@@ -9,8 +9,8 @@
     <div class="layui-logo"><a href="">layui 后台布局</a></div>
     <ul class="layui-nav layui-layout-right">
         <li class="layui-nav-item">
-            <a href="javascript:;">
-                <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+            <a href="javascript:">
+                <img src="http://t.cn/RCzsdCq" class="layui-nav-img" alt="">
                 贤心
             </a>
             <dl class="layui-nav-child">
@@ -36,7 +36,7 @@
             <li class="layui-nav-item">
                 <a>货单管理</a>
                 <dl class="layui-nav-child">
-                    <dd><a href="${ctx}/orders/find">货单查询</a></dd>
+                    <dd><a href="${ctx}/find/findAllOrder">货单查询</a></dd>
                     <dd><a href="${ctx}/add/addorders.jsp">货单添加</a></dd>
                 </dl>
             </li>
@@ -44,7 +44,7 @@
             <li class="layui-nav-item">
                 <a>仓库管理</a>
                 <dl class="layui-nav-child">
-                    <dd><a href="${ctx}/warehouse/find">仓库查询</a></dd>
+                    <dd><a href="${ctx}/warehouse/findAllWarehouse">仓库查询</a></dd>
                     <dd><a href="${ctx}/add/addwarehouse.jsp">仓库添加</a></dd>
                 </dl>
             </li>
@@ -52,7 +52,7 @@
             <li class="layui-nav-item">
                 <a>储存管理</a>
                 <dl class="layui-nav-child">
-                    <dd><a href="${ctx}/store/in">储存管理</a></dd>
+                    <dd><a href="${ctx}/store/findAllStore">储存管理</a></dd>
                     <dd><a href="${ctx}/add/addstore.jsp">储存录入</a></dd>
                 </dl>
             </li>
@@ -60,7 +60,7 @@
             <li class="layui-nav-item">
                 <a>员工管理</a>
                 <dl class="layui-nav-child">
-                    <dd><a href="${ctx}/staff/find">查询员工</a></dd>
+                    <dd><a href="${ctx}/staff/findAllStaff">查询员工</a></dd>
                     <dd><a href="${ctx}/add/addstaff.jsp">添加员工</a></dd>
                 </dl>
             </li>
