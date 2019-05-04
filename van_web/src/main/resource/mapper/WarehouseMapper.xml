@@ -6,6 +6,9 @@
     <result column="ck_name" jdbcType="VARCHAR" property="ckName" />
     <result column="ck_size" jdbcType="VARCHAR" property="ckSize" />
   </resultMap>
+    <select id="findAllWarehouse" resultType="com.van.pojo.Warehouse">
+
+    </select>
 
 
 </mapper>

@@ -4,6 +4,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.van.mapper.WarehouseMapper;
 import com.van.service.OrderService;
+import com.van.service.WarehouseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,7 +18,7 @@ import java.util.List;
 public class WarehouseController {
 
     @Autowired
-    private WarehouseMapper warehouseMapper;
+    private WarehouseService warehouseService;
     /**
      * 分页查询所有仓库
      */
@@ -27,5 +28,10 @@ public class WarehouseController {
             return "";
     }
 
+    @RequestMapping("/addWarehouse")
+    public String addWarehouse(Model model) {
+
+        return "";
+    }
 
 }
