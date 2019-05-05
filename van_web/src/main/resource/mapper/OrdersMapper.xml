@@ -12,8 +12,21 @@
     </resultMap>
 
 
-    <select id="findAllOrders" resultType="com.van.pojo.Orders">
-        select * from orders
+    <select id="findAllOrders" resultMap="BaseResultMap" parameterType="com.van.page.Page">
+        select *
+        from orders
+        order by user_id
+        limit #{start},#{rows}
+    </select>
+
+
+    <select id="queryPageCount" resultType="integer" parameterType="com.van.page.Page">
+        select count(order_id) from orders
+        <where>
+            <if test="orderId!=null and orderId!=''">
+                and order_id = #{orderId}
+            </if>
+        </where>
     </select>
 
 </mapper>
