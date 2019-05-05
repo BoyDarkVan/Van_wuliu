@@ -26,6 +26,9 @@ public interface StaffService {
 
     //总记录
     Integer findPagetotal(Page page);
+
+    //删除
+    void deleteStaff(String st_id);
     
 
 }

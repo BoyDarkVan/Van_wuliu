@@ -24,7 +24,13 @@ public class Page implements Serializable {
     //用户id
     private String userId;
     //其他用户id
-    private String otherId;
+    private String stId;
+    //储存
+    private String sId;
+    //仓库
+    private String ckId;
+
+
 
     public Integer getPage() {
         return page;
@@ -93,15 +99,31 @@ public class Page implements Serializable {
         this.userId = userId;
     }
 
-    public String getOtherId() {
-        return otherId;
+    public String getStId() {
+        return stId;
     }
 
-    public void setOtherId(String otherId) {
-        this.otherId = otherId;
+    public void setStId(String stId) {
+        this.stId = stId;
     }
 
-    public Page(Integer page, Integer rows, Integer totalRecord, Integer totalPage, String keyType, String keyWord, Integer start, String userId, String otherId) {
+    public String getsId() {
+        return sId;
+    }
+
+    public void setsId(String sId) {
+        this.sId = sId;
+    }
+
+    public String getCkId() {
+        return ckId;
+    }
+
+    public void setCkId(String ckId) {
+        this.ckId = ckId;
+    }
+
+    public Page(Integer page, Integer rows, Integer totalRecord, Integer totalPage, String keyType, String keyWord, Integer start, String userId, String stId, String sId, String ckId) {
         this.page = page;
         this.rows = rows;
         this.totalRecord = totalRecord;
@@ -110,7 +132,9 @@ public class Page implements Serializable {
         this.keyWord = keyWord;
         this.start = start;
         this.userId = userId;
-        this.otherId = otherId;
+        this.stId = stId;
+        this.sId = sId;
+        this.ckId = ckId;
     }
 
     @Override
@@ -124,7 +148,9 @@ public class Page implements Serializable {
                 ", keyWord='" + keyWord + '\'' +
                 ", start=" + start +
                 ", userId='" + userId + '\'' +
-                ", otherId='" + otherId + '\'' +
+                ", stId='" + stId + '\'' +
+                ", sId='" + sId + '\'' +
+                ", ckId='" + ckId + '\'' +
                 '}';
     }
 }

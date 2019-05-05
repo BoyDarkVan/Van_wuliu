@@ -1,6 +1,5 @@
 package com.van.page;
 
-
 /**
  * layui数据表格返回数据处理类
  */

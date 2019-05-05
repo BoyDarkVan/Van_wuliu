@@ -14,6 +14,7 @@
     st_id,st_name,st_sex,st_age,st_phone
   </sql>
 
+
   <!--分页查询员工-->
   <select id="findAllStaff" resultMap="BaseResultMap" parameterType="com.van.page.Page">
     select st_id,st_name,case st_sex when '1' then '男' when '0' then '女' end as st_sex,st_age,st_phone
@@ -22,7 +23,6 @@
     order by st_id
 
     limit #{start},#{rows}
-
   </select>
 
   <!--总记录-->
@@ -35,5 +35,14 @@
     </where>
   </select>
 
+  <!--删除员工-->
+  <delete id="deleteStaff" parameterType="string">
+    delete from staff
+    <where>
+      <if test="stId!=null and stId!=''">
+        and st_id=#{stId}
+      </if>
+    </where>
+  </delete>
 
 </mapper>

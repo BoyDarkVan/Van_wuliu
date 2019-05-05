@@ -6,8 +6,10 @@ import com.van.pojo.Staff;
 import com.van.service.StaffService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -19,7 +21,8 @@ public class StaffController {
     @Autowired
     private StaffService staffService;
 
-    @RequestMapping("findAllStaff")
+    @RequestMapping("/findAllStaff")
+    @ResponseBody
     public ResultMap<List<Staff>> findAllStaff(Page page, @RequestParam("limit") int limit){
 
         page.setRows(limit);
@@ -30,6 +33,12 @@ public class StaffController {
 
         return new ResultMap<List<Staff>>("",stafflist,0,total);
 
+    }
+
+    @RequestMapping("/del/{stId}")
+    public String deletestaff(@PathVariable("stId") String stId){
+        staffService.deleteStaff(stId);
+        return "staff";
     }
 
     @RequestMapping("/page")

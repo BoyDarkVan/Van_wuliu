@@ -13,9 +13,8 @@
 
     <jsp:include page="${ctx}/model/header.jsp"/>
 
-
     <div class="layui-body">
-        <table id="users" lay-filter="test"></table>
+        <table id="staff" lay-filter="test"></table>
     </div>
 
     <script type="text/html" id="tools">
@@ -25,7 +24,6 @@
             <button class="layui-btn layui-btn-sm" lay-event="isAll">验证是否全选</button>
         </div>
     </script>
-
 
     <script type="text/html" id="action">
         <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
@@ -48,9 +46,9 @@
 
         //第一个实例
         table.render({
-            elem: '#users'
+            elem: '#staff'
             ,height: 500
-            ,url: '${ctx}/users/find' //数据接口
+            ,url: '${ctx}/staff/findAllStaff' //数据接口
             ,limit:2
             ,toolbar: '#tools'
             ,page: true //开启分页
@@ -81,7 +79,7 @@
                 case 'isAll':
                     layer.msg(checkStatus.isAll ? '全选': '未全选');
                     break;
-            };
+            }
         });
 
 
@@ -92,16 +90,16 @@
 
             if(layEvent === 'del'){
                 //向服务端发送删除指令
-                alert(data.userId);//获取当前数据userId
+                alert(data.stId);//获取当前数据
                 layer.confirm('真的删除行么', function(index){
 
                     obj.del(); //删除对应行（tr）的DOM结构
                     layer.close(index);
 
-                    var userId = data.userId;
+                    var stId = data.stId;
 
                     $.ajax({
-                        url:"${ctx}/users/del/"+userId,
+                        url:"${ctx}/staff/del/"+stId,
                         type:"post",
                         success:function () {
                             alert("刪除成功");

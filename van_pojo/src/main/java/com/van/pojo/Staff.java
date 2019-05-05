@@ -64,4 +64,15 @@ public class Staff {
 
     public Staff() {
     }
+
+    @Override
+    public String toString() {
+        return "Staff{" +
+                "stId='" + stId + '\'' +
+                ", stName='" + stName + '\'' +
+                ", stSex='" + stSex + '\'' +
+                ", stAge=" + stAge +
+                ", stPhone='" + stPhone + '\'' +
+                '}';
+    }
 }

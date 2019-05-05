@@ -1,15 +1,16 @@
 package com.van.controller;
 
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
-import com.van.pojo.Store;
+import com.van.page.Page;
+import com.van.page.ResultMap;
 import com.van.pojo.Warehouse;
 import com.van.service.WarehouseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -23,30 +24,32 @@ public class WarehouseController {
      * 分页查询所有仓库
      */
     @RequestMapping("/findAllWarehouse")
-    public String findAllWarehouse(Model model, @RequestParam(value = "param", required = true, defaultValue = "1") int currentPage){
-        PageHelper.startPage(currentPage, 2);
+    @ResponseBody
+    public ResultMap<List<Warehouse>> findAllWarehouse(Page page, @RequestParam("limit") int limit){
+        page.setRows(limit);
+        List<Warehouse> warelist=warehouseService.findAllWarehouse(page);
+        int total=warehouseService.findtotal(page);
+        page.setTotalRecord(total);
 
-        List<Warehouse> list = warehouseService.findAllWarehouse();
+        return new ResultMap<List<Warehouse>>("",warelist,0,total);
 
-        PageInfo<Warehouse> pageInfo = new PageInfo<>(list);
-
-        model.addAttribute("warelist", pageInfo.getList());
-
-        if (currentPage < 1) {
-            currentPage = 1;
-        }
-        if (currentPage > pageInfo.getPages()) {
-            currentPage = pageInfo.getPages();
-        }
-        model.addAttribute("currentPage", currentPage);
-        model.addAttribute("totalpage", pageInfo.getPages());
-            return "warehouse";
     }
 
     @RequestMapping("/addWarehouse")
     public String addWarehouse(Model model) {
 
         return "";
+    }
+    @RequestMapping("/del/{ckId}")
+    public String delWare(@PathVariable("ckId") String ckId){
+        warehouseService.delWare(ckId);
+        return "warehouse";
+    }
+
+    @RequestMapping("page")
+    public String finds(){
+
+        return "warehouse";
     }
 
 }
