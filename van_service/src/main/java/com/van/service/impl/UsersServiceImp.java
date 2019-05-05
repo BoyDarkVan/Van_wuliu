@@ -40,4 +40,9 @@ public class UsersServiceImp implements UsersService {
     public void updUsers(Users users) {
         usersMapper.updUsers(users);
     }
+
+    @Override
+    public void addUsers(Users users) {
+        usersMapper.addUsers(users);
+    }
 }

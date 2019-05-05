@@ -23,4 +23,7 @@ public interface UsersService {
 
     //更新用户
     void updUsers(Users users);
+
+//    添加用户
+    void addUsers(Users users);
 }
