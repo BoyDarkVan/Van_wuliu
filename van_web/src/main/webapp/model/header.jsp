@@ -28,7 +28,7 @@
             <li class="layui-nav-item layui-nav-itemed">
                 <a><i class="layui-icon layui-icon-username">&nbsp;&nbsp;</i>用户管理</a>
                 <dl class="layui-nav-child">
-                    <dd><a href="${ctx}/users/find">查询用户</a></dd>
+                    <dd><a href="${ctx}/users/page">查询用户</a></dd>
                     <dd><a href="${ctx}/add/adduser.jsp">添加用户</a></dd>
                 </dl>
             </li>
