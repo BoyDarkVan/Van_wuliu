@@ -91,7 +91,7 @@
 
             if(layEvent === 'del'){
                 //向服务端发送删除指令
-                alert(data.userId);//获取当前数据userId
+                //alert(data.userId);//获取当前数据userId
                 layer.confirm('真的删除行么', function(index){
 
                     obj.del(); //删除对应行（tr）的DOM结构

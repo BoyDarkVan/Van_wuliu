@@ -1,5 +1,6 @@
 package com.van.service;
 
+import com.van.page.Page;
 import com.van.pojo.Staff;
 import com.van.pojo.Store;
 import com.van.pojo.Warehouse;
@@ -15,7 +16,7 @@ public interface StaffService {
      * 查询所有司机信息（分页查询）
      * @return
      */
-    List<Staff> findAllStaff();
+    List<Staff> findAllStaff(Page page);
 
     /**
      * 添加仓库传一个司机对象过来
@@ -23,6 +24,8 @@ public interface StaffService {
      */
     void  addStaff(Staff staff);
 
+    //总记录
+    Integer findPagetotal(Page page);
     
 
 }

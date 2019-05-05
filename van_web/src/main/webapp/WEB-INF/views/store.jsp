@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@taglib uri="http://java.sun.com/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -48,14 +48,14 @@
 
             <c:forEach items="${storelist}" var="sto">
                 <tr>
-                    <td>${sto.sId}</td>
-                    <td>${sto.sTime}</td>
-                    <td>${sto.sOutime}</td>
-                    <td>${sto.sCount}</td>
-                    <td>${sto.sOutcount}</td>
+                    <td>${sto.SId}</td>
+                    <td>${sto.STime}</td>
+                    <td>${sto.SOutime}</td>
+                    <td>${sto.SCount}</td>
+                    <td>${sto.SOutcount}</td>
                     <td>${sto.stId}</td>
                     <td>${sto.ckId}</td>
-                    <td>${sto.gId}</td>
+                    <td>${sto.GId}</td>
                 </tr>
             </c:forEach>
         </table>

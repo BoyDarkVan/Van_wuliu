@@ -38,7 +38,6 @@ public class StoreController {
         model.addAttribute("currentPage", currentPage);
         model.addAttribute("totalpage", pageInfo.getPages());
 
-
         return "store";
     }
 

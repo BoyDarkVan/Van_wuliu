@@ -9,8 +9,8 @@
     <div class="layui-logo"><a href="">layui 后台布局</a></div>
     <ul class="layui-nav layui-layout-right">
         <li class="layui-nav-item">
-            <a href="javascript:;">
-                <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+            <a href="javascript:">
+                <img src="http://t.cn/RCzsdCq" class="layui-nav-img" alt="">
                 贤心
             </a>
             <dl class="layui-nav-child">
@@ -28,40 +28,40 @@
             <li class="layui-nav-item layui-nav-itemed">
                 <a><i class="layui-icon layui-icon-username">&nbsp;&nbsp;</i>用户管理</a>
                 <dl class="layui-nav-child">
-                    <dd><a href="${ctx}/users/page">查询用户</a></dd>
-                    <dd><a href="${ctx}/WEB-INF/views/adduser.jsp">添加用户</a></dd>
+                    <dd><a href="${ctx}/users/find">查询用户</a></dd>
+                    <dd><a href="${ctx}/add/adduser.jsp">添加用户</a></dd>
                 </dl>
             </li>
 
             <li class="layui-nav-item">
                 <a>货单管理</a>
                 <dl class="layui-nav-child">
-                    <dd><a href="${ctx}/orders/find">货单查询</a></dd>
-                    <dd><a href="${ctx}/WEB-INF/views/addorders.jsp">货单添加</a></dd>
+                    <dd><a href="${ctx}/orders/findAllOrder">货单查询</a></dd>
+                    <dd><a href="${ctx}/orders/addorders.jsp">货单添加</a></dd>
                 </dl>
             </li>
 
             <li class="layui-nav-item">
                 <a>仓库管理</a>
                 <dl class="layui-nav-child">
-                    <dd><a href="${ctx}/warehouse/find">仓库查询</a></dd>
-                    <dd><a href="${ctx}/WEB-INF/views/addwarehouse.jsp">仓库添加</a></dd>
+                    <dd><a href="${ctx}/warehouse/findAllWarehouse">仓库查询</a></dd>
+                    <dd><a href="${ctx}/add/addwarehouse.jsp">仓库添加</a></dd>
                 </dl>
             </li>
 
             <li class="layui-nav-item">
                 <a>储存管理</a>
                 <dl class="layui-nav-child">
-                    <dd><a href="${ctx}/store/in">储存管理</a></dd>
-                    <dd><a href="${ctx}/WEB-INF/views/addstore.jsp">储存录入</a></dd>
+                    <dd><a href="${ctx}/store/findAllStore">储存管理</a></dd>
+                    <dd><a href="${ctx}/add/addstore.jsp">储存录入</a></dd>
                 </dl>
             </li>
 
             <li class="layui-nav-item">
                 <a>员工管理</a>
                 <dl class="layui-nav-child">
-                    <dd><a href="${ctx}/staff/find">查询员工</a></dd>
-                    <dd><a href="${ctx}/WEB-INF/views/addstaff.jsp">添加员工</a></dd>
+                    <dd><a href="${ctx}/staff/findAllStaff">查询员工</a></dd>
+                    <dd><a href="${ctx}/add/addstaff.jsp">添加员工</a></dd>
                 </dl>
             </li>
 
@@ -69,7 +69,7 @@
                 <a>货物管理</a>
                 <dl class="layui-nav-child">
                     <dd><a href="${ctx}/goods/find">查询货物</a></dd>
-                    <dd><a href="${ctx}/WEB-INF/views/addgoods.jsp">添加货物</a></dd>
+                    <dd><a href="${ctx}/add/addgoods.jsp">添加货物</a></dd>
                 </dl>
             </li>
 
@@ -77,7 +77,7 @@
                 <a>配送管理</a>
                 <dl class="layui-nav-child">
                     <dd><a href="${ctx}/delivery/find">查询配送</a></dd>
-                    <dd><a href="${ctx}/WEB-INF/views/adddelivery.jsp">添加配送</a></dd>
+                    <dd><a href="${ctx}/add/adddelivery.jsp">添加配送</a></dd>
                 </dl>
             </li>
 
@@ -85,7 +85,7 @@
                 <a>收货人管理</a>
                 <dl class="layui-nav-child">
                     <dd><a href="${ctx}/accept/find">收货人查询</a></dd>
-                    <dd><a href="${ctx}/WEB-INF/views/addaccept.jsp">添加收货人</a></dd>
+                    <dd><a href="${ctx}/add/addaccept.jsp">添加收货人</a></dd>
                 </dl>
             </li>
 

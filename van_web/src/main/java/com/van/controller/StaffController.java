@@ -1,13 +1,11 @@
 package com.van.controller;
 
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
-import com.van.pojo.Orders;
+import com.van.page.Page;
+import com.van.page.ResultMap;
 import com.van.pojo.Staff;
 import com.van.service.StaffService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -22,26 +20,22 @@ public class StaffController {
     private StaffService staffService;
 
     @RequestMapping("findAllStaff")
-    public String findAllStaff(Model model, @RequestParam(value = "param", required = true, defaultValue = "1") int currentPage){
-            PageHelper.startPage(currentPage, 2);
+    public ResultMap<List<Staff>> findAllStaff(Page page, @RequestParam("limit") int limit){
 
-            List<Staff> list = staffService.findAllStaff();
+        page.setRows(limit);
 
-            PageInfo<Staff> pageInfo = new PageInfo<>(list);
+        List<Staff> stafflist=staffService.findAllStaff(page);
+        int total=staffService.findPagetotal(page);
+        page.setTotalRecord(total);
 
-            model.addAttribute("stafflist", pageInfo.getList());
+        return new ResultMap<List<Staff>>("",stafflist,0,total);
 
-            if (currentPage < 1) {
-                currentPage = 1;
-            }
-            if (currentPage > pageInfo.getPages()) {
-                currentPage = pageInfo.getPages();
-            }
-            model.addAttribute("currentPage", currentPage);
-            model.addAttribute("totalpage", pageInfo.getPages());
+    }
+
+    @RequestMapping("/page")
+    public String finds(){
 
         return "staff";
-
     }
 
 
