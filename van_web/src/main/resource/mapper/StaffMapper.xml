@@ -8,8 +8,31 @@
     <result column="st_age" jdbcType="TINYINT" property="stAge" />
     <result column="st_phone" jdbcType="VARCHAR" property="stPhone" />
   </resultMap>
-  <select id="findAllStaff" resultType="com.van.pojo.Staff">
-    select * from staff
+
+  <!--字段-->
+  <sql id="Base_Column_List">
+    st_id,st_name,st_sex,st_age,st_phone
+  </sql>
+
+  <!--分页查询员工-->
+  <select id="findAllStaff" resultMap="BaseResultMap" parameterType="com.van.page.Page">
+    select st_id,st_name,case st_sex when '1' then '男' when '0' then '女' end as st_sex,st_age,st_phone
+    from staff
+
+    order by st_id
+
+    limit #{start},#{rows}
+
+  </select>
+
+  <!--总记录-->
+  <select id="findPagetotal" resultType="java.lang.Integer" parameterType="com.van.page.Page">
+    select count(st_id) from staff
+    <where>
+      <if test="stId!=null and stId!='' ">
+         and st_id=#{stId}
+      </if>
+    </where>
   </select>
 
 
