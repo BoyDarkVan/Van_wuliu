@@ -20,4 +20,10 @@ public interface UsersMapper {
 
     //删除用户
     void delUsersById(@Param("userId") String userId);
+
+    //更新用户
+    void updUsers(@Param("users") Users users);
+
+//    添加用户
+    void addUsers(@Param("users") Users users);
 }

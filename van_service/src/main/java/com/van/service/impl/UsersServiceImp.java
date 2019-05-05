@@ -6,6 +6,7 @@ import com.van.pojo.Users;
 import com.van.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -33,5 +34,15 @@ public class UsersServiceImp implements UsersService {
     @Override
     public void delUsersById(String userId) {
         usersMapper.delUsersById(userId);
+    }
+
+    @Override
+    public void updUsers(Users users) {
+        usersMapper.updUsers(users);
+    }
+
+    @Override
+    public void addUsers(Users users) {
+        usersMapper.addUsers(users);
     }
 }

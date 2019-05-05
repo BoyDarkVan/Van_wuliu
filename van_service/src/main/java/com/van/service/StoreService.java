@@ -1,5 +1,6 @@
 package com.van.service;
 
+import com.van.page.Page;
 import com.van.pojo.Store;
 import com.van.pojo.Warehouse;
 
@@ -14,13 +15,18 @@ public interface StoreService {
      * 查询所有存储信息（分页查询）
      * @return
      */
-    List<Store> findAllStore();
+    List<Store> findAllStore(Page page);
+
+    Integer findtotal(Page page);
+
+    void delstore(String s_id);
 
     /**
      * 添加仓库传一个存储对象过来
      * @param store
      */
     void  addStore(Store store);
+
 
 
 

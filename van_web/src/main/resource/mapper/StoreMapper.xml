@@ -11,8 +11,38 @@
     <result column="ck_id" jdbcType="VARCHAR" property="ckId" />
     <result column="g_id" jdbcType="VARCHAR" property="gId" />
   </resultMap>
-  <select id="findAllstore" resultType="com.van.pojo.Store">
-    select * from store
+
+  <!--字段-->
+  <sql id="Base_Column_List">
+    s_id,s_time,s_outime,s_count,s_outcount,st_id,ck_id,g_id
+  </sql>
+
+  <!--删除-->
+  <delete id="delStore" parameterType="string">
+    delete from store
+    <where>
+      <if test="sId!=null and sId!=''">
+        and s_id=#{sId}
+      </if>
+    </where>
+  </delete>
+
+
+  <!--分页查询储存信息-->
+  <select id="findAllstore" resultMap="BaseResultMap" parameterType="com.van.page.Page">
+    select s_id, s_time, s_outime, s_count, s_outcount, st_id, ck_id, g_id from store
+    order by s_id
+    limit #{start},#{rows}
+  </select>
+
+  <!--查询总记录数-->
+  <select id="findtotal" resultType="java.lang.Integer" parameterType="com.van.page.Page">
+    select count(s_id) from store
+    <where>
+      <if test="sId!=null and sId!=''">
+        and s_id=#{sId}
+      </if>
+    </where>
   </select>
 
 

@@ -8,73 +8,114 @@
     <title>layout 后台大布局 - Layui</title>
     <link rel="stylesheet" href="${ctx}/static/common/layui/css/layui.css">
 </head>
-<style>
-
-    .table_order{
-        width: 600px;
-        height: 300px;
-        margin: 60px auto;
-        border: 1px solid black;
-    }
-    .table_order td{
-        width: 50px;
-        height: 30px;
-        border: 1px solid black;
-    }
-    .bottom{
-        margin: 0 auto;
-    }
-</style>
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
 
     <jsp:include page="${ctx}/model/header.jsp"/>
 
-
     <div class="layui-body">
-        <!-- 内容主体区域 -->
-        <div style="padding: 15px;">储存查询</div>
-        <table class="table_order">
-            <tr>
-                <td>储存编号</td>
-                <td>入库时间</td>
-                <td>出库时间</td>
-                <td>入库数量</td>
-                <td>出库数量</td>
-                <td>员工编号</td>
-                <td>仓库编号</td>
-                <td>货物编号</td>
-            </tr>
-
-            <c:forEach items="${storelist}" var="sto">
-                <tr>
-                    <td>${sto.SId}</td>
-                    <td>${sto.STime}</td>
-                    <td>${sto.SOutime}</td>
-                    <td>${sto.SCount}</td>
-                    <td>${sto.SOutcount}</td>
-                    <td>${sto.stId}</td>
-                    <td>${sto.ckId}</td>
-                    <td>${sto.GId}</td>
-                </tr>
-            </c:forEach>
-        </table>
-        <div class="bottom">
-            <a href="${pageContext.request.contextPath}/store/findAllStore?param=${currentPage-1}">上一页</a>
-            <span>${currentPage}</span>
-            <span>/</span>
-            <span>${totalpage}</span>
-            <a href="${pageContext.request.contextPath}/store/findAllStore?param=${currentPage+1}">下一页</a>
-        </div>
+        <table id="store" lay-filter="test"></table>
     </div>
+
+    <script type="text/html" id="tools">
+        <div class="layui-btn-container">
+            <button class="layui-btn layui-btn-sm" lay-event="getCheckData">获取选中行数据</button>
+            <button class="layui-btn layui-btn-sm" lay-event="getCheckLength">获取选中数目</button>
+            <button class="layui-btn layui-btn-sm" lay-event="isAll">验证是否全选</button>
+        </div>
+    </script>
+
+    <script type="text/html" id="action">
+        <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+    </script>
 
     <jsp:include page="${ctx}/model/footer.jsp"/>
 </div>
 <script src="${ctx}/static/common/layui/layui.js"></script>
+<script src="${ctx}/static/common/js/jquery-1.8.3.js"></script>
 <script>
     //JavaScript代码区域
     layui.use('element', function(){
         var element = layui.element;
+
+    });
+
+    layui.use('table', function(){
+        var table = layui.table;
+
+        //第一个实例
+        table.render({
+            elem: '#store'
+            ,height: 500
+            ,url: '${ctx}/store/findAllStore' //数据接口
+            ,limit:3
+            ,toolbar: '#tools'
+            ,page: true //开启分页
+            ,cols: [[ //表头
+                {type: 'checkbox', fixed: 'left'}//多选框
+                ,{field: 'sId', title: '储存编号' ,sort: true, fixed: 'left'}
+                ,{field: 'sTime', title: '入库时间'}
+                ,{field: 'sOutime', title: '出库时间'}
+                ,{field: 'sCount', title: '入库数量'}
+                ,{field: 'sOutcount', title: '出库数量'}
+                ,{field: 'stId', title: '员工编号'}
+                ,{field: 'ckId', title: '仓库编号'}
+                ,{field: 'gId', title: '货物编号'}
+                ,{fixed: 'right', align:'center',title:"操作",toolbar: '#action'}
+            ]]
+
+        });
+
+        //头工具栏事件
+        table.on('toolbar(test)', function(obj){
+            var checkStatus = table.checkStatus(obj.config.id);
+            switch(obj.event){
+                case 'getCheckData':
+                    var data = checkStatus.data;
+                    layer.alert(JSON.stringify(data));
+                    break;
+                case 'getCheckLength':
+                    var data = checkStatus.data;
+                    layer.msg('选中了：'+ data.length + ' 个');
+                    break;
+                case 'isAll':
+                    layer.msg(checkStatus.isAll ? '全选': '未全选');
+                    break;
+            }
+        });
+
+
+        //监听行工具事件
+        table.on('tool(test)', function(obj){ //注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
+            var data = obj.data //获得当前行数据
+                ,layEvent = obj.event; //获得 lay-event 对应的值
+
+            if(layEvent === 'del'){
+                //向服务端发送删除指令
+                alert(data.sId);//获取当前数据
+                layer.confirm('真的删除行么', function(index){
+
+                    obj.del(); //删除对应行（tr）的DOM结构
+                    layer.close(index);
+
+                    var sId = data.sId;
+
+                    $.ajax({
+                        url:"${ctx}/store/del/"+sId,
+                        type:"post",
+                        success:function () {
+                            alert("刪除成功");
+                        },
+                        error:function () {
+                            alert("操作失败，请稍后操作或联系管理员！");
+                        }
+                    })
+                });
+            } else if(layEvent === 'edit'){
+                layer.msg('编辑操作');
+            }
+        });
 
     });
 </script>

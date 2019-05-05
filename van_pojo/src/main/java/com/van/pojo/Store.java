@@ -13,77 +13,6 @@ public class Store {
   private String ckId;
   private String gId;
 
-  public String getSId() {
-    return sId;
-  }
-
-  public void setSId(String sId) {
-    this.sId = sId;
-  }
-
-
-  public Timestamp getSTime() {
-    return sTime;
-  }
-
-  public void setSTime(Timestamp sTime) {
-    this.sTime = sTime;
-  }
-
-
-  public Timestamp getSOutime() {
-    return sOutime;
-  }
-
-  public void setSOutime(Timestamp sOutime) {
-    this.sOutime = sOutime;
-  }
-
-
-  public String getSCount() {
-    return sCount;
-  }
-
-  public void setSCount(String sCount) {
-    this.sCount = sCount;
-  }
-
-
-  public String getSOutcount() {
-    return sOutcount;
-  }
-
-  public void setSOutcount(String sOutcount) {
-    this.sOutcount = sOutcount;
-  }
-
-
-  public String getStId() {
-    return stId;
-  }
-
-  public void setStId(String stId) {
-    this.stId = stId;
-  }
-
-
-  public String getCkId() {
-    return ckId;
-  }
-
-  public void setCkId(String ckId) {
-    this.ckId = ckId;
-  }
-
-
-  public String getGId() {
-    return gId;
-  }
-
-  public void setGId(String gId) {
-    this.gId = gId;
-  }
-
     public Store(String sId, Timestamp sTime, Timestamp sOutime, String sCount, String sOutcount, String stId, String ckId, String gId) {
         this.sId = sId;
         this.sTime = sTime;
@@ -96,5 +25,83 @@ public class Store {
     }
 
     public Store() {
+    }
+
+    public String getsId() {
+        return sId;
+    }
+
+    public void setsId(String sId) {
+        this.sId = sId;
+    }
+
+    public Timestamp getsTime() {
+        return sTime;
+    }
+
+    public void setsTime(Timestamp sTime) {
+        this.sTime = sTime;
+    }
+
+    public Timestamp getsOutime() {
+        return sOutime;
+    }
+
+    public void setsOutime(Timestamp sOutime) {
+        this.sOutime = sOutime;
+    }
+
+    public String getsCount() {
+        return sCount;
+    }
+
+    public void setsCount(String sCount) {
+        this.sCount = sCount;
+    }
+
+    public String getsOutcount() {
+        return sOutcount;
+    }
+
+    public void setsOutcount(String sOutcount) {
+        this.sOutcount = sOutcount;
+    }
+
+    public String getStId() {
+        return stId;
+    }
+
+    public void setStId(String stId) {
+        this.stId = stId;
+    }
+
+    public String getCkId() {
+        return ckId;
+    }
+
+    public void setCkId(String ckId) {
+        this.ckId = ckId;
+    }
+
+    public String getgId() {
+        return gId;
+    }
+
+    public void setgId(String gId) {
+        this.gId = gId;
+    }
+
+    @Override
+    public String toString() {
+        return "Store{" +
+                "sId='" + sId + '\'' +
+                ", sTime=" + sTime +
+                ", sOutime=" + sOutime +
+                ", sCount='" + sCount + '\'' +
+                ", sOutcount='" + sOutcount + '\'' +
+                ", stId='" + stId + '\'' +
+                ", ckId='" + ckId + '\'' +
+                ", gId='" + gId + '\'' +
+                '}';
     }
 }

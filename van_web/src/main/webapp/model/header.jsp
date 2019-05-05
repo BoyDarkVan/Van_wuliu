@@ -29,7 +29,7 @@
                 <a><i class="layui-icon layui-icon-username">&nbsp;&nbsp;</i>用户管理</a>
                 <dl class="layui-nav-child">
                     <dd><a href="${ctx}/users/page">查询用户</a></dd>
-                    <dd><a href="${ctx}/add/adduser.jsp">添加用户</a></dd>
+                    <dd><a href="${ctx}/users/page2">添加用户</a></dd>
                 </dl>
             </li>
 
@@ -44,7 +44,7 @@
             <li class="layui-nav-item">
                 <a>仓库管理</a>
                 <dl class="layui-nav-child">
-                    <dd><a href="${ctx}/warehouse/findAllWarehouse">仓库查询</a></dd>
+                    <dd><a href="${ctx}/warehouse/page">仓库查询</a></dd>
                     <dd><a href="${ctx}/add/addwarehouse.jsp">仓库添加</a></dd>
                 </dl>
             </li>
@@ -52,7 +52,7 @@
             <li class="layui-nav-item">
                 <a>储存管理</a>
                 <dl class="layui-nav-child">
-                    <dd><a href="${ctx}/store/findAllStore">储存管理</a></dd>
+                    <dd><a href="${ctx}/store/page">储存管理</a></dd>
                     <dd><a href="${ctx}/add/addstore.jsp">储存录入</a></dd>
                 </dl>
             </li>
@@ -60,7 +60,7 @@
             <li class="layui-nav-item">
                 <a>员工管理</a>
                 <dl class="layui-nav-child">
-                    <dd><a href="${ctx}/staff/findAllStaff">查询员工</a></dd>
+                    <dd><a href="${ctx}/staff/page">查询员工</a></dd>
                     <dd><a href="${ctx}/add/addstaff.jsp">添加员工</a></dd>
                 </dl>
             </li>

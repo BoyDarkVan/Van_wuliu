@@ -6,9 +6,30 @@
     <result column="ck_name" jdbcType="VARCHAR" property="ckName" />
     <result column="ck_size" jdbcType="VARCHAR" property="ckSize" />
   </resultMap>
-    <select id="findAllWarehouse" resultType="com.van.pojo.Warehouse">
-      select * from warehouse
+
+  <delete id="delWare" parameterType="string">
+    delete from warehouse
+    <where>
+      <if test="ckId!=null and ckId!=''">
+        and ck_id=#{ckId}
+      </if>
+    </where>
+  </delete>
+
+  <select id="findAllWarehouse" resultMap="BaseResultMap" parameterType="com.van.page.Page">
+      select ck_id, ck_name, ck_size from warehouse
+      order by ck_id
+      limit #{start},#{rows}
     </select>
+
+  <select id="findtotal" resultType="java.lang.Integer" parameterType="com.van.page.Page">
+    select count(ck_id) from warehouse
+    <where>
+      <if test="ckId!=null and ckId!=''">
+        and ck_id=#{ckId}
+      </if>
+    </where>
+  </select>
 
 
 </mapper>

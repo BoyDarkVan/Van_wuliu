@@ -29,4 +29,9 @@ public class StaffServiceImp implements StaffService {
     public Integer findPagetotal(Page page) {
         return staffMapper.findPagetotal(page);
     }
+
+    @Override
+    public void deleteStaff(String st_id) {
+        staffMapper.deleteStaff(st_id);
+    }
 }

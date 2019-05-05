@@ -1,45 +1,47 @@
 package com.van.controller;
 
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
-import com.van.pojo.Staff;
+import com.van.page.Page;
+import com.van.page.ResultMap;
 import com.van.pojo.Store;
 import com.van.service.StoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
+
 @Controller
-@RequestMapping("store")
+@RequestMapping("/store")
 public class StoreController {
     @Autowired
     private StoreService storeService;
 
-    @RequestMapping("findAllStore")
-    public String findAllStore(Model model, @RequestParam(value = "param", required = true, defaultValue = "1") int currentPage){
-        PageHelper.startPage(currentPage, 2);
+    @RequestMapping("/findAllStore")
+    @ResponseBody//转json格式
+    public ResultMap<List<Store>> findAllStore(Page page, @RequestParam("limit") int limit){
+        page.setRows(limit);
+        List<Store> storeList=storeService.findAllStore(page);
+        int total=storeService.findtotal(page);
 
-        List<Store> list = storeService.findAllStore();
+        page.setTotalRecord(total);
 
-        PageInfo<Store> pageInfo = new PageInfo<>(list);
+        return new ResultMap<List<Store>>("",storeList,0,total);
+    }
 
-        model.addAttribute("storelist", pageInfo.getList());
-
-        if (currentPage < 1) {
-            currentPage = 1;
-        }
-        if (currentPage > pageInfo.getPages()) {
-            currentPage = pageInfo.getPages();
-        }
-        model.addAttribute("currentPage", currentPage);
-        model.addAttribute("totalpage", pageInfo.getPages());
-
+    @RequestMapping("/del/{sId}")
+    public String delstore(@PathVariable("sId") String sId){
+        System.out.println(sId);
+        storeService.delstore(sId);
         return "store";
     }
 
+    @RequestMapping("/page")
+    public String finds(){
+        return "store";
+    }
 
 }
