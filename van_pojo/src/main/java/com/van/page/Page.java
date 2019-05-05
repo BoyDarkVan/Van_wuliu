@@ -125,9 +125,46 @@ public class Page implements Serializable {
         this.ckId = ckId;
     }
 
-
-
-
     public Page() {
+    }
+
+    public Page(Integer page, Integer rows, Integer totalRecord, Integer totalPage, String keyType, String keyWord, Integer start, String userId, String orderId, String stId, String sId, String ckId) {
+        this.page = page;
+        this.rows = rows;
+        this.totalRecord = totalRecord;
+        this.totalPage = totalPage;
+        this.keyType = keyType;
+        this.keyWord = keyWord;
+        this.start = start;
+        this.userId = userId;
+        this.orderId = orderId;
+        this.stId = stId;
+        this.sId = sId;
+        this.ckId = ckId;
+    }
+    public String getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
+    }
+
+    @Override
+    public String toString() {
+        return "Page{" +
+                "page=" + page +
+                ", rows=" + rows +
+                ", totalRecord=" + totalRecord +
+                ", totalPage=" + totalPage +
+                ", keyType='" + keyType + '\'' +
+                ", keyWord='" + keyWord + '\'' +
+                ", start=" + start +
+                ", userId='" + userId + '\'' +
+                ", orderId='" + orderId + '\'' +
+                ", stId='" + stId + '\'' +
+                ", sId='" + sId + '\'' +
+                ", ckId='" + ckId + '\'' +
+                '}';
     }
 }
