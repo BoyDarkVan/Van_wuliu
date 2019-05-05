@@ -29,7 +29,7 @@
                 <a><i class="layui-icon layui-icon-username">&nbsp;&nbsp;</i>用户管理</a>
                 <dl class="layui-nav-child">
                     <dd><a href="${ctx}/users/page">查询用户</a></dd>
-                    <dd><a href="${ctx}/add/adduser.jsp">添加用户</a></dd>
+                    <dd><a href="${ctx}/users/page2">添加用户</a></dd>
                 </dl>
             </li>
 
@@ -37,7 +37,7 @@
                 <a>货单管理</a>
                 <dl class="layui-nav-child">
                     <dd><a href="${ctx}/orders/findAllOrder">货单查询</a></dd>
-                    <dd><a href="${ctx}/orders/addorders.jsp">货单添加</a></dd>
+                    <dd><a href="${ctx}/orders/page">货单添加</a></dd>
                 </dl>
             </li>
 
