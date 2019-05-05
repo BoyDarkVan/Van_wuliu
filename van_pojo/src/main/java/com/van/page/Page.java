@@ -23,6 +23,8 @@ public class Page implements Serializable {
     private Integer start;
     //用户id
     private String userId;
+    //货单ID
+    private String orderId;
     //其他用户id
     private String otherId;
 
@@ -101,7 +103,15 @@ public class Page implements Serializable {
         this.otherId = otherId;
     }
 
-    public Page(Integer page, Integer rows, Integer totalRecord, Integer totalPage, String keyType, String keyWord, Integer start, String userId, String otherId) {
+    public String getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
+    }
+
+    public Page(Integer page, Integer rows, Integer totalRecord, Integer totalPage, String keyType, String keyWord, Integer start, String userId, String orderId, String otherId) {
         this.page = page;
         this.rows = rows;
         this.totalRecord = totalRecord;
@@ -110,6 +120,7 @@ public class Page implements Serializable {
         this.keyWord = keyWord;
         this.start = start;
         this.userId = userId;
+        this.orderId = orderId;
         this.otherId = otherId;
     }
 
@@ -124,7 +135,11 @@ public class Page implements Serializable {
                 ", keyWord='" + keyWord + '\'' +
                 ", start=" + start +
                 ", userId='" + userId + '\'' +
+                ", orderId='" + orderId + '\'' +
                 ", otherId='" + otherId + '\'' +
                 '}';
+    }
+
+    public Page() {
     }
 }
