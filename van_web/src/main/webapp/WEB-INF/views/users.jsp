@@ -50,16 +50,16 @@
             elem: '#users'
             ,height: 500
             ,url: '${ctx}/users/find' //数据接口
-            ,limit:2
+            ,limit:10
             ,toolbar: '#tools'
             ,page: true //开启分页
             ,cols: [[ //表头
                 {type: 'checkbox', fixed: 'left'}//多选框
                 ,{field: 'userId', title: 'ID' ,sort: true, fixed: 'left'}
-                ,{field: 'userName', title: '用户名'}
-                ,{field: 'userSex', title: '性别',sort:true}
-                ,{field: 'userPhone', title: '电话'}
-                ,{field: 'userAddr', title: '地址'}
+                ,{field: 'userName', title: '用户名',edit:"text"}
+                ,{field: 'userSex', title: '性别',sort:true,edit:"text"}
+                ,{field: 'userPhone', title: '电话',edit:"text"}
+                ,{field: 'userAddr', title: '地址',edit:"text"}
                 ,{fixed: 'right', align:'center',title:"操作",toolbar: '#action'}
             ]]
 
@@ -103,15 +103,42 @@
                         url:"${ctx}/users/del/"+userId,
                         type:"post",
                         success:function () {
-                            alert("刪除成功");
+                            layer.msg('刪除成功');
                         },
                         error:function () {
-                            alert("操作失败，请稍后操作或联系管理员！");
+                            layer.msg('操作失败，请稍后操作或联系管理员！');
                         }
                     })
             });
             } else if(layEvent === 'edit'){
-                layer.msg('编辑操作');
+
+                layer.confirm('真的更新该行么', function(){
+
+                    var sex  = data.userSex === '男'? '1' : '0';
+
+                    var users = JSON.stringify({
+                            "userId":data.userId,
+                            "userName":data.userName,
+                            "userSex":sex,
+                            "userPhone":data.userPhone,
+                            "userAddr":data.userAddr
+                        });
+
+                    $.ajax({
+                        url:"${ctx}/users/upd",
+                        type:"post",
+                        dataType:"json",
+                        contentType: "application/json; charset=utf-8",
+                        data: users,
+                        success:function () {
+                            layer.msg('更新成功');
+                        },
+                        error:function () {
+                            layer.msg('操作失败，请稍后操作或联系管理员！');
+                        }
+                    })
+                })
+
             }
         });
 

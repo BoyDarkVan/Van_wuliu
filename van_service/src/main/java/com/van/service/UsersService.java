@@ -20,4 +20,10 @@ public interface UsersService {
 
 //    根据用户id 删除用户
     void delUsersById(String userId);
+
+    //更新用户
+    void updUsers(Users users);
+
+//    添加用户
+    void addUsers(Users users);
 }

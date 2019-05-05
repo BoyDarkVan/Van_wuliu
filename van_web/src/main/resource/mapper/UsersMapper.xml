@@ -14,7 +14,7 @@
     user_id, user_name, user_sex, user_phone, user_addr
   </sql>
 
-  <!--查询全部用户-->
+    <!--查询全部用户-->
   <select id="selectByExample" parameterType="com.van.page.Page" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List"/>
@@ -58,6 +58,28 @@
         </if>
       </where>
   </delete>
+
+  <update id="updUsers" parameterType="com.van.pojo.Users">
+    update users
+
+    <set>
+      <if test="users.userName != null and users.userName != ''">
+        user_name = #{users.userName},
+      </if>
+      <if test="users.userSex != null and users.userSex != ''">
+        user_sex = #{users.userSex},
+      </if>
+      <if test="users.userPhone != null and users.userPhone != ''">
+        user_phone = #{users.userPhone},
+      </if>
+      <if test="users.userAddr != null and users.userAddr != ''">
+        user_addr = #{users.userAddr}
+      </if>
+
+    </set>
+
+    where user_id= #{users.userId}
+  </update>
 
 
 </mapper>

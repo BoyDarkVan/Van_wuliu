@@ -23,6 +23,8 @@ public class Page implements Serializable {
     private Integer start;
     //用户id
     private String userId;
+    //货单ID
+    private String orderId;
     //其他用户id
     private String stId;
     //储存
@@ -123,34 +125,9 @@ public class Page implements Serializable {
         this.ckId = ckId;
     }
 
-    public Page(Integer page, Integer rows, Integer totalRecord, Integer totalPage, String keyType, String keyWord, Integer start, String userId, String stId, String sId, String ckId) {
-        this.page = page;
-        this.rows = rows;
-        this.totalRecord = totalRecord;
-        this.totalPage = totalPage;
-        this.keyType = keyType;
-        this.keyWord = keyWord;
-        this.start = start;
-        this.userId = userId;
-        this.stId = stId;
-        this.sId = sId;
-        this.ckId = ckId;
-    }
 
-    @Override
-    public String toString() {
-        return "Page{" +
-                "page=" + page +
-                ", rows=" + rows +
-                ", totalRecord=" + totalRecord +
-                ", totalPage=" + totalPage +
-                ", keyType='" + keyType + '\'' +
-                ", keyWord='" + keyWord + '\'' +
-                ", start=" + start +
-                ", userId='" + userId + '\'' +
-                ", stId='" + stId + '\'' +
-                ", sId='" + sId + '\'' +
-                ", ckId='" + ckId + '\'' +
-                '}';
+
+
+    public Page() {
     }
 }
