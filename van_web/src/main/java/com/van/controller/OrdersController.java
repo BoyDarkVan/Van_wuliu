@@ -26,14 +26,13 @@ public class OrdersController {
     /**
      *
      * @param page
-     * @param limit
      * @return
      */
     @RequestMapping("/findAllOrder")
     @ResponseBody
-    public ResultMap<List<Orders>> findAllOrder(Page page, @RequestParam("limit") int limit) {
+    public ResultMap<List<Orders>> findAllOrder(Page page) {
 
-        page.setRows(limit);
+        page.setRows(2);
 
         List<Orders> ordersList = orderService.findAllOrders(page);
 
