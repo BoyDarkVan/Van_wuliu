@@ -13,4 +13,6 @@ public interface OrderService {
     List<Orders> findAllOrders(Page page);
 
     Integer selectPageCount(Page page);
+
+    void  updateOrder(Orders orders);
 }

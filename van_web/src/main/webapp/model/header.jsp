@@ -36,7 +36,7 @@
             <li class="layui-nav-item">
                 <a>货单管理</a>
                 <dl class="layui-nav-child">
-                    <dd><a href="${ctx}/orders/findAllOrder">货单查询</a></dd>
+                    <dd><a href="${ctx}/orders/page">货单查询</a></dd>
                     <dd><a href="${ctx}/orders/addorders.jsp">货单添加</a></dd>
                 </dl>
             </li>
