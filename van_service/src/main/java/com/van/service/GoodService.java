@@ -1,14 +1,11 @@
-package com.van.mapper;
-
+package com.van.service;
 
 import com.van.page.Page;
 import com.van.pojo.Goods;
-import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
-
-public interface GoodsMapper {
+public interface GoodService {
 
     List<Goods> findAllgood(Page page);
 
@@ -16,7 +13,7 @@ public interface GoodsMapper {
 
     void addGood(Goods goods);
 
-    void delGood(@Param("gId") String gId);
+    void delGood(String gId);
 
     void updGood(Goods goods);
 

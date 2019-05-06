@@ -39,12 +39,10 @@
     //JavaScript代码区域
     layui.use('element', function(){
         var element = layui.element;
-
     });
 
     layui.use('table', function(){
         var table = layui.table;
-
         //第一个实例
         table.render({
             elem: '#staff'
@@ -56,15 +54,13 @@
             ,cols: [[ //表头
                 {type: 'checkbox', fixed: 'left'}//多选框
                 ,{field: 'stId', title: '编号' ,sort: true, fixed: 'left'}
-                ,{field: 'stName', title: '姓名'}
-                ,{field: 'stSex', title: '性别',sort:true}
-                ,{field: 'stAge', title: '年龄'}
-                ,{field: 'stPhone', title: '电话'}
+                ,{field: 'stName', title: '姓名',edit:"text"}
+                ,{field: 'stSex', title: '性别',sort:true,edit:"text"}
+                ,{field: 'stAge', title: '年龄',edit:"text"}
+                ,{field: 'stPhone', title: '电话',edit:"text"}
                 ,{fixed: 'right', align:'center',title:"操作",toolbar: '#action'}
             ]]
-
         });
-
         //头工具栏事件
         table.on('toolbar(test)', function(obj){
             var checkStatus = table.checkStatus(obj.config.id);
@@ -82,8 +78,6 @@
                     break;
             }
         });
-
-
         //监听行工具事件
         table.on('tool(test)', function(obj){ //注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
             var data = obj.data //获得当前行数据
@@ -91,7 +85,7 @@
 
             if(layEvent === 'del'){
                 //向服务端发送删除指令
-                alert(data.stId);//获取当前数据
+                layer.msg(data.stId);//获取当前数据
                 layer.confirm('真的删除行么', function(index){
 
                     obj.del(); //删除对应行（tr）的DOM结构
@@ -103,15 +97,40 @@
                         url:"${ctx}/staff/del/"+stId,
                         type:"post",
                         success:function () {
-                            alert("刪除成功");
+                            layer.msg("刪除成功");
                         },
                         error:function () {
-                            alert("操作失败，请稍后操作或联系管理员！");
+                            layer.msg("操作失败，请稍后操作或联系管理员！");
                         }
                     })
                 });
             } else if(layEvent === 'edit'){
-                layer.msg('编辑操作');
+                layer.confirm('确认修改吗？',function () {
+
+                    var sex = data.stSex ==='男'?'1':'0';
+
+                    var staff=JSON.stringify({
+                        "stId":data.stId,
+                        "stName":data.stName,
+                        "stSex":sex,
+                        "stAge":data.stAge,
+                        "stPhone":data.stPhone
+                    });
+
+                    $.ajax({
+                        url:"${ctx}/staff/upd",
+                        type:"post",
+                        dataType:"json",
+                        contentType:"application/json;charset=utf-8",
+                        data:staff,
+                        success:function () {
+                            layer.msg("修改成功");
+                        },
+                        error:function () {
+                            layer.msg("修改失败");
+                        }
+                    })
+                })
             }
         });
 

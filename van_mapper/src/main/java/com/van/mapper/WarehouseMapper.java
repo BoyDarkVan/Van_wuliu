@@ -14,5 +14,8 @@ public interface WarehouseMapper {
 
     void delWare(@Param("ckId") String ckId);
 
+    void addWare(Warehouse warehouse);
+
+    void updWare(Warehouse warehouse);
 
 }

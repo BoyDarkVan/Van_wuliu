@@ -7,6 +7,38 @@
     <result column="g_kind" jdbcType="VARCHAR" property="gKind" />
     <result column="g_weight" jdbcType="VARCHAR" property="gWeight" />
   </resultMap>
-
+  <!--增-->
+  <insert id="addGood" parameterType="com.van.pojo.Goods">
+      insert into goods(g_id, g_name, g_kind, g_weight) value(#{gId},#{gName},#{gKind},#{gWeight})
+  </insert>
+  <!--改-->
+  <update id="updGood" parameterType="com.van.pojo.Goods">
+      update goods set g_name=#{gName}, g_kind=#{gKind}, g_weight=#{gWeight}
+      where g_id=#{gId}
+  </update>
+  <!--删-->
+  <delete id="delGood" parameterType="string">
+      delete from goods
+      <where>
+        <if test="gId!=null and gId!=''">
+          and g_id=#{gId}
+        </if>
+      </where>
+  </delete>
+  <!--分页查询-->
+  <select id="findAllgood" resultMap="BaseResultMap" parameterType="com.van.page.Page">
+      select g_id, g_name, g_kind, g_weight from goods
+      order by g_id
+      limit #{start},#{rows}
+  </select>
+  <!--总记录-->
+  <select id="findtotal" resultType="integer" parameterType="com.van.page.Page">
+    select count(g_id) from goods
+    <where>
+      <if test="gId!=null and gId!=''">
+        and g_id=#{gId}
+      </if>
+    </where>
+  </select>
 
 </mapper>

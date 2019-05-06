@@ -22,7 +22,7 @@ public class StaffServiceImp implements StaffService {
 
     @Override
     public void addStaff(Staff staff) {
-
+        staffMapper.addStaff(staff);
     }
 
     @Override
@@ -33,5 +33,10 @@ public class StaffServiceImp implements StaffService {
     @Override
     public void deleteStaff(String st_id) {
         staffMapper.deleteStaff(st_id);
+    }
+
+    @Override
+    public void updStaff(Staff staff) {
+        staffMapper.updStaff(staff);
     }
 }

@@ -14,14 +14,21 @@
     st_id,st_name,st_sex,st_age,st_phone
   </sql>
 
+  <!--添加-->
+  <insert id="addStaff">
+    insert into staff(st_id, st_name, st_sex, st_age, st_phone) value(#{stId},#{stName},#{stSex},#{stAge},#{stPhone})
+  </insert>
+
+  <!--修改-->
+  <update id="updStaff">
+    update staff set st_name=#{stName}, st_sex=#{stSex}, st_age=#{stAge}, st_phone=#{stPhone} where st_id=#{stId}
+  </update>
 
   <!--分页查询员工-->
   <select id="findAllStaff" resultMap="BaseResultMap" parameterType="com.van.page.Page">
     select st_id,st_name,case st_sex when '1' then '男' when '0' then '女' end as st_sex,st_age,st_phone
     from staff
-
     order by st_id
-
     limit #{start},#{rows}
   </select>
 

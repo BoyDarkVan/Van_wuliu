@@ -14,4 +14,8 @@ public interface StaffMapper {
 
     void deleteStaff(@Param("stId") String stId);
 
+    void addStaff(Staff staff);
+
+    void updStaff(Staff staff);
+
 }

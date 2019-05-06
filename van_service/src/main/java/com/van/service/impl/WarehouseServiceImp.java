@@ -31,6 +31,12 @@ public class WarehouseServiceImp implements WarehouseService {
 
     @Override
     public void addWarehouse(Warehouse warehouse) {
-
+        warehouseMapper.addWare(warehouse);
     }
+
+    @Override
+    public void updWarehouse(Warehouse warehouse) {
+        warehouseMapper.updWare(warehouse);
+    }
+
 }

@@ -6,11 +6,7 @@ import com.van.pojo.Warehouse;
 import com.van.service.WarehouseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -32,24 +28,40 @@ public class WarehouseController {
         page.setTotalRecord(total);
 
         return new ResultMap<List<Warehouse>>("",warelist,0,total);
-
     }
 
-    @RequestMapping("/addWarehouse")
-    public String addWarehouse(Model model) {
-
+    //添加
+    @RequestMapping("/add")
+    @ResponseBody
+    public String addWarehouse(@RequestBody Warehouse warehouse) {
+        warehouseService.addWarehouse(warehouse);
         return "";
     }
+
+    //修改
+    @RequestMapping("upd")
+    @ResponseBody
+    public void updWare(@RequestBody Warehouse warehouse){
+        warehouseService.updWarehouse(warehouse);
+    }
+
+    //删除
     @RequestMapping("/del/{ckId}")
     public String delWare(@PathVariable("ckId") String ckId){
         warehouseService.delWare(ckId);
         return "warehouse";
     }
 
+    //返回显示视图
     @RequestMapping("page")
     public String finds(){
-
         return "warehouse";
+    }
+
+    //返回修改视图
+    @RequestMapping("addware")
+    public String find(){
+        return "addwarehouse";
     }
 
 }

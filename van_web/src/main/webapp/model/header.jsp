@@ -37,7 +37,7 @@
                 <a>仓库管理</a>
                 <dl class="layui-nav-child">
                     <dd><a href="${ctx}/warehouse/page">仓库查询</a></dd>
-                    <dd><a href="${ctx}/add/addwarehouse.jsp">仓库添加</a></dd>
+                    <dd><a href="${ctx}/warehouse/addware">仓库添加</a></dd>
                 </dl>
             </li>
 
@@ -45,15 +45,15 @@
                 <a>员工管理</a>
                 <dl class="layui-nav-child">
                     <dd><a href="${ctx}/staff/page">查询员工</a></dd>
-                    <dd><a href="${ctx}/add/addstaff.jsp">添加员工</a></dd>
+                    <dd><a href="${ctx}/staff/addstaff">添加员工</a></dd>
                 </dl>
             </li>
 
             <li class="layui-nav-item">
                 <a>货物管理</a>
                 <dl class="layui-nav-child">
-                    <dd><a href="${ctx}/goods/find">查询货物</a></dd>
-                    <dd><a href="${ctx}/add/addgoods.jsp">添加货物</a></dd>
+                    <dd><a href="${ctx}/good/page">查询货物</a></dd>
+                    <dd><a href="${ctx}/good/addGood">添加货物</a></dd>
                 </dl>
             </li>
 

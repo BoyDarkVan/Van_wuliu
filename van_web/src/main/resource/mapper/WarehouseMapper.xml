@@ -7,6 +7,16 @@
     <result column="ck_size" jdbcType="VARCHAR" property="ckSize" />
   </resultMap>
 
+  <!--添加仓库-->
+  <insert id="addWare" parameterType="com.van.pojo.Warehouse">
+    insert into warehouse(ck_id, ck_name, ck_size) value(#{ckId},#{ckName},#{ckSize})
+  </insert>
+
+  <!--修改-->
+  <update id="updWare" parameterType="com.van.pojo.Warehouse">
+    update warehouse set ck_name=#{ckName},ck_size=#{ckSize} where ck_id=#{ckId}
+  </update>
+
   <delete id="delWare" parameterType="string">
     delete from warehouse
     <where>

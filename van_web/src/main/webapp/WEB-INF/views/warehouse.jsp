@@ -55,8 +55,8 @@
             ,cols: [[ //表头
                 {type: 'checkbox', fixed: 'left'}//多选框
                 ,{field: 'ckId', title: '仓库编号' ,sort: true, fixed: 'left'}
-                ,{field: 'ckName', title: '仓库名称'}
-                ,{field: 'ckSize', title: '仓库容量'}
+                ,{field: 'ckName', title: '仓库名称',edit:"text"}
+                ,{field: 'ckSize', title: '仓库容量',edit:"text"}
                 ,{fixed: 'right', align:'center',title:"操作",toolbar: '#action'}
             ]]
 
@@ -108,7 +108,31 @@
                     })
                 });
             } else if(layEvent === 'edit'){
-                layer.msg('编辑操作');
+
+                layer.confirm('确认修改吗？',function () {
+
+                    var warehouse=JSON.stringify({
+                        "ckId":data.ckId,
+                        "ckName":data.ckName,
+                        "ckSize":data.ckSize
+                    });
+
+                    alert(warehouse);
+
+                    $.ajax({
+                        url:"${ctx}/warehouse/upd",
+                        type:"post",
+                        dataType:"json",
+                        contentType:"application/json ;charset=utf-8",
+                        data:warehouse,
+                        success:function () {
+                            layer.msg("修改成功");
+                        },
+                        error:function () {
+                            layer.msg("失败");
+                        }
+                    })
+                })
             }
         });
 
