@@ -9,6 +9,18 @@ public class Staff {
   private Integer stAge;
   private String stPhone;
 
+  public Staff(String stId, String stName) {
+    this.stId = stId;
+    this.stName = stName;
+  }
+
+  public Staff(String stId, String stName, String stSex, Integer stAge, String stPhone) {
+    this.stId = stId;
+    this.stName = stName;
+    this.stSex = stSex;
+    this.stAge = stAge;
+    this.stPhone = stPhone;
+  }
 
   public String getStId() {
     return stId;
@@ -18,7 +30,6 @@ public class Staff {
     this.stId = stId;
   }
 
-
   public String getStName() {
     return stName;
   }
@@ -26,7 +37,6 @@ public class Staff {
   public void setStName(String stName) {
     this.stName = stName;
   }
-
 
   public String getStSex() {
     return stSex;
@@ -36,15 +46,13 @@ public class Staff {
     this.stSex = stSex;
   }
 
-
-  public long getStAge() {
+  public Integer getStAge() {
     return stAge;
   }
 
   public void setStAge(Integer stAge) {
     this.stAge = stAge;
   }
-
 
   public String getStPhone() {
     return stPhone;
@@ -54,25 +62,17 @@ public class Staff {
     this.stPhone = stPhone;
   }
 
-    public Staff(String stId, String stName, String stSex, Integer stAge, String stPhone) {
-        this.stId = stId;
-        this.stName = stName;
-        this.stSex = stSex;
-        this.stAge = stAge;
-        this.stPhone = stPhone;
-    }
+  public Staff() {
+  }
 
-    public Staff() {
-    }
-
-    @Override
-    public String toString() {
-        return "Staff{" +
-                "stId='" + stId + '\'' +
-                ", stName='" + stName + '\'' +
-                ", stSex='" + stSex + '\'' +
-                ", stAge=" + stAge +
-                ", stPhone='" + stPhone + '\'' +
-                '}';
-    }
+  @Override
+  public String toString() {
+    return "Staff{" +
+            "stId='" + stId + '\'' +
+            ", stName='" + stName + '\'' +
+            ", stSex='" + stSex + '\'' +
+            ", stAge=" + stAge +
+            ", stPhone='" + stPhone + '\'' +
+            '}';
+  }
 }
