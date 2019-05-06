@@ -64,14 +64,4 @@ public class OrdersController {
 
         return orders;
     }
-
-    @RequestMapping(value = "/serach", method = RequestMethod.POST)
-    public String serach() {
-
-
-        return "orders";
-    }
-
-
-
 }

@@ -31,7 +31,8 @@ public class Page implements Serializable {
     private String sId;
     //仓库
     private String ckId;
-
+     //收货人
+    private  String cptId;
 
 
     public Integer getPage() {
@@ -57,6 +58,8 @@ public class Page implements Serializable {
     public void setTotalRecord(Integer totalRecord) {
         this.totalRecord = totalRecord;
     }
+
+
 
     public Integer getTotalPage() {
 
@@ -125,10 +128,24 @@ public class Page implements Serializable {
         this.ckId = ckId;
     }
 
-    public Page() {
+    public String getCptId() {
+        return cptId;
     }
 
-    public Page(Integer page, Integer rows, Integer totalRecord, Integer totalPage, String keyType, String keyWord, Integer start, String userId, String orderId, String stId, String sId, String ckId) {
+    public void setCptId(String cptId) {
+        this.cptId = cptId;
+    }
+
+    public String getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
+    }
+
+
+    public Page(Integer page, Integer rows, Integer totalRecord, Integer totalPage, String keyType, String keyWord, Integer start, String userId, String orderId, String stId, String sId, String ckId, String cptId) {
         this.page = page;
         this.rows = rows;
         this.totalRecord = totalRecord;
@@ -141,13 +158,10 @@ public class Page implements Serializable {
         this.stId = stId;
         this.sId = sId;
         this.ckId = ckId;
-    }
-    public String getOrderId() {
-        return orderId;
+        this.cptId = cptId;
     }
 
-    public void setOrderId(String orderId) {
-        this.orderId = orderId;
+    public Page() {
     }
 
     @Override
@@ -165,6 +179,7 @@ public class Page implements Serializable {
                 ", stId='" + stId + '\'' +
                 ", sId='" + sId + '\'' +
                 ", ckId='" + ckId + '\'' +
+                ", cptId='" + cptId + '\'' +
                 '}';
     }
 }

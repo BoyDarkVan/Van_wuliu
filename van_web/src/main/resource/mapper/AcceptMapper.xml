@@ -1,13 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.van.mapper.AcceptMapper">
-  <resultMap id="BaseResultMap" type="com.van.pojo.Accept">
-    <id column="apt_id" jdbcType="VARCHAR" property="cptId" />
-    <result column="apt_name" jdbcType="VARCHAR" property="cptName" />
-    <result column="apt_sex" jdbcType="BIT" property="cptSex" />
-    <result column="apt_addr" jdbcType="VARCHAR" property="cptAddr" />
-    <result column="apt_phone" jdbcType="VARCHAR" property="cptPhone" />
-  </resultMap>
+    <resultMap id="BaseResultMap" type="com.van.pojo.Accept">
+        <id column="apt_id" jdbcType="VARCHAR" property="cptId"/>
+        <result column="apt_name" jdbcType="VARCHAR" property="cptName"/>
+        <result column="apt_sex" jdbcType="VARCHAR" property="cptSex"/>
+        <result column="apt_addr" jdbcType="VARCHAR" property="cptAddr"/>
+        <result column="apt_phone" jdbcType="VARCHAR" property="cptPhone"/>
+    </resultMap>
+    <update id="updateOrder" parameterType="com.van.pojo.Accept">
+        update accept
+        set apt_name=#{cptName},
+            apt_sex=#{cptSex},
+            apt_addr=#{cptAddr},
+            apt_phone=#{cptPhone}
+        where apt_id = #{cptId}
+    </update>
+
+    <select id="findAllAccept" resultMap="BaseResultMap" parameterType="com.van.page.Page">
+        select apt_id,
+               apt_name,
+               case apt_sex when '1' then '男' when '0' then '女' end as apt_sex,
+               apt_addr,
+               apt_phone
+        from accept
+        order by apt_id
+        limit #{start},#{rows}
+    </select>
+
+    <select id="queryPageCount" resultType="integer" parameterType="com.van.page.Page">
+        select count(apt_id)
+        from accept
+    </select>
 
 
 </mapper>
