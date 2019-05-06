@@ -60,10 +60,10 @@
                 , {field: 'orderId', title: '货单号', sort: true}
                 , {field: 'orderName', title: '货单详情', edit: true}
                 , {field: 'orderPrice', title: '运费'}
-                , {field: 'userId', title: '用户名'}
-                , {field: 'aptId', title: '收获人ID'}
-                , {field: 'stId', title: '司机ID'}
-                , {field: 'gId', title: '物品ID'}
+                , {field: 'users.userName', title: '用户名'}
+                , {field: 'accept.cptName', title: '收获人ID'}
+                , {field: 'staff.stName', title: '司机ID'}
+                , {field: 'goods.gName', title: '物品ID'}
                 , {fixed: 'right', align: 'center', title: "操作", toolbar: '#action'}
             ]]
 

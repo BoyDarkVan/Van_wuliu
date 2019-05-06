@@ -5,10 +5,27 @@
         <id column="order_id" jdbcType="VARCHAR" property="orderId"/>
         <result column="order_name" jdbcType="VARCHAR" property="orderName"/>
         <result column="order_price" jdbcType="VARCHAR" property="orderPrice"/>
-        <result column="user_id" jdbcType="VARCHAR" property="userId"/>
-        <result column="apt_id" jdbcType="VARCHAR" property="aptId"/>
-        <result column="st_id" jdbcType="VARCHAR" property="stId"/>
-        <result property="gId" column="g_id"/>
+
+        <association property="users" javaType="com.van.pojo.Users">
+            <id column="user_id" property="userId"/>
+            <result column="user_name" property="userName"/>
+        </association>
+
+        <association property="accept" javaType="com.van.pojo.Accept">
+            <id column="apt_id" property="cptId"/>
+            <result column="apt_name" property="cptName"/>
+        </association>
+
+        <association property="staff" javaType="com.van.pojo.Staff">
+            <id column="st_id" property="stId"/>
+            <result column="st_name" property="stName"/>
+        </association>
+
+        <association property="goods" javaType="com.van.pojo.Goods">
+            <id column="g_id" property="gId"/>
+            <result column="g_name" property="gName"/>
+        </association>
+
     </resultMap>
     <!--修改货单-->
     <update id="updateOrder" parameterType="com.van.pojo.Orders">
@@ -24,10 +41,13 @@
 
 
     <select id="findAllOrders" resultMap="BaseResultMap" parameterType="com.van.page.Page">
-        select *
-        from orders
-        where order_id like  concat(concat("%",#{keyWord}),"%")
-        order by order_id
+        select o.order_id,o.order_name,o.order_price,u.user_name,s.st_name,g.g_name,a.apt_name
+        from orders o,users u,staff s,goods g, accept a
+        where o.user_id=u.user_id
+        and  o.apt_id=a.apt_id
+        and  o.g_id=g.g_id
+        and o.st_id=s.st_id
+        and  o.order_id like concat(concat("%", #{keyWord}), "%")
         limit #{start},#{rows}
     </select>
 
@@ -35,7 +55,7 @@
     <select id="queryPageCount" resultType="integer" parameterType="com.van.page.Page">
         select count(order_id)
         from orders
-        where order_id like  concat(concat("%",#{keyWord}),"%")
+        where order_id like concat(concat("%", #{keyWord}), "%")
     </select>
 
 </mapper>

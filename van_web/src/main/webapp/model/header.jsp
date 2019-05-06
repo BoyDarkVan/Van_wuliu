@@ -61,8 +61,8 @@
             <li class="layui-nav-item">
                 <a>收货人管理</a>
                 <dl class="layui-nav-child">
-                    <dd><a href="${ctx}/accept/find">收货人查询</a></dd>
-                    <dd><a href="${ctx}/add/addaccept.jsp">添加收货人</a></dd>
+                    <dd><a href="${ctx}/accept/page">收货人查询</a></dd>
+                    <dd><a href="${ctx}/accept/addPage">添加收货人</a></dd>
                 </dl>
             </li>
 

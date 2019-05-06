@@ -6,19 +6,19 @@ public class Orders {
     private String orderId;
     private String orderName;
     private String orderPrice;
-    private String userId;
-    private String aptId;
-    private String stId;
-    private String gId;
+    private Users users;
+    private Accept accept;
+    private Staff staff;
+    private Goods goods;
 
-    public Orders(String orderId, String orderName, String orderPrice, String userId, String aptId, String stId, String gId) {
+    public Orders(String orderId, String orderName, String orderPrice, Users users, Accept accept, Staff staff, Goods goods) {
         this.orderId = orderId;
         this.orderName = orderName;
         this.orderPrice = orderPrice;
-        this.userId = userId;
-        this.aptId = aptId;
-        this.stId = stId;
-        this.gId = gId;
+        this.users = users;
+        this.accept = accept;
+        this.staff = staff;
+        this.goods = goods;
     }
 
     public String getOrderId() {
@@ -45,51 +45,41 @@ public class Orders {
         this.orderPrice = orderPrice;
     }
 
-    public String getUserId() {
-        return userId;
+    public Users getUsers() {
+        return users;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setUsers(Users users) {
+        this.users = users;
     }
 
-    public String getAptId() {
-        return aptId;
+    public Accept getAccept() {
+        return accept;
     }
 
-    public void setAptId(String aptId) {
-        this.aptId = aptId;
+    public void setAccept(Accept accept) {
+        this.accept = accept;
     }
 
-    public String getStId() {
-        return stId;
+    public Staff getStaff() {
+        return staff;
     }
 
-    public void setStId(String stId) {
-        this.stId = stId;
+    public void setStaff(Staff staff) {
+        this.staff = staff;
     }
 
-    public String getgId() {
-        return gId;
+    public Goods getGoods() {
+        return goods;
     }
 
-    public void setgId(String gId) {
-        this.gId = gId;
+    public void setGoods(Goods goods) {
+        this.goods = goods;
     }
 
-    @Override
-    public String toString() {
-        return "Orders{" +
-                "orderId='" + orderId + '\'' +
-                ", orderName='" + orderName + '\'' +
-                ", orderPrice='" + orderPrice + '\'' +
-                ", userId='" + userId + '\'' +
-                ", aptId='" + aptId + '\'' +
-                ", stId='" + stId + '\'' +
-                ", gId='" + gId + '\'' +
-                '}';
-    }
 
     public Orders() {
     }
+
+
 }
