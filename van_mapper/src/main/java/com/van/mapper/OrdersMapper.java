@@ -14,4 +14,11 @@ public interface OrdersMapper {
     //查询总记录数
     Integer queryPageCount(Page page);
 
+    /**
+     * 修改货单
+     * @param orders
+     */
+    void  updateOrder(Orders orders);
+
+
 }

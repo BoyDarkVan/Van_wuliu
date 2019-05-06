@@ -1,0 +1,67 @@
+.cont {
+		width:800px;
+		height:500px;
+		border:1px solid #3c8dbc;
+		border-radius:10px;
+		margin:20px auto;
+		text-align:center;
+	}
+	.cont .user {
+		width:340px;
+		height:40px;
+		line-height:40px;
+		display:flex;
+		margin: 30px auto;
+		justify-content: space-between;
+	}
+	
+	.cont .user div {
+		color:#666;
+	}
+	
+	.cont .user input[type="text"] {
+		width:240px;
+		color:#333;
+	    padding-left:6px;
+	    border-radius:4px;
+	    text-shadow:0px 1px 2px #fff;
+	    background-color:rgb(255,255,255);
+	    margin-right:8px;
+	    border:1px solid #ccc;
+	}
+	
+	.cont .user input[type="text"]:focus  {
+		 border: 1px solid #fafafa;
+    	-webkit-box-shadow: 0px 0px 6px #007eff;
+     	-moz-box-shadow: 0px 0px 5px #007eff;
+     	box-shadow: 0px 0px 5px #007eff; 
+	}
+	
+	.cont .radio {
+		width:340px;
+		height:40px;
+		line-height:40px;
+		margin: 20px auto;
+		
+	}
+	
+	
+	.radio span {
+		color:blue;
+	}
+
+	.sub {
+		width:260px;
+		height:30px;
+		
+		border: 0;
+		border-radius: 4px;
+		background-color:#ccc;
+		color:blue;
+		cursor: pointer;
+	}
+	
+	.sub:hover {
+		background-color: #3c8dbc;
+		color: white;
+	}

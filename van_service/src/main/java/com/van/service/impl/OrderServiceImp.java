@@ -25,4 +25,9 @@ public class OrderServiceImp implements OrderService {
     public Integer selectPageCount(Page page) {
         return ordersMapper.queryPageCount(page);
     }
+
+    @Override
+    public void updateOrder(Orders orders) {
+        ordersMapper.updateOrder(orders);
+    }
 }

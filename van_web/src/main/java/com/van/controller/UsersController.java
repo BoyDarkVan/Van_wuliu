@@ -6,10 +6,7 @@ import com.van.pojo.Users;
 import com.van.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -48,15 +45,36 @@ public class UsersController {
 
     }
 
+    /**
+     * 删除用户
+     * @param userId
+     * @return
+     */
     @RequestMapping("/del/{userId}")
     public String delUsers(@PathVariable("userId") String userId){
 
-        System.out.println("==========================="+userId);
         usersService.delUsersById(userId);
 
         return "users";
     }
 
+    @RequestMapping("/upd")
+    @ResponseBody
+    public String updUsers(@RequestBody Users users){
+
+        usersService.updUsers(users);
+
+        return "";
+    }
+
+    @RequestMapping("/add")
+    @ResponseBody
+    public String addUsers(@RequestBody Users users){
+
+        usersService.addUsers(users);
+
+        return "";
+    }
 
 
 
@@ -64,6 +82,12 @@ public class UsersController {
     public String finds(){
 
         return "users";
+    }
+
+    @RequestMapping("/page2")
+    public String finds2(){
+
+        return "adduser";
     }
 
 }

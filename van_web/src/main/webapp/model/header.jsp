@@ -34,26 +34,10 @@
             </li>
 
             <li class="layui-nav-item">
-                <a>货单管理</a>
-                <dl class="layui-nav-child">
-                    <dd><a href="${ctx}/orders/findAllOrder">货单查询</a></dd>
-                    <dd><a href="${ctx}/orders/page">货单添加</a></dd>
-                </dl>
-            </li>
-
-            <li class="layui-nav-item">
                 <a>仓库管理</a>
                 <dl class="layui-nav-child">
                     <dd><a href="${ctx}/warehouse/page">仓库查询</a></dd>
                     <dd><a href="${ctx}/add/addwarehouse.jsp">仓库添加</a></dd>
-                </dl>
-            </li>
-
-            <li class="layui-nav-item">
-                <a>储存管理</a>
-                <dl class="layui-nav-child">
-                    <dd><a href="${ctx}/store/page">储存管理</a></dd>
-                    <dd><a href="${ctx}/add/addstore.jsp">储存录入</a></dd>
                 </dl>
             </li>
 
@@ -73,13 +57,6 @@
                 </dl>
             </li>
 
-            <li class="layui-nav-item">
-                <a>配送管理</a>
-                <dl class="layui-nav-child">
-                    <dd><a href="${ctx}/delivery/find">查询配送</a></dd>
-                    <dd><a href="${ctx}/add/adddelivery.jsp">添加配送</a></dd>
-                </dl>
-            </li>
 
             <li class="layui-nav-item">
                 <a>收货人管理</a>
@@ -88,6 +65,31 @@
                     <dd><a href="${ctx}/add/addaccept.jsp">添加收货人</a></dd>
                 </dl>
             </li>
+
+            <li class="layui-nav-item">
+                <a>货单管理</a>
+                <dl class="layui-nav-child">
+                    <dd><a href="${ctx}/orders/page">货单查询</a></dd>
+                    <dd><a href="${ctx}/orders/addorders.jsp">货单添加</a></dd>
+                </dl>
+            </li>
+
+            <li class="layui-nav-item">
+                <a>储存管理</a>
+                <dl class="layui-nav-child">
+                    <dd><a href="${ctx}/store/page">储存管理</a></dd>
+                    <dd><a href="${ctx}/add/addstore.jsp">储存录入</a></dd>
+                </dl>
+            </li>
+
+            <li class="layui-nav-item">
+                <a>配送管理</a>
+                <dl class="layui-nav-child">
+                    <dd><a href="${ctx}/delivery/find">查询配送</a></dd>
+                    <dd><a href="${ctx}/add/adddelivery.jsp">添加配送</a></dd>
+                </dl>
+            </li>
+
 
         </ul>
     </div>
