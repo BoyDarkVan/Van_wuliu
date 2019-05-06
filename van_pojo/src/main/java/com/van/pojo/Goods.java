@@ -8,49 +8,50 @@ public class Goods {
   private String gKind;
   private String gWeight;
 
-
-  public String getGId() {
-    return gId;
-  }
-
-  public void setGId(String gId) {
+  public Goods(String gId, String gName) {
     this.gId = gId;
-  }
-
-
-  public String getGName() {
-    return gName;
-  }
-
-  public void setGName(String gName) {
     this.gName = gName;
   }
 
+  public String getgId() {
+    return gId;
+  }
 
-  public String getGKind() {
+  public void setgId(String gId) {
+    this.gId = gId;
+  }
+
+  public String getgName() {
+    return gName;
+  }
+
+  public void setgName(String gName) {
+    this.gName = gName;
+  }
+
+  public String getgKind() {
     return gKind;
   }
 
-  public void setGKind(String gKind) {
+  public void setgKind(String gKind) {
     this.gKind = gKind;
   }
 
-
-  public String getGWeight() {
+  public String getgWeight() {
     return gWeight;
   }
 
-  public void setGWeight(String gWeight) {
+  public void setgWeight(String gWeight) {
     this.gWeight = gWeight;
   }
 
-    public Goods(String gId, String gName, String gKind, String gWeight) {
-        this.gId = gId;
-        this.gName = gName;
-        this.gKind = gKind;
-        this.gWeight = gWeight;
-    }
+  public Goods(String gId, String gName, String gKind, String gWeight) {
+    this.gId = gId;
+    this.gName = gName;
+    this.gKind = gKind;
+    this.gWeight = gWeight;
+  }
 
-    public Goods() {
-    }
+  public Goods() {
+  }
 }
