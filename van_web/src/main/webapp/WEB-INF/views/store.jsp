@@ -55,8 +55,8 @@
             ,cols: [[ //表头
                 {type: 'checkbox', fixed: 'left'}//多选框
                 ,{field: 'sId', title: '储存编号' ,sort: true, fixed: 'left'}
-                ,{field: 'sTime', title: '入库时间'}
-                ,{field: 'sOutime', title: '出库时间'}
+                ,{field: 'sTime', title: '入库时间',templet: "<div>{{layui.util.toDateString(d.sTime, 'yyyy-MM-dd HH:mm:ss')}}</div>"}
+                ,{field: 'sOutime', title: '出库时间',templet: "<div>{{layui.util.toDateString(d.sOutime, 'yyyy-MM-dd HH:mm:ss')}}</div>"}
                 ,{field: 'sCount', title: '入库数量'}
                 ,{field: 'sOutcount', title: '出库数量'}
                 ,{field: 'stId', title: '员工编号'}
