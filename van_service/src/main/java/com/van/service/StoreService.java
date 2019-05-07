@@ -2,7 +2,6 @@ package com.van.service;
 
 import com.van.page.Page;
 import com.van.pojo.Store;
-import com.van.pojo.Warehouse;
 
 import java.util.List;
 
@@ -17,9 +16,9 @@ public interface StoreService {
      */
     List<Store> findAllStore(Page page);
 
-    Integer findtotal(Page page);
+    Integer findTotal(Page page);
 
-    void delstore(String s_id);
+    void delStore(String s_id);
 
     /**
      * 添加仓库传一个存储对象过来
@@ -28,6 +27,6 @@ public interface StoreService {
     void  addStore(Store store);
 
 
-
-
+//  更新储存数量
+    void updStore(Store store);
 }

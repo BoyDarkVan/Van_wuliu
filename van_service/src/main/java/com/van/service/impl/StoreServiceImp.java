@@ -17,21 +17,26 @@ public class StoreServiceImp implements StoreService {
     @Override
     //分页查询储存信息
     public List<Store> findAllStore(Page page) {
-        return storeMapper.findAllstore(page);
+        return storeMapper.findAllStore(page);
     }
 
     @Override
-    public Integer findtotal(Page page) {
-        return storeMapper.findtotal(page);
+    public Integer findTotal(Page page) {
+        return storeMapper.findTotal(page);
     }
 
     @Override
-    public void delstore(String s_id) {
+    public void delStore(String s_id) {
         storeMapper.delStore(s_id);
     }
 
     @Override
     public void addStore(Store store) {
 
+    }
+
+    @Override
+    public void updStore(Store store) {
+        storeMapper.updStore(store);
     }
 }

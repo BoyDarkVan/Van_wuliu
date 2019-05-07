@@ -78,7 +78,7 @@
                 <a>储存管理</a>
                 <dl class="layui-nav-child">
                     <dd><a href="${ctx}/store/page">储存管理</a></dd>
-                    <dd><a href="${ctx}/add/addstore.jsp">储存录入</a></dd>
+                    <dd><a href="${ctx}/store/page2">储存录入</a></dd>
                 </dl>
             </li>
 

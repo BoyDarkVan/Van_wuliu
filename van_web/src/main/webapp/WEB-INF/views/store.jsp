@@ -34,6 +34,8 @@
 </div>
 <script src="${ctx}/static/common/layui/layui.js"></script>
 <script src="${ctx}/static/common/js/jquery-1.8.3.js"></script>
+
+
 <script>
     //JavaScript代码区域
     layui.use('element', function(){
@@ -56,12 +58,13 @@
                 {type: 'checkbox', fixed: 'left'}//多选框
                 ,{field: 'sId', title: '储存编号' ,sort: true, fixed: 'left'}
                 ,{field: 'sTime', title: '入库时间',templet: "<div>{{layui.util.toDateString(d.sTime, 'yyyy-MM-dd HH:mm:ss')}}</div>"}
-                ,{field: 'sOutime', title: '出库时间',templet: "<div>{{layui.util.toDateString(d.sOutime, 'yyyy-MM-dd HH:mm:ss')}}</div>"}
-                ,{field: 'sCount', title: '入库数量'}
-                ,{field: 'sOutcount', title: '出库数量'}
-                ,{field: 'stId', title: '员工编号'}
-                ,{field: 'ckId', title: '仓库编号'}
-                ,{field: 'gId', title: '货物编号'}
+                ,{field: 'sOutime', title: '出库时间',width:100}
+                ,{field: 'sCount', title: '入库数量',width:100,edit:"text"}
+                ,{field: 'sOutcount', title: '出库数量',edit:"text"}
+                ,{field: 'staff', title: '员工姓名',templet:'<div>{{ d.staff.stName }}</div>'}
+                ,{field: 'staff', title: '员工电话',width:120,templet:'<div>{{ d.staff.stPhone }}</div>'}
+                ,{field: 'warehouse', title: '仓库名称',templet:'<div>{{ d.warehouse.ckName }}</div>'}
+                ,{field: 'gName', title: '货物名称',templet:'<div>{{ d.goods.gName }}</div>'}
                 ,{fixed: 'right', align:'center',title:"操作",toolbar: '#action'}
             ]]
 
@@ -113,11 +116,37 @@
                     })
                 });
             } else if(layEvent === 'edit'){
-                layer.msg('编辑操作');
+
+                layer.confirm('真的更新该行么', function(){
+
+                    var store = JSON.stringify({
+                        "sId":data.sId,
+                        "sCount":data.sCount,
+                        "sOutcount":data.sOutcount
+                    });
+
+                    $.ajax({
+                        url:"${ctx}/store/upd",
+                        type:"post",
+                        dataType:"json",
+                        contentType: "application/json; charset=utf-8",
+                        data: store,
+                        success:function () {
+                            layer.msg('更新成功');
+                        },
+                        error:function () {
+                            layer.msg('操作失败，请稍后操作或联系管理员！');
+                        }
+                    })
+                })
+
             }
         });
 
     });
+
 </script>
+
+
 </body>
 </html>

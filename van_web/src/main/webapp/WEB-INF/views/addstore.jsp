@@ -50,7 +50,7 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">员工姓名</label>
                 <div class="layui-input-block">
-                    <select name="staff"  id="staff" lay-filter="staff">
+                    <select name="stId"  id="staff" lay-filter="">
                         <option value="">请选择</option>
                     </select>
                 </div>
@@ -59,7 +59,7 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">仓库名称</label>
                 <div class="layui-input-block">
-                    <select name="interest2"  id="wh">
+                    <select name="ckId"  id="wh" lay-filter="">
                         <option value="">请选择</option>
                     </select>
                 </div>
@@ -68,7 +68,7 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">货物名称</label>
                 <div class="layui-input-block">
-                    <select name="interest3" lay-filter="goods" id="goods">
+                    <select name="gId" id="goods" lay-filter="">
                         <option value="">请选择</option>
                     </select>
                 </div>
@@ -143,6 +143,9 @@
             layer.alert(JSON.stringify(data.field), {
                 title: '最终的提交信息'
             });
+
+
+
             return false;
         });
 
@@ -219,27 +222,26 @@
 
         });
 
+        // //获取员工下拉框选中的值
+        // form.on('select(stId)', function(data){
         //
-        form.on('select(staff)', function(data){
-
-            alert(data.value); //得到被选中的值
-
-        });
-
+        //     alert(data.value); //得到被选中的值
         //
-
-        //
-        // //获取下拉框选中的值
-        //
-        // $('#wh').change(function () {
-        //     alert($('#wh option:selected').val());//选中的值
         // });
-        // //
-        // //
-        // $('#goods').change(function () {
-        //     alert($('#goods option:selected').val());//选中的值
+        //
+        // //获取储存下拉框选中的值
+        // form.on('select(ckId)', function(data){
+        //
+        //     alert(data.value); //得到被选中的值
+        //
         // });
-
+        //
+        // //获取货物下拉框选中的值
+        // form.on('select(gId)', function(data){
+        //
+        //     alert(data.value); //得到被选中的值
+        //
+        // });
     })
 
 

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.van.mapper.StoreMapper">
+  <!--储存表映射-->
   <resultMap id="BaseResultMap" type="com.van.pojo.Store">
     <id column="s_id" jdbcType="VARCHAR" property="sId" />
     <result column="s_time" jdbcType="TIMESTAMP" property="sTime" />
@@ -10,14 +11,47 @@
     <result column="st_id" jdbcType="VARCHAR" property="stId" />
     <result column="ck_id" jdbcType="VARCHAR" property="ckId" />
     <result column="g_id" jdbcType="VARCHAR" property="gId" />
+
   </resultMap>
 
-  <!--字段-->
-  <sql id="Base_Column_List">
-    s_id,s_time,s_outime,s_count,s_outcount,st_id,ck_id,g_id
-  </sql>
+  <!--多表一对一关联映射-->
 
-  <!--删除-->
+  <resultMap id="selectMap" type="com.van.pojo.Store" extends="BaseResultMap">
+    <association property="warehouse" javaType="com.van.pojo.Warehouse">
+      <id column="ck_id" property="ckId"/>
+      <result column="ck_name" property="ckName"/>
+      <result column="ck_size" property="ckSize"/>
+    </association>
+
+    <association property="staff" javaType="com.van.pojo.Staff">
+      <id column="st_id" property="stId"/>
+      <result column="st_name" property="stName"/>
+      <result column="st_sex" property="stSex"/>
+      <result column="st_phone" property="stPhone"/>
+      <result column="st_age" javaType="integer" property="stAge"/>
+    </association>
+
+    <association property="goods" javaType="com.van.pojo.Goods">
+      <id column="g_id" property="gId"/>
+      <result column="g_name" property="gName"/>
+      <result column="g_kind" property="gKind"/>
+      <result column="g_weight" property="gWeight"/>
+    </association>
+
+  </resultMap>
+
+  <!--更新储存数量-->
+    <update id="updStore" parameterType="com.van.pojo.Store">
+      update store
+
+      set s_count = #{store.sCount}, s_outcount = #{store.sOutcount}
+
+      where s_id = #{store.sId}
+
+    </update>
+
+
+    <!--删除-->
   <delete id="delStore" parameterType="string">
     delete from store
     <where>
@@ -29,20 +63,26 @@
 
 
   <!--分页查询储存信息-->
-  <select id="findAllstore" resultMap="BaseResultMap" parameterType="com.van.page.Page">
-    select s_id, s_time, s_outime, s_count, s_outcount, st_id, ck_id, g_id from store
+  <select id="findAllStore" resultMap="selectMap" parameterType="com.van.page.Page">
+    select
+           st.*,
+
+           stf.*,
+           wh.*,
+           gs.*
+
+    from store st, staff stf, warehouse wh,goods gs
+
+    where st.g_id = gs.g_id and st.ck_id = wh.ck_id and st.st_id = stf.st_id
+
     order by s_id
+
     limit #{start},#{rows}
   </select>
 
   <!--查询总记录数-->
-  <select id="findtotal" resultType="java.lang.Integer" parameterType="com.van.page.Page">
+  <select id="findTotal" resultType="java.lang.Integer" parameterType="com.van.page.Page">
     select count(s_id) from store
-    <where>
-      <if test="sId!=null and sId!=''">
-        and s_id=#{sId}
-      </if>
-    </where>
   </select>
 
 

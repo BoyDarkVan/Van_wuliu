@@ -7,6 +7,10 @@ public class Warehouse {
   private String ckName;
   private String ckSize;
 
+  public Warehouse(String ckId, String ckName) {
+    this.ckId = ckId;
+    this.ckName = ckName;
+  }
 
   public String getCkId() {
     return ckId;
