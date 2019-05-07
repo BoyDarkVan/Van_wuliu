@@ -83,7 +83,6 @@
             "stPhone":tel
         });
 
-        alert(staff);
         $.ajax({
             url:"${ctx}/staff/add",
             type:"post",

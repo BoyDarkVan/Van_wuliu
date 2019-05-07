@@ -49,7 +49,7 @@
             elem: '#warehouse'
             ,height: 500
             ,url: '${ctx}/warehouse/findAllWarehouse' //数据接口
-            ,limit:2
+            ,limit:10
             ,toolbar: '#tools'
             ,page: true //开启分页
             ,cols: [[ //表头
@@ -116,8 +116,6 @@
                         "ckName":data.ckName,
                         "ckSize":data.ckSize
                     });
-
-                    alert(warehouse);
 
                     $.ajax({
                         url:"${ctx}/warehouse/upd",

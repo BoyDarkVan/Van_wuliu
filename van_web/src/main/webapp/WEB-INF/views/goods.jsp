@@ -47,7 +47,7 @@
             elem: '#good'
             ,height: 500
             ,url: '${ctx}/good/find' //数据接口
-            ,limit:2
+            ,limit:10
             ,toolbar: '#tools'
             ,page: true //开启分页
             ,cols: [[ //表头
@@ -111,8 +111,6 @@
                     "gKind":data.gKind,
                     "gWeight":data.gWeight
                 });
-
-                alert(goods);
 
                 $.ajax({
                     url:"${ctx}/good/upd",
