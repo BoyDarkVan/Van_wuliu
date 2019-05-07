@@ -4,9 +4,9 @@ package com.van.page;
  * layui数据表格返回数据处理类
  */
 public class ResultMap<T> {
-    private String msg;
+    private String msg ="success";
     private  T data;
-    private  int code;
+    private  int code = 200;
     private  int count;
 
     public ResultMap() {

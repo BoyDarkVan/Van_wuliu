@@ -86,8 +86,8 @@
             <li class="layui-nav-item">
                 <a>配送管理</a>
                 <dl class="layui-nav-child">
-                    <dd><a href="${ctx}/delivery/find">查询配送</a></dd>
-                    <dd><a href="${ctx}/add/adddelivery.jsp">添加配送</a></dd>
+                    <dd><a href="${ctx}/delivery/page">查询配送</a></dd>
+                    <dd><a href="${ctx}/delivery/page2">添加配送</a></dd>
                 </dl>
             </li>
 

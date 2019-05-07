@@ -1,11 +1,16 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>layout 后台大布局 - Layui</title>
+    <link rel="stylesheet" href="${ctx}/static/common/layui/css/layui.css">
+</head>
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
 
     <jsp:include page="${ctx}/model/header.jsp"/>
-
 
     <div class="layui-body">
         <fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">

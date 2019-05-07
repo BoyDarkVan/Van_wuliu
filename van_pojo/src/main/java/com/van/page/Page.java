@@ -34,7 +34,16 @@ public class Page implements Serializable {
     //货物
     private String gId;
 
+    //配送
+    private String psId;
 
+    public String getPsId() {
+        return psId;
+    }
+
+    public void setPsId(String psId) {
+        this.psId = psId;
+    }
 
     public Integer getPage() {
         return page;
