@@ -123,4 +123,13 @@ public class StoreController {
         return goodService.findIdName();
     }
 
+
+    @RequestMapping("/add")
+    @ResponseBody
+    public String addStore(@RequestBody Store store){
+        storeService.addStore(store);
+
+        return "";
+    }
+
 }
