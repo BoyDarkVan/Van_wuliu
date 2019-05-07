@@ -18,4 +18,6 @@ public interface StaffMapper {
 
     void updStaff(Staff staff);
 
+    List<Staff> getStaffName();
+
 }

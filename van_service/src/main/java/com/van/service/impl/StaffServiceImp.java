@@ -39,4 +39,9 @@ public class StaffServiceImp implements StaffService {
     public void updStaff(Staff staff) {
         staffMapper.updStaff(staff);
     }
+
+    @Override
+    public List<Staff> getStaffName() {
+        return staffMapper.getStaffName();
+    }
 }

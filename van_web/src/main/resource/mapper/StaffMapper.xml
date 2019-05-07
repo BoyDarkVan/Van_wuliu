@@ -9,6 +9,13 @@
     <result column="st_phone" jdbcType="VARCHAR" property="stPhone" />
   </resultMap>
 
+  <!--查询所有员工的姓名和id-->
+
+  <select id="getStaffName" resultMap="BaseResultMap">
+    select st_id,st_name
+    from staff
+  </select>
+
   <!--字段-->
   <sql id="Base_Column_List">
     st_id,st_name,st_sex,st_age,st_phone

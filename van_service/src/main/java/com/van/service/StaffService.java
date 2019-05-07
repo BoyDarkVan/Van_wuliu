@@ -24,4 +24,7 @@ public interface StaffService {
 
     void updStaff(Staff staff);
 
+//    查询所有的用户名和id
+    List<Staff> getStaffName();
+
 }
