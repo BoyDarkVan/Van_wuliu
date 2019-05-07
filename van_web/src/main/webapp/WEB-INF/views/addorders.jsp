@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>layout 后台大布局 - Layui</title>
     <link rel="stylesheet" href="${ctx}/static/common/layui/css/layui.css">
+
+    <link rel="stylesheet" href="${ctx}/static/main/adduser.css">
+    <script src="${ctx}/static/common/js/jquery-1.8.3.js"></script>
 </head>
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">

@@ -16,13 +16,7 @@
     </typeAliases>
 
 
-    <!-- 配置分页插件 -->
-    <plugins>
-        <plugin interceptor="com.github.pagehelper.PageInterceptor">
-            <!-- 指定数据库方言 -->
-            <property name="helperDialect" value="mysql" />
-            <property name="reasonable" value="true"/>
-        </plugin>
-    </plugins>
+
+
 
 </configuration>
