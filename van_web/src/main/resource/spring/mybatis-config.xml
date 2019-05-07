@@ -15,7 +15,6 @@
         <package name="com.van.mapper"/>
     </typeAliases>
 
-
     <!-- 配置分页插件 -->
     <plugins>
         <plugin interceptor="com.github.pagehelper.PageInterceptor">

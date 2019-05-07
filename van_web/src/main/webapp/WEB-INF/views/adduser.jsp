@@ -48,8 +48,6 @@
 
                 <input type="button" value="添加用户" class="sub" onclick="check()"/>
             </div>
-
-
         </div>
 
         <jsp:include page="${ctx}/model/footer.jsp"/>
