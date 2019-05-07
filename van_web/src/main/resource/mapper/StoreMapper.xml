@@ -86,4 +86,10 @@
   </select>
 
 
+  <insert id="addStore" parameterType="com.van.pojo.Store">
+    insert into store (s_id, s_time, s_outime, s_count, s_outcount, st_id, ck_id, g_id)
+
+    values (#{sId},#{sTime},#{sOutime},#{sCount},#{sOutcount},#{stId},#{ckId},#{gId})
+
+  </insert>
 </mapper>
