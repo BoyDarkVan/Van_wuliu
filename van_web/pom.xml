@@ -22,7 +22,6 @@
         <commons-io.version>2.4</commons-io.version>
         <commons-codec.version>1.9</commons-codec.version>
         <jackson.version>2.9.5</jackson.version>
-        <github.version>5.1.2</github.version>
         <!--编译级别-->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -123,11 +122,6 @@
             <version>${jackson.version}</version>
         </dependency>
 
-        <dependency>
-            <groupId>com.github.pagehelper</groupId>
-            <artifactId>pagehelper</artifactId>
-            <version>${github.version}</version>
-        </dependency>
 
     </dependencies>
 
@@ -151,25 +145,6 @@
                 </configuration>
             </plugin>
 
-            <!--tomcat7插件-->
-            <!--<plugin>-->
-            <!--<groupId>org.apache.tomcat.maven</groupId>-->
-            <!--<artifactId>tomcat7-maven-plugin</artifactId>-->
-            <!--<version>2.2</version>-->
-            <!--<configuration>-->
-            <!--&lt;!&ndash;项目访问路径，如果你设置为根路径，那么访问地址为: http://localhost:8080/ &ndash;&gt;-->
-            <!--&lt;!&ndash;如果你改为ssm，那么访问路径变为: http://localhost:8080/ssm/&ndash;&gt;-->
-            <!--<path>/ssm-demo</path>-->
-            <!--&lt;!&ndash;tomcat访问端口&ndash;&gt;-->
-            <!--<port>8080</port>-->
-            <!--<uriEncoding>UTF-8</uriEncoding>-->
-            <!--&lt;!&ndash;tomcat管理界面路径，固定&ndash;&gt;-->
-            <!--<url>http://localhost:8080/manager/html</url>-->
-            <!--<server>tomcat7</server>-->
-            <!--<username>admin</username>-->
-            <!--<password>admin</password>-->
-            <!--</configuration>-->
-            <!--</plugin>-->
         </plugins>
     </build>
 </project>
