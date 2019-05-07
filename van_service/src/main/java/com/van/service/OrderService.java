@@ -15,4 +15,6 @@ public interface OrderService {
     Integer selectPageCount(Page page);
 
     void  updateOrder(Orders orders);
+
+    void  addOrder(Orders orders);
 }

@@ -8,7 +8,11 @@
         <result column="apt_addr" jdbcType="VARCHAR" property="cptAddr"/>
         <result column="apt_phone" jdbcType="VARCHAR" property="cptPhone"/>
     </resultMap>
-    <update id="updateOrder" parameterType="com.van.pojo.Accept">
+    <insert id="addAccept">
+
+
+    </insert>
+    <update id="updateAccept" parameterType="com.van.pojo.Accept">
         update accept
         set apt_name=#{cptName},
             apt_sex=#{cptSex},

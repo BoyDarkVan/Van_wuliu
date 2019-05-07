@@ -1,5 +1,6 @@
 package com.van.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.van.page.Page;
@@ -41,9 +42,9 @@ public class OrdersController {
      */
     @RequestMapping("/findAllOrder")
     @ResponseBody
-    public ResultMap<List<Orders>> findAllOrder(Page page,@RequestParam(value = "searchtext", required = true ,defaultValue = "") String searchtext) {
+    public ResultMap<List<Orders>> findAllOrder(@RequestParam("limit") int limit,Page page,@RequestParam(value = "searchtext", required = true ,defaultValue = "") String searchtext) {
         System.out.println(searchtext);
-        page.setRows(2);
+        page.setRows(limit);
         page.setKeyWord(searchtext);
         List<Orders> ordersList = orderService.findAllOrders(page);
         int totals = orderService.selectPageCount(page);
@@ -60,6 +61,11 @@ public class OrdersController {
     @RequestMapping("/page")
     public String show(){
         return "orders";
+    }
+
+    @RequestMapping("/addpage")
+    public String addpage(){
+        return "addorders";
     }
 
 
@@ -103,7 +109,14 @@ public class OrdersController {
 
     }
 
-
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    public @ResponseBody
+    JSONObject add(@RequestBody Orders orders) {
+        orderService.addOrder(orders);
+        JSONObject back=new JSONObject();
+        back.put("flag","添加成功" );
+        return back;
+    }
 
 
 }

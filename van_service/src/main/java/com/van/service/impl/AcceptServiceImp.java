@@ -31,6 +31,11 @@ public class AcceptServiceImp implements AcceptService {
 
     @Override
     public void updateAccept(Accept accept) {
-        acceptMapper.updateOrder(accept);
+        acceptMapper.updateAccept(accept);
+    }
+
+    @Override
+    public void addAccept(Accept accept) {
+        acceptMapper.addAccept(accept);
     }
 }

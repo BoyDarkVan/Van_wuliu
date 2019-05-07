@@ -5,6 +5,11 @@
         <id column="order_id" jdbcType="VARCHAR" property="orderId"/>
         <result column="order_name" jdbcType="VARCHAR" property="orderName"/>
         <result column="order_price" jdbcType="VARCHAR" property="orderPrice"/>
+        <result column="user_id" jdbcType="VARCHAR" property="orderPrice"/>
+        <result column="apt_id" jdbcType="VARCHAR" property="orderPrice"/>
+        <result column="st_id" jdbcType="VARCHAR" property="orderPrice"/>
+        <result column="g_id" jdbcType="VARCHAR" property="orderPrice"/>
+
 
         <association property="users" javaType="com.van.pojo.Users">
             <id column="user_id" property="userId"/>
@@ -27,6 +32,10 @@
         </association>
 
     </resultMap>
+    <insert id="addOrder" parameterType="com.van.pojo.Orders">
+        insert into  orders (order_id,order_name,order_price,user_id,apt_id,st_id,g_id)
+         value (#{orderId},#{orderName},#{orderPrice},#{userId},#{cptId},#{stId},#{gId});
+    </insert>
     <!--修改货单-->
     <update id="updateOrder" parameterType="com.van.pojo.Orders">
         update orders

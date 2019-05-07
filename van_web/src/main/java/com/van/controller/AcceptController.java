@@ -24,9 +24,9 @@ public class AcceptController {
      */
     @RequestMapping("/findAllAccept")
     @ResponseBody
-    public ResultMap<List<Accept>> findAllAccept(Page page, @RequestParam(value = "searchtext", required = true, defaultValue = "") String searchtext) {
+    public ResultMap<List<Accept>> findAllAccept(@RequestParam("limit") int limit,Page page, @RequestParam(value = "searchtext", required = true, defaultValue = "") String searchtext) {
 
-        page.setRows(2);
+        page.setRows(limit);
         List<Accept> ordersList = acceptService.findAllAccept(page);
 
         int totals = acceptService.selectPageCount(page);
@@ -66,5 +66,17 @@ public class AcceptController {
         return  "accept";
 
     }
+
+    @RequestMapping("/addpage")
+    public String addpage(){
+        return "addaccept";
+    }
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    public String add(@RequestBody Accept accept) {
+        acceptService.addAccept(accept);
+        return "orders";
+    }
+
+
 
 }

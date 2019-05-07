@@ -9,19 +9,16 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class OrderServiceImp implements OrderService {
 
     @Autowired
     private OrdersMapper ordersMapper;
-    @Transactional
     @Override
     public List<Orders> findAllOrders(Page page) {
-
         return ordersMapper.findAllOrders(page);
-
-
     }
 
     @Override
@@ -32,5 +29,11 @@ public class OrderServiceImp implements OrderService {
     @Override
     public void updateOrder(Orders orders) {
         ordersMapper.updateOrder(orders);
+    }
+
+    @Override
+    public void addOrder(Orders orders) {
+        orders.setOrderId(UUID.randomUUID().toString());
+        ordersMapper.addOrder(orders);
     }
 }

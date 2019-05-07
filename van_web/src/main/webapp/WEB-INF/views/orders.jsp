@@ -83,14 +83,14 @@
             elem: '#orders'
             , height: 500
             , url: '${ctx}/orders/findAllOrder' //数据接口
-            , limit: 2
+            , limit: 4
             , toolbar: '#tools'
             , page: true //开启分页
             , cols: [[ //表头
                 {type: 'checkbox', fixed: 'left'}//多选框
                 , {field: 'orderId', title: '货单号', sort: true}
                 , {field: 'orderName', title: '货单详情', edit: true}
-                , {field: 'orderPrice', title: '运费'}
+                , {field: 'orderPrice', title: '运费',templet: '<div>{{ d.orderPrice}}元</div>'}
                 , {field: 'users', title: '用户名', templet: '<div>{{ d.users.userName}}</div>'}
                 , {field: 'accept', title: '收获人ID', templet: '<div>{{ d.accept.cptName}}</div>'}
                 , {field: 'staff', title: '司机ID', templet: '<div>{{ d.staff.stName}}</div>'}
@@ -124,14 +124,14 @@
                     elem: '#orders'
                     , height: 500
                     , url: '${ctx}/orders/findAllOrder?searchtext=' + searchtext //数据接口
-                    , limit: 2
+                    , limit: 4
                     , toolbar: '#tools'
                     , page: true //开启分页
                     , cols: [[ //表头
                         {type: 'checkbox', fixed: 'left'}//多选框
                         , {field: 'orderId', title: '货单号', sort: true}
                         , {field: 'orderName', title: '货单详情', edit: true}
-                        , {field: 'orderPrice', title: '运费'}
+                        , {field: 'orderPrice', title: '运费',templet: '<div>{{ d.orderPrice}}元</div>'}
                         , {field: 'users', title: '用户名', templet: '<div>{{ d.users.userName}}</div>'}
                         , {field: 'accept', title: '收获人ID', templet: '<div>{{ d.accept.cptName}}</div>'}
                         , {field: 'staff', title: '司机ID', templet: '<div>{{ d.staff.stName}}</div>'}
@@ -201,6 +201,7 @@
                     }
                 }
             });
+
             $.ajax({
                 url:"${ctx}/orders/get_select_accept",
                 type: "post",

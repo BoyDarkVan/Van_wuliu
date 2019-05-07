@@ -4,19 +4,10 @@
     <settings>
         <!-- 打印SQL-->
         <setting name="logImpl" value="STDOUT_LOGGING" />
-
         <setting name="mapUnderscoreToCamelCase" value="true"/>
-
     </settings>
-
-
     <typeAliases>
         <!-- 指定一个包名，MyBatis会在包名下搜索需要的JavaBean-->
         <package name="com.van.mapper"/>
     </typeAliases>
-
-
-
-
-
 </configuration>
