@@ -19,7 +19,7 @@
         <property name="driverClassName" value="${driverClassName}"/>
         <property name="username" value="${jdbc_username}"/>
         <property name="password" value="${jdbc_password}"/>
-        <property name="initialSize" value="6"/>
+        <property name="initialSize" value="2"/>
     </bean>
 
 

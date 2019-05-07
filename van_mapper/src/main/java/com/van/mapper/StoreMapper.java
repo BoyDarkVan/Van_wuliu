@@ -15,4 +15,6 @@ public interface StoreMapper {
     void delStore(@Param("sId") String sId);
 
     void updStore(@Param("store") Store store);
+
+    void addStore(Store store);
 }

@@ -58,6 +58,8 @@ public class StaffController {
     public String finds(){
         return "staff";
     }
+
+
     @RequestMapping("/addstaff")
     public String find(){
         return "addstaff";

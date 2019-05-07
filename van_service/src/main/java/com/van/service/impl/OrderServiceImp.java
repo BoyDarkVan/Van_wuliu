@@ -6,6 +6,7 @@ import com.van.pojo.Orders;
 import com.van.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -14,11 +15,13 @@ public class OrderServiceImp implements OrderService {
 
     @Autowired
     private OrdersMapper ordersMapper;
-
+    @Transactional
     @Override
     public List<Orders> findAllOrders(Page page) {
 
         return ordersMapper.findAllOrders(page);
+
+
     }
 
     @Override

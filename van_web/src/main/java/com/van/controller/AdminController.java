@@ -31,7 +31,7 @@ public class AdminController {
     }
 
     //密码修改
-    @RequestMapping("updadm")
+    @RequestMapping("/updadm")
     public String updAdm(String adm_id, String adm_pwd,String old_pwd, HttpSession session){
         Object pwd=session.getAttribute("admPwd");
         if (old_pwd.equals(pwd)){
@@ -44,7 +44,7 @@ public class AdminController {
         }
     }
     //添加用户
-    @RequestMapping("addadm")
+    @RequestMapping("/addadm")
     public String addAdm(String adm_id, String adm_name, String adm_pwd){
 
         adminService.addAdm(adm_id, adm_name, adm_pwd);

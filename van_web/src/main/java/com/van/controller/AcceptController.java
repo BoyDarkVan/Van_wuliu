@@ -3,6 +3,7 @@ package com.van.controller;
 import com.van.page.Page;
 import com.van.page.ResultMap;
 import com.van.pojo.Accept;
+import com.van.pojo.Orders;
 import com.van.service.AcceptService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -46,20 +47,24 @@ public class AcceptController {
     }
 
 
+
     /**
-     * 修改货单
-     *
-     * @param accept
+     * 修改收货人
+     * @param
      * @return
      */
     @RequestMapping(value = "/update", method = RequestMethod.POST)
-    public @ResponseBody
-    Accept update(@RequestBody Accept accept) {
+    public String update(@RequestParam(value = "cptId") String cptId,
+                       @RequestParam(value = "cptName") String cptName,
+                       @RequestParam(value = "cptSex") String cptSex,
+                       @RequestParam(value = "cptAddr") String cptAddr,
+                       @RequestParam(value = "cptPhone") String cptPhone){
+
+        Accept accept=new Accept(cptId,cptName,cptSex,cptAddr,cptPhone);
 
         acceptService.updateAccept(accept);
+        return  "accept";
 
-        return accept;
     }
-
 
 }

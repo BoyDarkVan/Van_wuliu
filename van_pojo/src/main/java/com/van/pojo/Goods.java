@@ -18,6 +18,10 @@ public class Goods {
     public Goods() {
     }
 
+    public Goods(String gId) {
+        this.gId = gId;
+    }
+
     public String getgId() {
         return gId;
     }

@@ -9,7 +9,7 @@
 
     <div class="layui-body">
         <fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
-            <legend style="text-align: center">储存信息添加</legend>
+            <legend style="margin: auto">储存信息添加</legend>
         </fieldset>
         <form class="layui-form layui-form-pane" action="">
             <div class="layui-form-item">
@@ -102,10 +102,12 @@
 
         //日期
         laydate.render({
-            elem: '#date'
+            elem: '#date',
+            type:'datetime'
         });
         laydate.render({
-            elem: '#date1'
+            elem: '#date1',
+            type:'datetime'
         });
 
         //创建一个编辑器
@@ -140,10 +142,27 @@
 
         //监听提交
         form.on('submit(store)', function(data){
-            layer.alert(JSON.stringify(data.field), {
-                title: '最终的提交信息'
-            });
+            // layer.alert(JSON.stringify(data.field), {
+            //     title: '最终的提交信息'
+            // });
 
+            var store = JSON.stringify(data.field);
+
+            $.ajax({
+                url:"${ctx}/store/add",
+                type:"post",
+                dataType:"json",
+                contentType: "application/json",
+                data: store,
+
+                success:function(){
+                    layer.msg("信息添加成功！");
+                },
+                error: function () {
+                    layer.msg("操作失败，请重新提交或联系管理员！");
+                }
+
+            });
 
 
             return false;

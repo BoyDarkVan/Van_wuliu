@@ -32,7 +32,7 @@ public class StoreServiceImp implements StoreService {
 
     @Override
     public void addStore(Store store) {
-
+        storeMapper.addStore(store);
     }
 
     @Override
