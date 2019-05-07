@@ -18,6 +18,12 @@ public class GoodServiceImp implements GoodService {
     public List<Goods> findAllgood(Page page) {
         return goodsMapper.findAllgood(page);
     }
+
+    @Override
+    public List<Goods> findIdName() {
+        return goodsMapper.findIdName();
+    }
+
     @Override
     public Integer findtotal(Page page) {
         return goodsMapper.findtotal(page);

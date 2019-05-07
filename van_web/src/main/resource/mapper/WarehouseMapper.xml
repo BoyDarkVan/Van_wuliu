@@ -40,6 +40,10 @@
       </if>
     </where>
   </select>
+  <!--查id name-->
+  <select id="findIdName" resultMap="BaseResultMap">
+    select ck_id,ck_name from warehouse
+  </select>
 
 
 </mapper>

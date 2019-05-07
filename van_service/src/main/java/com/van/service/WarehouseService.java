@@ -13,6 +13,8 @@ public interface WarehouseService {
     //分页查询
     List<Warehouse> findAllWarehouse(Page page);
 
+    List<Warehouse> findIdName();
+
     Integer findtotal(Page page);
 
     void delWare(String ck_id);

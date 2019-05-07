@@ -9,6 +9,8 @@ public interface GoodService {
 
     List<Goods> findAllgood(Page page);
 
+    List<Goods> findIdName();
+
     Integer findtotal(Page page);
 
     void addGood(Goods goods);

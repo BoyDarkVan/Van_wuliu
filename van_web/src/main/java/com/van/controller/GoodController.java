@@ -28,6 +28,7 @@ public class GoodController {
 
         return new ResultMap<List<Goods>>("",goodList,0,total);
     }
+
     //添加
     @RequestMapping("/add")
     @ResponseBody

@@ -10,6 +10,8 @@ public interface WarehouseMapper {
 
     List<Warehouse> findAllWarehouse(Page page);
 
+    List<Warehouse> findIdName();
+
     Integer findtotal(Page page);
 
     void delWare(@Param("ckId") String ckId);

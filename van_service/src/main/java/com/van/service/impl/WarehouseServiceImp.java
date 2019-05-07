@@ -20,6 +20,11 @@ public class WarehouseServiceImp implements WarehouseService {
     }
 
     @Override
+    public List<Warehouse> findIdName() {
+        return warehouseMapper.findIdName();
+    }
+
+    @Override
     public Integer findtotal(Page page) {
         return warehouseMapper.findtotal(page);
     }

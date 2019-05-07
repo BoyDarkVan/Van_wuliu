@@ -40,5 +40,9 @@
       </if>
     </where>
   </select>
+  <!--查询所有id和name-->
+  <select id="findIdName" resultType="com.van.pojo.Goods">
+    select g_id, g_name from goods
+  </select>
 
 </mapper>
