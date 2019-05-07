@@ -8,9 +8,7 @@ import java.util.List;
 
 public interface UsersMapper {
 
-
     List<Users> selectByExample();
-
 
     //分页查询用户表
     List<Users> queryPageUser(Page page);

@@ -26,18 +26,14 @@
   <select id="queryPageUser" resultMap="BaseResultMap" parameterType="com.van.page.Page">
     select
            user_id, user_name,
-           case user_sex when '1' then '男' when '0' then '女' end as user_sex,
-           user_phone, user_addr
-
-
+           case user_sex when '1' then '男' when '0' then '女' end as user_sex,user_phone, user_addr
     from users
-
     order by user_id
 
     limit #{start},#{rows}
 
-
   </select>
+
 
   <!-- 通过条件分页查询，返回总记录数 -->
   <select id="queryPageCount" resultType="integer" parameterType="com.van.page.Page">

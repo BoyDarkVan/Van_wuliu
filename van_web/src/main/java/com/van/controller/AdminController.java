@@ -4,6 +4,7 @@ import com.van.pojo.Admin;
 import com.van.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
@@ -16,15 +17,13 @@ public class AdminController {
     private AdminService adminService;
 
     @RequestMapping("/login")
-    public String loginAdmin(Admin admin){
+    public String loginAdmin(Admin admin,HttpSession session){
 
         Admin adm = adminService.loginAdmin(admin);
-        System.out.println(adm);
-
         if(adm!= null){
             System.out.println("登陆成功!!");
-
-            return "index";
+            session.setAttribute("admin",adm);
+            return "tiaozhuan";
         }else{
             System.out.println("登陆失败");
             return "error";
@@ -52,6 +51,11 @@ public class AdminController {
 
         return "";
 
+    }
+    @RequestMapping("exit")
+    public String exitAdm(HttpSession session){
+        session.removeAttribute("admin");
+        return "login.jsp";
     }
 
 }

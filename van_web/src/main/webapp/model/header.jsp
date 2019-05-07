@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@page isELIgnored="false" %>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -6,19 +7,19 @@
 </head>
 <body>
 <div class="layui-header">
-    <div class="layui-logo"><a href="">layui 后台布局</a></div>
+    <div class="layui-logo"><a href="${ctx}/users/page"><img src="https://ps.ssl.qhmsg.com/t01705ae4187adb36e5.jpg"/></a></div>
     <ul class="layui-nav layui-layout-right">
         <li class="layui-nav-item">
             <a href="javascript:">
-                <img src="http://t.cn/RCzsdCq" class="layui-nav-img" alt="">
-                贤心
+                <img src="https://yanxuan.nosdn.127.net/5d5039d1dbdd3aef07ac9b5025ebabb2.png" class="layui-nav-img" alt="我的头像">
+                ${admin.admName}
             </a>
             <dl class="layui-nav-child">
                 <dd><a href="">基本资料</a></dd>
                 <dd><a href="">安全设置</a></dd>
             </dl>
         </li>
-        <li class="layui-nav-item"><a href="">安全退出</a></li>
+        <li class="layui-nav-item"><a href="${ctx}/">安全退出</a></li>
     </ul>
 </div>
 <div class="layui-side layui-bg-black">

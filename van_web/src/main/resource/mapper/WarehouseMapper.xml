@@ -45,5 +45,4 @@
     select ck_id,ck_name from warehouse
   </select>
 
-
 </mapper>
