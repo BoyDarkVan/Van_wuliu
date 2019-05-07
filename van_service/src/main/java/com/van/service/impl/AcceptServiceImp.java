@@ -15,6 +15,11 @@ public class AcceptServiceImp implements AcceptService {
     private AcceptMapper acceptMapper;
 
     @Override
+    public List<Accept> findAllID_Name() {
+        return acceptMapper.findAllID_Name();
+    }
+
+    @Override
     public List<Accept> findAllAccept(Page page) {
         return acceptMapper.findAllAccept(page);
     }

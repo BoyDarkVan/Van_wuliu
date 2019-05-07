@@ -62,6 +62,10 @@ public class Users {
         this.userAddr = userAddr;
     }
 
-    public Users() {
+  public Users(String userId) {
+    this.userId = userId;
+  }
+
+  public Users() {
     }
 }

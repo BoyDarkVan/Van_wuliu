@@ -14,6 +14,7 @@ public interface AcceptMapper {
     //查询总记录数
     Integer queryPageCount(Page page);
 
+    List<Accept> findAllID_Name();
     /**
      * 修改收货人
      * @param accept
