@@ -69,8 +69,6 @@
             "gWeight":gweight
         });
 
-        alert(goods);
-
         $.ajax({
             url:"${ctx}/good/add",
             type:"post",

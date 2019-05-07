@@ -3,7 +3,7 @@
 <mapper namespace="com.van.mapper.DeliveryMapper">
   <resultMap id="BaseResultMap" type="com.van.pojo.Delivery">
     <id column="ps_id" jdbcType="VARCHAR" property="psId" />
-    <result column="apt_id" jdbcType="VARCHAR" property="aptId" />
+    <result column="apt_id" jdbcType="VARCHAR" property="cptId" />
     <result column="st_id" jdbcType="VARCHAR" property="stId" />
     <result column="ck_id" jdbcType="VARCHAR" property="ckId" />
     <result column="ps_picktime" jdbcType="TIMESTAMP" property="psPicktime" />
@@ -11,6 +11,80 @@
     <result column="ps_type" jdbcType="VARCHAR" property="psType" />
     <result column="ps_name" jdbcType="VARCHAR" property="psName" />
   </resultMap>
+
+  <resultMap id="deliveryMap" type="com.van.pojo.Delivery" extends="BaseResultMap">
+      <association property="accept" javaType="com.van.pojo.Accept">
+        <id column="apt_id" jdbcType="VARCHAR" property="cptId"/>
+        <result column="apt_name" jdbcType="VARCHAR" property="cptName"/>
+        <result column="apt_sex" jdbcType="VARCHAR" property="cptSex"/>
+        <result column="apt_addr" jdbcType="VARCHAR" property="cptAddr"/>
+        <result column="apt_phone" jdbcType="VARCHAR" property="cptPhone"/>
+      </association>
+
+      <association property="staff" javaType="com.van.pojo.Staff">
+        <id column="st_id" jdbcType="VARCHAR" property="stId" />
+        <result column="st_name" jdbcType="VARCHAR" property="stName" />
+        <result column="st_sex" jdbcType="BIT" property="stSex" />
+        <result column="st_age" jdbcType="TINYINT" property="stAge" />
+        <result column="st_phone" jdbcType="VARCHAR" property="stPhone" />
+      </association>
+
+      <association property="warehouse" javaType="com.van.pojo.Warehouse">
+        <id column="ck_id" jdbcType="VARCHAR" property="ckId" />
+        <result column="ck_name" jdbcType="VARCHAR" property="ckName" />
+        <result column="ck_size" jdbcType="VARCHAR" property="ckSize" />
+      </association>
+  </resultMap>
+
+  <!--分页查询配送记录显示-->
+  <select id="findAll" resultMap="deliveryMap" parameterType="com.van.page.Page">
+    select
+          d.*,
+          apt.*,
+          st.*,
+          wh.*
+
+    from delivery d,accept apt,staff st,warehouse wh
+
+    where d.apt_id = apt.apt_id and d.st_id = st.st_id and d.ck_id = wh.ck_id
+
+    LIMIT #{start},#{rows}
+
+  </select>
+
+  <!--查询配送总记录数-->
+  <select id="findTotal" resultType="java.lang.Integer">
+    select count(ps_id)  from delivery
+  </select>
+
+  <!--删除配送记录-->
+  <delete id="delDelivery" parameterType="string">
+    delete from delivery where ps_id = #{psId}
+  </delete>
+
+  <!--添加配送记录-->
+  <insert id="addDelivery" parameterType="com.van.pojo.Delivery">
+    insert into delivery(ps_id, apt_id, st_id, ck_id, ps_picktime, ps_delitime, ps_type, ps_name)
+
+    values (#{psId},#{cptId},#{stId},#{ckId},#{psPicktime},#{psDelitime},#{psType},#{psName})
+  </insert>
+
+  <!--更新配送记录-->
+  <update id="updDelivery">
+    update delivery
+    <set>
+      <if test="psType != null and psType!=''">
+        ps_type = #{psType},
+      </if>
+      <if test="psName != null and psName!=''">
+        ps_name = #{psName},
+      </if>
+    </set>
+
+    where ps_id = #{psId}
+
+  </update>
+
 
 
 </mapper>

@@ -48,7 +48,7 @@
             elem: '#staff'
             ,height: 500
             ,url: '${ctx}/staff/findAllStaff' //数据接口
-            ,limit:2
+            ,limit:10
             ,toolbar: '#tools'
             ,page: true //开启分页
             ,cols: [[ //表头

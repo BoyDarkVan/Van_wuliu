@@ -51,7 +51,7 @@
             elem: '#store'
             ,height: 500
             ,url: '${ctx}/store/findAllStore' //数据接口
-            ,limit:3
+            ,limit:10
             ,toolbar: '#tools'
             ,page: true //开启分页
             ,cols: [[ //表头
@@ -96,7 +96,7 @@
 
             if(layEvent === 'del'){
                 //向服务端发送删除指令
-                alert(data.sId);//获取当前数据
+                // alert(data.sId);//获取当前数据
                 layer.confirm('真的删除行么', function(index){
 
                     obj.del(); //删除对应行（tr）的DOM结构
@@ -108,10 +108,10 @@
                         url:"${ctx}/store/del/"+sId,
                         type:"post",
                         success:function () {
-                            alert("刪除成功");
+                            layer.msg("刪除成功");
                         },
                         error:function () {
-                            alert("操作失败，请稍后操作或联系管理员！");
+                            layer.msg("操作失败，请稍后操作或联系管理员！");
                         }
                     })
                 });

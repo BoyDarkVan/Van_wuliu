@@ -62,7 +62,6 @@
             "ckName":name,
             "ckSize":cksize
         });
-        alert(warehouse);
 
         $.ajax({
             url:"${ctx}/warehouse/add",
