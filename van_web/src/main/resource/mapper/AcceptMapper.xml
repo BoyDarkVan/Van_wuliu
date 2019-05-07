@@ -33,5 +33,9 @@
         from accept
     </select>
 
+    <select id="findAllID_Name" resultMap="BaseResultMap">
+      select apt_id,apt_name  from accept
+    </select>
+
 
 </mapper>

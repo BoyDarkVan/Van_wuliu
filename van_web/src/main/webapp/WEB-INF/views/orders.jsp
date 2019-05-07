@@ -7,6 +7,37 @@
     <title>layout 后台大布局 - Layui</title>
     <link rel="stylesheet" href="${ctx}/static/common/layui/css/layui.css">
 </head>
+<style>
+    .myform input,select {
+        height: 40px;
+        line-height: 40px;
+        padding-left: 10px;
+    }
+
+    .mybox{
+        width: 100%;
+        height: 50%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .myform {
+        font-size: 16px;
+        width: 100%;
+        height: 100%;
+    }
+
+    .save {
+        width: 150px;
+        height: 60px;
+        line-height: 60px;
+        font-size: 20px;
+        margin-left: 600px;
+        box-shadow: #0C0C0C;
+    }
+
+</style>
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
 
@@ -29,7 +60,7 @@
 
 
     <script type="text/html" id="action">
-        <a class="layui-btn layui-btn-xs" lay-event="edit">保存</a>
+        <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
         <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
     </script>
 
@@ -60,10 +91,10 @@
                 , {field: 'orderId', title: '货单号', sort: true}
                 , {field: 'orderName', title: '货单详情', edit: true}
                 , {field: 'orderPrice', title: '运费'}
-                , {field: 'users.userName', title: '用户名'}
-                , {field: 'accept.cptName', title: '收获人ID'}
-                , {field: 'staff.stName', title: '司机ID'}
-                , {field: 'goods.gName', title: '物品ID'}
+                , {field: 'users', title: '用户名', templet: '<div>{{ d.users.userName}}</div>'}
+                , {field: 'accept', title: '收获人ID', templet: '<div>{{ d.accept.cptName}}</div>'}
+                , {field: 'staff', title: '司机ID', templet: '<div>{{ d.staff.stName}}</div>'}
+                , {field: 'goods', title: '物品ID', templet: '<div>{{ d.goods.gName}}</div>'}
                 , {fixed: 'right', align: 'center', title: "操作", toolbar: '#action'}
             ]]
 
@@ -92,7 +123,7 @@
                 table.render({
                     elem: '#orders'
                     , height: 500
-                    , url: '${ctx}/orders/findAllOrder?searchtext='+ searchtext //数据接口
+                    , url: '${ctx}/orders/findAllOrder?searchtext=' + searchtext //数据接口
                     , limit: 2
                     , toolbar: '#tools'
                     , page: true //开启分页
@@ -101,12 +132,13 @@
                         , {field: 'orderId', title: '货单号', sort: true}
                         , {field: 'orderName', title: '货单详情', edit: true}
                         , {field: 'orderPrice', title: '运费'}
-                        , {field: 'userId', title: '用户名'}
-                        , {field: 'aptId', title: '收获人ID'}
-                        , {field: 'stId', title: '司机ID'}
-                        , {field: 'gId', title: '物品ID'}
+                        , {field: 'users', title: '用户名', templet: '<div>{{ d.users.userName}}</div>'}
+                        , {field: 'accept', title: '收获人ID', templet: '<div>{{ d.accept.cptName}}</div>'}
+                        , {field: 'staff', title: '司机ID', templet: '<div>{{ d.staff.stName}}</div>'}
+                        , {field: 'goods', title: '物品ID', templet: '<div>{{ d.goods.gName}}</div>'}
                         , {fixed: 'right', align: 'center', title: "操作", toolbar: '#action'}
                     ]]
+
                 });
             }
         });
@@ -137,23 +169,75 @@
                     })
                 });
             } else if (layEvent === 'edit') {
-                layer.msg('编辑操作');
                 var temp = JSON.stringify(data);
-                $.ajax({
-                    url: "${ctx}/orders/update",
-                    type: "post",
-                    dataType: 'json',
-                    contentType: "application/json",
-                    data: temp,
-                    success: function (data) {
-                        console.log(data);
-                    },
-                    error: function () {
-                        alert("操作失败，请稍后操作或联系管理员！");
-                    }
-                })
+                layer.open({
+                    type: 1,
+                    title: '修改用户',
+                    shadeClose: true,
+                    shade: 0.3,
+                    area: ['1200px', '200px'],
+                    content: '<form action="${ctx}/orders/update" class="myform" method="post">' +
+                        '<div class="mybox"><input type="text" name="orderId" readonly=readonly value=' + data.orderId + '> ' +
+                        '<input  type="text" name="orderName" value=' + data.orderName + '>' +
+                        '<input  type="text" name="orderPrice" value=' + data.orderPrice + '>' +
+                        '<select name="users" class="myselect_users"></select>' +
+                        '<select name="accept" class="myselect_accept"></select>' +
+                        '<select name="staff" class="myselect_staff"></select>' +
+                        '<select name="goods" class="myselect_goods"></select></div>' +
+                        '<input  type="submit" class="save" value="保存">' +
+                        '</form>'
 
+
+                });
             }
+            $.ajax({
+                url:"${ctx}/orders/get_select_users",
+                type: "post",
+                dataType:'json',
+                contentType:"application/json",
+                success:function (data) {
+                    for (var p in data) {
+                        $(".myselect_users").append('<option value='+data[p].userId+'>'+data[p].userName+'</option>');
+                    }
+                }
+            });
+            $.ajax({
+                url:"${ctx}/orders/get_select_accept",
+                type: "post",
+                dataType:'json',
+                contentType:"application/json",
+                success:function (data) {
+                    for (var p in data) {
+                        $(".myselect_accept").append('<option value='+data[p].cptId+'>'+data[p].cptName+'</option>');
+                    }
+                }
+            });
+
+            $.ajax({
+                url:"${ctx}/orders/get_select_staff",
+                type: "post",
+                dataType:'json',
+                contentType:"application/json",
+                success:function (data) {
+                    for (var p in data) {
+                        $(".myselect_staff").append('<option value='+data[p].stId+'>'+data[p].stName+'</option>');
+                    }
+                }
+            });
+
+            $.ajax({
+                url:"${ctx}/orders/get_select_goods",
+                type: "post",
+                dataType:'json',
+                contentType:"application/json",
+                success:function (data) {
+                    for (var p in data) {
+                        $(".myselect_goods").append('<option value='+data[p].gId+'>'+data[p].gName+'</option>');
+                    }
+                }
+            });
+
+
         });
 
     });

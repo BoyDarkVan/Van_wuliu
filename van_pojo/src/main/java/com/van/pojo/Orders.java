@@ -81,5 +81,16 @@ public class Orders {
     public Orders() {
     }
 
-
+    @Override
+    public String toString() {
+        return "Orders{" +
+                "orderId='" + orderId + '\'' +
+                ", orderName='" + orderName + '\'' +
+                ", orderPrice='" + orderPrice + '\'' +
+                ", users=" + users +
+                ", accept=" + accept +
+                ", staff=" + staff +
+                ", goods=" + goods +
+                '}';
+    }
 }

@@ -61,6 +61,21 @@ public class Accept {
         this.cptPhone = cptPhone;
     }
 
-    public Accept() {
+  public Accept(String cptId) {
+    this.cptId = cptId;
+  }
+
+  public Accept() {
     }
+
+  @Override
+  public String toString() {
+    return "Accept{" +
+            "cptId='" + cptId + '\'' +
+            ", cptName='" + cptName + '\'' +
+            ", cptSex='" + cptSex + '\'' +
+            ", cptAddr='" + cptAddr + '\'' +
+            ", cptPhone='" + cptPhone + '\'' +
+            '}';
+  }
 }
