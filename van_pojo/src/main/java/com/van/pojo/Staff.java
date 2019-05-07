@@ -65,7 +65,9 @@ public class Staff {
   public Staff() {
   }
 
-
+  public Staff(String stId) {
+    this.stId = stId;
+  }
 
   @Override
   public String toString() {
