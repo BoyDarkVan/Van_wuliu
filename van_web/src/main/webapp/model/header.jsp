@@ -63,7 +63,7 @@
                 <a>收货人管理</a>
                 <dl class="layui-nav-child">
                     <dd><a href="${ctx}/accept/page">收货人查询</a></dd>
-                    <dd><a href="${ctx}/accept/addPage">添加收货人</a></dd>
+                    <dd><a href="${ctx}/accept/addpage">添加收货人</a></dd>
                 </dl>
             </li>
 
@@ -71,7 +71,7 @@
                 <a>货单管理</a>
                 <dl class="layui-nav-child">
                     <dd><a href="${ctx}/orders/page">货单查询</a></dd>
-                    <dd><a href="${ctx}/orders/addorders.jsp">货单添加</a></dd>
+                    <dd><a href="${ctx}/orders/addpage">货单添加</a></dd>
                 </dl>
             </li>
 

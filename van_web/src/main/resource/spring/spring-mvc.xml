@@ -34,6 +34,11 @@
         </property>
     </bean>
 
+
+    <!-- 引入redis配置文件 -->
+    <import resource="classpath:spring/redis-context.xml"/>
+
+
     <!--开放对上传功能的支持-->
     <!--<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">-->
         <!--&lt;!&ndash; 默认编码 &ndash;&gt;-->

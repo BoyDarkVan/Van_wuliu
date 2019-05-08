@@ -1,5 +1,6 @@
 package com.van.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.van.page.Page;
 import com.van.page.ResultMap;
 import com.van.pojo.Accept;
@@ -24,9 +25,9 @@ public class AcceptController {
      */
     @RequestMapping("/findAllAccept")
     @ResponseBody
-    public ResultMap<List<Accept>> findAllAccept(Page page, @RequestParam(value = "searchtext", required = true, defaultValue = "") String searchtext) {
+    public ResultMap<List<Accept>> findAllAccept(@RequestParam("limit") int limit,Page page, @RequestParam(value = "searchtext", required = true, defaultValue = "") String searchtext) {
 
-        page.setRows(2);
+        page.setRows(limit);
         List<Accept> ordersList = acceptService.findAllAccept(page);
 
         int totals = acceptService.selectPageCount(page);
@@ -65,6 +66,21 @@ public class AcceptController {
         acceptService.updateAccept(accept);
         return  "accept";
 
+    }
+
+    @RequestMapping("/addpage")
+    public String addpage(){
+        return "addaccept";
+    }
+
+
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    public @ResponseBody
+    JSONObject add(@RequestBody Accept accept) {
+        acceptService.addAccept(accept);
+        JSONObject back=new JSONObject();
+        back.put("flag","添加成功" );
+        return back;
     }
 
 }

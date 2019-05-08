@@ -81,7 +81,7 @@
             elem: '#accept'
             , height: 500
             , url: '${ctx}/accept/findAllAccept' //数据接口
-            , limit: 2
+            , limit: 4
             , id:'accepts'
             , toolbar: '#tools'
             , page: true //开启分页

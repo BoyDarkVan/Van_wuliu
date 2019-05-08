@@ -21,4 +21,6 @@ public interface OrdersMapper {
     void  updateOrder(Orders orders);
 
 
+     void addOrder(Orders orders);
+
 }

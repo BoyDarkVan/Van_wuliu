@@ -19,8 +19,8 @@ public interface AcceptMapper {
      * 修改收货人
      * @param accept
      */
-    void  updateOrder(Accept accept);
+    void  updateAccept(Accept accept);
 
-
+    void  addAccept(Accept accept);
 
 }

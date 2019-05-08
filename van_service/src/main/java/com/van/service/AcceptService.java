@@ -17,4 +17,7 @@ public interface AcceptService {
     Integer selectPageCount(Page page);
 
     void  updateAccept(Accept accept);
+
+    void  addAccept(Accept accept);
+
 }
