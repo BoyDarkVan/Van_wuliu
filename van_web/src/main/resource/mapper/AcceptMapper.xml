@@ -9,7 +9,7 @@
         <result column="apt_phone" jdbcType="VARCHAR" property="cptPhone"/>
     </resultMap>
     <insert id="addAccept" parameterType="com.van.pojo.Accept" >
-        insert  into accept value (#{cptId},#{cptName},#{cptSex},#{cptAddr},#{cptPhone})
+        insert  into accept (apt_id,apt_name,apt_sex,apt_addr,apt_phone) value (#{cptId},#{cptName},#{cptSex},#{cptAddr},#{cptPhone})
     </insert>
     <update id="updateAccept" parameterType="com.van.pojo.Accept">
         update accept

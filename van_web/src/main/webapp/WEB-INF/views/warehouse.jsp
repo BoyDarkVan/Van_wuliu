@@ -100,7 +100,7 @@
                         url:"${ctx}/warehouse/del/"+ckId,
                         type:"post",
                         success:function () {
-                            alert("刪除成功");
+                            layer.msg("刪除成功");
                         },
                         error:function () {
                             alert("操作失败，请稍后操作或联系管理员！");
