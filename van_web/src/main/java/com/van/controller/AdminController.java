@@ -55,7 +55,7 @@ public class AdminController {
     @RequestMapping("exit")
     public String exitAdm(HttpSession session){
         session.removeAttribute("admin");
-        return "login.jsp";
+        return "redirect:/login.jsp";
     }
 
 }

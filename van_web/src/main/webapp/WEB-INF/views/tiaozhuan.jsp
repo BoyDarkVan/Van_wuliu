@@ -9,7 +9,7 @@
 <html>
 <head>
     <meta http-equiv='refresh'   content='0;url=${ctx}/users/page'>
-    <title>跳转</title>
+    <title>loading...</title>
 </head>
 <body>
 

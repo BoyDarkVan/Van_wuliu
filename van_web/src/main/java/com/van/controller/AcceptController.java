@@ -39,15 +39,12 @@ public class AcceptController {
 
     /**
      * 跳转页面
-     *
      * @return
      */
     @RequestMapping("/page")
     public String show() {
         return "accept";
     }
-
-
 
     /**
      * 修改收货人
