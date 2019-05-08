@@ -35,7 +35,7 @@
 
             <div class="user">
                 <div>货物重量</div>
-                <input id="gweight" type="text" name="gWeight" maxlength="50" placeholder="货物重量">
+                <input id="gweight" type="text" name="gWeight" maxlength="15" placeholder="货物重量">
             </div>
 
             <input type="button" value="添加货物" class="layui-btn layui-btn-primary" style="width: 330px" onclick="check()"/>
@@ -46,11 +46,37 @@
     <jsp:include page="${ctx}/model/footer.jsp"/>
 </div>
 <script src="${ctx}/static/common/layui/layui.js"></script>
+<script src="${ctx}/static/common/layui/layui.all.js"></script>
 <script>
     //JavaScript代码区域
     layui.use('element', function(){
         var element = layui.element;
     });
+
+
+    $(function () {
+        $("#id").change(function () {
+            var idd=$(this).val();
+            chkGdId(idd);
+        });
+    });
+    //id
+    function chkGdId(idd) {
+        var ref= /^[A-Z][A-z0-9]*$/;
+        if (idd===''){
+            layer.msg("不能为空");
+        }else if (!ref.test(idd)){
+            layer.msg("首字母请大写");
+            $("#id").css("color","red");
+        }else if (!(idd.length===5)){
+            layer.msg("编号为首字母大写+4位数");
+            $("#id").css("color","red");
+        }else {
+            $("#id").css("color","black");
+            return true;
+        }
+        return false;
+    }
 
     function check() {
         var id=$("#id").val();
@@ -59,33 +85,36 @@
         var gweight=$("#gweight").val();
 
         if (id===''||name===''||gkind===''||gweight===''){
-            alert("请填写信息");
+            layer.msg("不能为空");
+            return null;
         }
+        if (chkGdId(id)){
+            var goods=JSON.stringify({
+                "gId":id,
+                "gName":name,
+                "gKind":gkind,
+                "gWeight":gweight
+            });
 
-        var goods=JSON.stringify({
-            "gId":id,
-            "gName":name,
-            "gKind":gkind,
-            "gWeight":gweight
-        });
-
-        $.ajax({
-            url:"${ctx}/good/add",
-            type:"post",
-            dataType:"json",
-            contentType: "application/json; charset=utf-8",
-            data:goods,
-            success:function () {
-                alert("添加成功");
-                $("#id").val("");
-                $("#name").val("");
-                $("#gkind").val("");
-                $("#gweight").val("");
-            },
-            error:function () {
-                alert("添加失败");
-            }
-        })
+            $.ajax({
+                url:"${ctx}/good/add",
+                type:"post",
+                dataType:"json",
+                contentType: "application/json; charset=utf-8",
+                data:goods,
+                success:function () {
+                    layer.msg("添加成功");
+                    $("#id").val("");
+                    $("#name").val("");
+                    $("#gkind").val("");
+                    $("#gweight").val("");
+                },
+                error:function () {
+                    alert("添加失败");
+                }
+            })
+        }
+        return false;
     }
 </script>
 </body>
