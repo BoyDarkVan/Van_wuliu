@@ -52,7 +52,7 @@ public class AdminController {
         return "";
 
     }
-    @RequestMapping("exit")
+    @RequestMapping("/exit")
     public String exitAdm(HttpSession session){
         session.removeAttribute("admin");
         return "redirect:/login.jsp";
