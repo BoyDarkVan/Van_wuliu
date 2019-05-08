@@ -26,7 +26,7 @@
                 <label class="layui-form-label">货单详情</label>
                 <div class="layui-input-inline">
                     <%--正则验证--%>
-                    <input type="text" name="orderName" placeholder="请输入" autocomplete="off" class="layui-input">
+                    <input type="text" name="orderName" lay-verify="require" placeholder="请输入" autocomplete="off" class="layui-input">
                 </div>
 
                 <label class="layui-form-label">运费</label>
@@ -40,7 +40,7 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">客户</label>
                 <div class="layui-input-block">
-                    <select name="userId" id="users" lay-filter="">
+                    <select name="userId" id="users" lay-verify="require" lay-filter="">
                         <option value="">请选择</option>
                     </select>
                 </div>
@@ -48,7 +48,7 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">收货人</label>
                 <div class="layui-input-block">
-                    <select name="cptId" id="accept" lay-filter="">
+                    <select name="cptId" id="accept" lay-verify="require" lay-filter="">
                         <option value="">请选择</option>
                     </select>
                 </div>
@@ -56,7 +56,7 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">运输司机</label>
                 <div class="layui-input-block">
-                    <select name="stId" id="staff" lay-filter="">
+                    <select name="stId" id="staff" lay-verify="require" lay-filter="">
                         <option value="">请选择</option>
                     </select>
                 </div>
@@ -65,7 +65,7 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">货物名称</label>
                 <div class="layui-input-block">
-                    <select name="gId" id="goods" lay-filter="">
+                    <select name="gId" id="goods" lay-verify="require"  lay-filter="">
                         <option value="">请选择</option>
                     </select>
                 </div>
@@ -132,6 +132,11 @@
                     return '只能输入数字，最多11位';
                 }
 
+            },require: function (value) {
+
+                if (value=="") {
+                    return '必须填';
+                }
             }
         });
 

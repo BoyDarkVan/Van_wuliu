@@ -23,12 +23,12 @@
                 <label class="layui-form-label">收货人姓名</label>
                 <div class="layui-input-inline">
                     <%--正则验证--%>
-                    <input type="text" name="cptName" placeholder="请输入" required autocomplete="off" class="layui-input">
+                    <input type="text" name="cptName" placeholder="请输入" lay-verify="require" autocomplete="off" class="layui-input">
                 </div>
 
                 <label class="layui-form-label">收货人地址</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="cptAddr" required   placeholder="请输入" autocomplete="off" class="layui-input">
+                    <input type="text" name="cptAddr" lay-verify="require"   placeholder="请输入" autocomplete="off" class="layui-input">
                 </div>
 
                 <label class="layui-form-label">收货人手机</label>
@@ -41,7 +41,8 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">请选择性别</label>
                 <div class="layui-input-block">
-                    <select name="cptSex" required  lay-filter="">
+                    <select name="cptSex" lay-verify="require"  lay-filter="">
+                        <option value="">请选择</option>
                         <option value="1">男</option>
                         <option value="0">女</option>
                     </select>
@@ -95,6 +96,12 @@
 
                 if (!reg.test(value)) {
                     return '只能输入数字，最多11位';
+                }
+            },
+            require: function (value) {
+
+                if (value=="") {
+                    return '必须填';
                 }
             }
         });
