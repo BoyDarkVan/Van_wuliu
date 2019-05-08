@@ -245,26 +245,7 @@
             }
         });
 
-        // //获取员工下拉框选中的值
-        // form.on('select(stId)', function(data){
-        //
-        //     alert(data.value); //得到被选中的值
-        //
-        // });
-        //
-        // //获取储存下拉框选中的值
-        // form.on('select(ckId)', function(data){
-        //
-        //     alert(data.value); //得到被选中的值
-        //
-        // });
-        //
-        // //获取货物下拉框选中的值
-        // form.on('select(gId)', function(data){
-        //
-        //     alert(data.value); //得到被选中的值
-        //
-        // });
+
     })
 
 

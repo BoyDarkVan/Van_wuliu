@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
+
 @Service
 public class AcceptServiceImp implements AcceptService {
 
@@ -36,6 +38,7 @@ public class AcceptServiceImp implements AcceptService {
 
     @Override
     public void addAccept(Accept accept) {
+        accept.setCptId(UUID.randomUUID().toString());
         acceptMapper.addAccept(accept);
     }
 }
