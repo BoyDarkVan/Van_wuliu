@@ -30,7 +30,7 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">接收人</label>
                 <div class="layui-input-block">
-                    <select name="cptId" id="accept" lay-filter="">
+                    <select name="cptId" id="accept" lay-verify="required">
                         <option value="">请选择</option>
                     </select>
                 </div>
@@ -39,7 +39,7 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">员工姓名</label>
                 <div class="layui-input-block">
-                    <select name="stId"  id="staff" lay-filter="">
+                    <select name="stId"  id="staff" lay-verify="required">
                         <option value="">请选择</option>
                     </select>
                 </div>
@@ -48,7 +48,7 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">仓库名称</label>
                 <div class="layui-input-block">
-                    <select name="ckId"  id="wh" lay-filter="">
+                    <select name="ckId"  id="wh" lay-verify="required">
                         <option value="">请选择</option>
                     </select>
                 </div>
@@ -74,12 +74,12 @@
                 <label class="layui-form-label">配送方式</label>
                 <div class="layui-input-inline">
                     <%--正则验证--%>
-                    <input type="text" name="psType" lay-verify="type" placeholder="请输入" autocomplete="off" class="layui-input">
+                    <input type="text" name="psType" lay-verify="type" placeholder="最大长度为20 喔~~" autocomplete="off" class="layui-input">
                 </div>
 
                 <label class="layui-form-label">配送名称</label>
                 <div class="layui-input-inline">
-                    <input type="text"  name="psName" lay-verify="psName" placeholder="请输入" autocomplete="off" class="layui-input">
+                    <input type="text"  name="psName" lay-verify="psName" placeholder="最大长度为 20 喔~~" autocomplete="off" class="layui-input">
                 </div>
             </div>
 
@@ -127,10 +127,12 @@
         form.verify({
             //验证编号
             number: function(value){
-                if(value.length < 6){
-                    return '编号至少得6个字符啊';
-                }
 
+                var reg =/^[A-Za-z0-9]+$/;
+
+                if(!reg.test(value) || value.length<6){
+                    return '编号至少得6个字符啊,且不能输入汉字呦~~';
+                }
 
             }, type: function(value){
 
