@@ -1,11 +1,6 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: war
-  Date: 2019/4/30
-  Time: 16:43
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page isELIgnored="false" %>
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -36,10 +31,10 @@
         <br>
         <form method="post" class="am-form" action="${ctx}/admin/login" onsubmit="return check()">
             <label>账号或邮箱:</label>
-            <input type="text" name="admId" id="adm" onblur="checkUser()">
+            <input type="text" name="admId" id="adm">
             <br>
             <label>密码:</label>
-            <input type="password" name="admPwd" id="pwd" onblur="checkPwd()">
+            <input type="password" name="admPwd" id="pwd" >
             <br>
             <label for="remember-me">
                 <input id="remember-me" type="checkbox">
@@ -48,7 +43,7 @@
             <br />
             <div class="am-cf">
                 <input type="submit" name="" value="登 录" class="am-btn am-btn-primary am-btn-sm am-fl" style="align-content: center">
-                <input type="submit" name="" value="忘记密码 ^_^? " class="am-btn am-btn-default am-btn-sm am-fr">
+                <input type="button" name="" value="忘记密码 ^_^? " class="am-btn am-btn-default am-btn-sm am-fr">
             </div>
         </form>
         <hr>
@@ -65,7 +60,6 @@
         var val = $("#adm").val();
         var reg=/[a-zA-Z0-9]{3,15}$/;
         if(!reg.test(val)){
-            alert("账号至少输入3 位，最多15位！！！");
             return false;
         }
         return true;
@@ -75,7 +69,6 @@
         var val = $("#pwd").val();
         var reg=/^[a-zA-Z0-9]{3,10}$/;
         if(!reg.test(val)){
-            alert("密码不能含有非法字符，长度在4-10之间喔~~~");
             return false;
         }
         
@@ -86,10 +79,13 @@
     function check(){
         if (checkUser()&&checkPwd()){
             return true;
+        }else {
+            alert("账号输入3 ~15位！！！,密码不能含有非法字符，长度在4-10之间喔~~~");
+            return false;
         }
 
-        return false;
     }
+
 
 
 </script>

@@ -26,7 +26,6 @@ public class AdminController {
             session.setAttribute("admin",adm);
             return "tiaozhuan";
         }else{
-
             return "redirect:/login.jsp";
         }
     }
