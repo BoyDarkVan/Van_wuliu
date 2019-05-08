@@ -71,7 +71,6 @@
         if(!reg.test(val)){
             return false;
         }
-        
         return true;
     }
 
@@ -83,7 +82,6 @@
             alert("账号输入3 ~15位！！！,密码不能含有非法字符，长度在4-10之间喔~~~");
             return false;
         }
-
     }
 
 
