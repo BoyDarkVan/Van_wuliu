@@ -34,12 +34,12 @@
 <div class="am-g">
     <div class="am-u-lg-6 am-u-md-8 am-u-sm-centered">
         <br>
-        <form method="post" class="am-form" action="${ctx}/admin/login">
+        <form method="post" class="am-form" action="${ctx}/admin/login" onsubmit="return check()">
             <label>账号或邮箱:</label>
-            <input type="text" name="admId">
+            <input type="text" name="admId" id="adm" onblur="checkUser()">
             <br>
             <label>密码:</label>
-            <input type="password" name="admPwd">
+            <input type="password" name="admPwd" id="pwd" onblur="checkPwd()">
             <br>
             <label for="remember-me">
                 <input id="remember-me" type="checkbox">
@@ -52,8 +52,45 @@
             </div>
         </form>
         <hr>
-        <p>© 2014 AllMobilize, Inc. Licensed under MIT license.</p>
+        <p>© 2019 AllMobilize, Inc. Licensed under MIT license.</p>
     </div>
 </div>
 </body>
+
+<script src="${ctx}/static/common/js/jquery-1.8.3.js"></script>
+<script>
+
+    /*用户名验证*/
+    function checkUser(){
+        var val = $("#adm").val();
+        var reg=/[a-zA-Z0-9]{3,15}$/;
+        if(!reg.test(val)){
+            alert("账号至少输入3 位，最多15位！！！");
+            return false;
+        }
+        return true;
+    }
+
+    function checkPwd(){
+        var val = $("#pwd").val();
+        var reg=/^[a-zA-Z0-9]{3,10}$/;
+        if(!reg.test(val)){
+            alert("密码不能含有非法字符，长度在4-10之间喔~~~");
+            return false;
+        }
+        
+        return true;
+    }
+
+    //两个都通过了才提交表单
+    function check(){
+        if (checkUser()&&checkPwd()){
+            return true;
+        }
+
+        return false;
+    }
+
+
+</script>
 </html>
