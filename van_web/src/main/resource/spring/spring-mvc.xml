@@ -34,10 +34,6 @@
     </bean>
 
 
-    <!-- 引入redis配置文件 -->
-    <!--<import resource="classpath:spring/redis-context.xml"/>-->
-
-
     <!--开放对上传功能的支持-->
     <!--<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">-->
         <!--&lt;!&ndash; 默认编码 &ndash;&gt;-->
@@ -49,13 +45,13 @@
     <!--</bean>-->
 
     <!--拦截器-->
-    <!--<mvc:interceptors>-->
-        <!--<mvc:interceptor>-->
-            <!--<mvc:mapping path="/**" />-->
-            <!--<mvc:exclude-mapping path="/login.jsp"/>-->
-            <!--<bean class="com.van.intercetor.MyInterceptor"/>-->
-        <!--</mvc:interceptor>-->
-    <!--</mvc:interceptors>-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**" />
+            <mvc:exclude-mapping path="/login.jsp"/>
+            <bean class="com.van.intercetor.MyInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
 
 
     <!--加载静态资源（静态资源放在Web-inf文件夹外）-->
