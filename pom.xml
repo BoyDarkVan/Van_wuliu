@@ -13,6 +13,7 @@
         <module>van_mapper</module>
         <module>van_service</module>
         <module>van_web</module>
+        <module>van_util</module>
     </modules>
 
     <properties>
