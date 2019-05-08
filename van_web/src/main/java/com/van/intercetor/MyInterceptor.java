@@ -15,10 +15,12 @@ public class MyInterceptor implements HandlerInterceptor {
         if (httpServletRequest.getRequestURI().endsWith("login")) {
             return  true;
         }
-        if (httpServletRequest.getSession().getAttribute("user")!=null){
+        if (httpServletRequest.getSession().getAttribute("admin")!=null){
             return  true;
         }
-        httpServletRequest.getRequestDispatcher("/WEB-INF/views/login.html").forward(httpServletRequest, httpServletResponse);
+
+        httpServletResponse.sendRedirect("/login.jsp");
+
         return false;
     }
 
