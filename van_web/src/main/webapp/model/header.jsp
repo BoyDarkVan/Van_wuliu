@@ -14,10 +14,6 @@
                 <img src="https://yanxuan.nosdn.127.net/5d5039d1dbdd3aef07ac9b5025ebabb2.png" class="layui-nav-img" alt="我的头像">
                 ${admin.admName}
             </a>
-            <dl class="layui-nav-child">
-                <dd><a href="">基本资料</a></dd>
-                <dd><a href="">安全设置</a></dd>
-            </dl>
         </li>
         <li class="layui-nav-item"><a href="${ctx}/admin/exit">安全退出</a></li>
     </ul>
