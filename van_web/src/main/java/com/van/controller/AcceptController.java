@@ -1,5 +1,6 @@
 package com.van.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.van.page.Page;
 import com.van.page.ResultMap;
 import com.van.pojo.Accept;
@@ -71,12 +72,15 @@ public class AcceptController {
     public String addpage(){
         return "addaccept";
     }
+
+
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public String add(@RequestBody Accept accept) {
+    public @ResponseBody
+    JSONObject add(@RequestBody Accept accept) {
         acceptService.addAccept(accept);
-        return "orders";
+        JSONObject back=new JSONObject();
+        back.put("flag","添加成功" );
+        return back;
     }
-
-
 
 }
