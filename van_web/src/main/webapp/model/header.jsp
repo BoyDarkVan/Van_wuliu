@@ -19,7 +19,7 @@
                 <dd><a href="">安全设置</a></dd>
             </dl>
         </li>
-        <li class="layui-nav-item"><a href="${ctx}/">安全退出</a></li>
+        <li class="layui-nav-item"><a href="${ctx}/admin/exit">安全退出</a></li>
     </ul>
 </div>
 <div class="layui-side layui-bg-black">
