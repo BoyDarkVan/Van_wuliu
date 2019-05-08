@@ -4,9 +4,12 @@ package com.van.pojo;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.io.Serializable;
 import java.sql.Date;
 
-public class Delivery {
+public class Delivery implements Serializable {
+
+  private static final long serialVersionUID = -1L;
 
   private String psId;
 

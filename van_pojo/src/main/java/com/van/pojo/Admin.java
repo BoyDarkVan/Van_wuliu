@@ -1,7 +1,9 @@
 package com.van.pojo;
 
 
-public class Admin {
+import java.io.Serializable;
+
+public class Admin implements Serializable {
 
   private Integer admId;
   private String admName;

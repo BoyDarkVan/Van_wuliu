@@ -1,7 +1,11 @@
 package com.van.pojo;
 
 
-public class Staff {
+import sun.plugin2.message.Serializer;
+
+import java.io.Serializable;
+
+public class Staff implements Serializable {
 
   private String stId;
   private String stName;

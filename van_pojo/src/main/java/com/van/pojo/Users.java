@@ -1,7 +1,9 @@
 package com.van.pojo;
 
 
-public class Users {
+import java.io.Serializable;
+
+public class Users implements Serializable {
 
   private String userId;
   private String userName;

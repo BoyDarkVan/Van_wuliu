@@ -1,7 +1,9 @@
 package com.van.pojo;
 
 
-public class Warehouse {
+import java.io.Serializable;
+
+public class Warehouse implements Serializable {
 
   private String ckId;
   private String ckName;

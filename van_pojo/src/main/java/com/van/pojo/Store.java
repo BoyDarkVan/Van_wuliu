@@ -4,9 +4,10 @@ package com.van.pojo;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
-public class Store {
+public class Store implements Serializable {
 
   private String sId;
 

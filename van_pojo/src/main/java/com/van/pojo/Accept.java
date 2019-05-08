@@ -1,7 +1,9 @@
 package com.van.pojo;
 
 
-public class Accept {
+import java.io.Serializable;
+
+public class Accept implements Serializable {
 
   private String cptId;
   private String cptName;

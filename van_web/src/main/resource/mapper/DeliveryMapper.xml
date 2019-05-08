@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.van.mapper.DeliveryMapper">
+
+  <!-- 缓存类配置 -->
+  <cache eviction="LRU" type="com.van.cache.RedisCache"/>
+
   <resultMap id="BaseResultMap" type="com.van.pojo.Delivery">
     <id column="ps_id" jdbcType="VARCHAR" property="psId" />
     <result column="apt_id" jdbcType="VARCHAR" property="cptId" />
@@ -37,7 +41,7 @@
   </resultMap>
 
   <!--分页查询配送记录显示-->
-  <select id="findAll" resultMap="deliveryMap" parameterType="com.van.page.Page">
+  <select id="findAll" resultMap="deliveryMap" parameterType="com.van.page.Page" >
     select
           d.*,
           apt.*,
@@ -53,7 +57,7 @@
   </select>
 
   <!--查询配送总记录数-->
-  <select id="findTotal" resultType="java.lang.Integer">
+  <select id="findTotal" resultType="java.lang.Integer" >
     select count(ps_id)  from delivery
   </select>
 
