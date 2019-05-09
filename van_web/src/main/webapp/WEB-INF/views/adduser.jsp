@@ -22,7 +22,7 @@
 
                 <div class="user">
                     <div>用户编号</div>
-                    <input id="id" type="text" name="userId" minlength="4"/>
+                    <input id="id" type="text" name="userId" minlength="4" maxlength="4"/>
                 </div>
 
                 <div class="user">
@@ -52,7 +52,8 @@
 
         <jsp:include page="${ctx}/model/footer.jsp"/>
     </div>
-<script src="${ctx}/static/common/layui/layui.js"></script>
+    <script src="${ctx}/static/common/layui/layui.js"></script>
+    <script src="${ctx}/static/common/layui/layui.all.js"></script>
     <script>
         //JavaScript代码区域
         layui.use('element', function(){
@@ -67,9 +68,77 @@
                 if(radio[i].checked) {
                     return radio[i].value;
                 }
-
             }
         }
+
+        $(function () {
+            $("#id").change(function () {
+                var idd=$(this).val();
+                chkStaffId(idd);
+            });
+            $("#name").change(function () {
+                var namee=$(this).val();
+                chkStaffName(namee);
+            });
+            $("#phone").change(function () {
+                var phonee=$(this).val();
+                chkStaffPhone(phonee);
+            });
+            $("#address").change(function () {
+                var addre=$(this).val();
+                chkStaffId(addre);
+            });
+        });
+
+        //id
+        function chkStaffId(idd) {
+            var regEn = /[`~!@#$%^&*()_+<>?:"{},.\/;'[\]]/im,
+                regCn = /[·！#￥（——）：；“”‘、，|《。》？、【】[\]]/im;
+            if (idd===''){
+                layer.msg("不能为空")
+
+            }else if (regCn.test(idd)||regEn.test(idd)){
+                layer.msg("请勿输入特殊字符");
+                $("#id").css("color","red");
+            }else if (!(idd.length===4) && idd.length===''){
+                layer.msg("请输入4位数字");
+                $("#id").css("color","red");
+            }else {
+                $("#id").css("color","black");
+                return true
+            }
+            return false;
+        }
+        //name
+        function chkStaffName(namee) {
+            var ref=/^[\u4E00-\u9FA5]{2,4}$/ ;
+            if (namee===''){
+                layer.msg("不能为空");
+            } else if (!ref.test(namee)){
+                layer.msg("输入姓名");
+                $("#name").css("color","red");
+            }else {
+                $("#name").css("color","black");
+                return true;
+            }
+            return false;
+        }
+
+        //phone
+        function chkStaffPhone(phonee) {
+            var ref=/^1[34578]\d{9}$/ ;
+            if (phonee===''){
+                layer.msg("不能为空");
+            } else if (!ref.test(phonee)){
+                layer.msg("请输入正确号码");
+                $("#phone").css("color","red");
+            }else {
+                $("#phone").css("color","black");
+                return true;
+            }
+            return false;
+        }
+
 
         function check(){
             var id = $("#id").val();
@@ -78,38 +147,37 @@
             var phone = $("#phone").val();
             var address = $("#address").val();
 
-            if(id ===''|| name ===''||phone === ''|| address===''){
-                alert('操作失败，请规范填写！');
-                return null;
+            if (chkStaffId(id) && chkStaffName(name)&& chkStaffAge(phone) && chkStaffId(address)){
+
+                var users = JSON.stringify({
+                    "userId":id,
+                    "userName":name,
+                    "userSex":sex,
+                    "userPhone":phone,
+                    "userAddr":address
+                });
+
+                $.ajax({
+                    url:"${ctx}/users/add",
+                    type:"post",
+                    dataType:"json",
+                    contentType: "application/json; charset=utf-8",
+                    data: users,
+                    success:function () {
+                        alert('添加成功！请继续操作！！！');
+
+                        $("#id").val("");
+                        $("#name").val("");
+                        $("#phone").val("");
+                        $("#address").val("");
+
+                    },
+                    error:function () {
+                        alert('操作失败,用户id已存在，请稍后操作或联系管理员！');
+                    }
+                })
             }
-
-            var users = JSON.stringify({
-                "userId":id,
-                "userName":name,
-                "userSex":sex,
-                "userPhone":phone,
-                "userAddr":address
-            });
-
-            $.ajax({
-                url:"${ctx}/users/add",
-                type:"post",
-                dataType:"json",
-                contentType: "application/json; charset=utf-8",
-                data: users,
-                success:function () {
-                    alert('添加成功！请继续操作！！！');
-
-                    $("#id").val("");
-                    $("#name").val("");
-                    $("#phone").val("");
-                    $("#address").val("");
-
-                },
-                error:function () {
-                    alert('操作失败,用户id已存在，请稍后操作或联系管理员！');
-                }
-            })
+            return false;
         }
     </script>
 </body>
