@@ -48,10 +48,9 @@ public class AdminController {
     public String addAdm(String adm_id, String adm_name, String adm_pwd){
 
         adminService.addAdm(adm_id, adm_name, adm_pwd);
-
         return "";
-
     }
+    //安全退出
     @RequestMapping("/exit")
     public String exitAdm(HttpSession session){
         session.removeAttribute("admin");

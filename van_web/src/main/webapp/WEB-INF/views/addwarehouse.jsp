@@ -84,7 +84,7 @@
         var ref=/^[a-zA-Z0-9_-]{2,8}$/ ;
         if (namee===''){
             layer.msg("不能为空");
-        } else if (!ref.test(namee)){
+        } else if (ref.test(namee)){
             layer.msg("仓库名在2-8位");
             $("#name").css("color","red");
         }else {

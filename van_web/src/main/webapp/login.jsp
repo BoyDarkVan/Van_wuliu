@@ -24,7 +24,7 @@
         <h1>仓储管理系统</h1>
         <p>Parts Inventory System</p>
     </div>
-    <hr />
+    <hr/>
 </div>
 <div class="am-g">
     <div class="am-u-lg-6 am-u-md-8 am-u-sm-centered">
@@ -43,7 +43,6 @@
             <br />
             <div class="am-cf">
                 <input type="submit" name="" value="登 录" class="am-btn am-btn-primary am-btn-sm am-fl" style="align-content: center">
-                <input type="button" name="" value="忘记密码 ^_^? " class="am-btn am-btn-default am-btn-sm am-fr">
             </div>
         </form>
         <hr>
